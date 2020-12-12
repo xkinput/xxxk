@@ -1,0 +1,15 @@
+bxoooa $[biáng]$FILE(mb\xkjd6\biang.bmp)
+oojp $GO([键盘图],skin\xkjd6_keymap.png)
+oomb $GO([在线码表],https://739497722.docs.qq.com/ipGva4mn5bo)
+oomb $GO([在线码表快捷修改],https://docs.qq.com/form/fill/DRWlwcUplU3dzaEFq#/fill/resubmit)
+
+oyk ①
+oxj ②
+osf ③
+osk ④
+owj ⑤
+olq ⑥
+oqk ⑦
+obs ⑧
+ojq ⑨
+oek ⑩
