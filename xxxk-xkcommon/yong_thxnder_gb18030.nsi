@@ -47,8 +47,8 @@ Function 预定义：一些常量
 FunctionEnd
 !define AppName "xxxk"
 !define PRODUCT_NAME "小小星空"
-!define PRODUCT_VERSION "1.0.0.0"
-!define PRODUCT_VERSION_MINOR "20201212"
+!define PRODUCT_VERSION "1.0.0.1"
+!define PRODUCT_VERSION_MINOR "20201213"
 !define PRODUCT_PUBLISHER "thXnder"
 !define PRODUCT_WEB_SITE "http://xkinput.gitee.io/xxxk-help"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
@@ -122,7 +122,7 @@ FunctionEnd
 # 完成页
 !define MUI_FINISHPAGE_TITLE "安装完成"
 !define MUI_FINISHPAGE_TEXT_LARGE
-!define MUI_FINISHPAGE_TEXT "小小星空需要运行后才能使用。$\n若采取外挂式安装，还需在运行后按Ctrl+Alt才可使用。"
+!define MUI_FINISHPAGE_TEXT "小小星空需要运行后才能使用（若采取外挂式安装，还需在运行后按Ctrl+Alt才可使用）。$\n在设置界面，可以选择加载哪些星空系列方案。"
 !define MUI_FINISHPAGE_RUN # 若想直接运行程序，就!define MUI_FINISHPAGE_RUN xxx.exe，不需要下面的RUN_FUNCTION
 !define MUI_FINISHPAGE_RUN_FUNCTION RunXxxk # 安装完成后执行指定函数
 !define MUI_FINISHPAGE_RUN_TEXT "现在立刻运行 小小星空"
@@ -131,7 +131,7 @@ FunctionEnd
 !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
 !define MUI_FINISHPAGE_SHOWREADME_FUNCTION DelStartup
 !define MUI_FINISHPAGE_LINK '阅读 使用说明'
-!define MUI_FINISHPAGE_LINK_LOCATION $INSTDIR\doc\程序\小小小星空输入法用户手册.html ;${PRODUCT_WEB_SITE}
+!define MUI_FINISHPAGE_LINK_LOCATION ${PRODUCT_WEB_SITE} #$INSTDIR\doc\程序\小小小星空输入法用户手册.html
 !insertmacro MUI_PAGE_FINISH
 # 卸载确认页（略）
 # !insertmacro MUI_UNPAGE_CONFIRM
@@ -767,7 +767,7 @@ Section "-恢复yongdir\yong.ini" SecSetUser
 				${EndIf}
 		${Next}
 		# 确保有pinyin方案来兜底
-    ReadINIStr $2 "$yongdir\yong.ini" "pinyin" "name"  # $2是一个flag，如果方案是无缺的，$2应不为空
+    ReadINIStr $2 "$yongdir\yong.ini" "pinyin" "name"  # $2是一个flag，如果有pinyin方案，$2应不为空
     ${If} $2 == ""
         IntOp $9 $9 + 1
 				WriteINIStr "$TEMP\yong.ini" "IM" "$9" "pinyin"
@@ -789,14 +789,19 @@ Section "-恢复yongdir\yong.ini" SecSetUser
 				    ${EndIf}
 				${Next}
 		${EndIf}
-		# 变量已释放
+		# 变量已释放，$9还有用
 		
 		Step3:
 		CopyFiles /SILENT $TEMP\yong.ini $yongdir\yong.ini
 SectionEnd
 #
 Function .onInstSuccess
-#   ExecShell "open" "$INSTDIR\tools\bat\rerun.bat" ; 运行输入法
+    ${If} $9 == 0 # 检测首次安装
+				MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON1 "您可能是首次安装本软件。$\n本软件内置了多种星空系列方案，但是默认不加载（除非您之前安装过本软件），需要您在设置界面里按需加载。$\n是否现在为您打开设置界面？" \
+						   /SD IDYES IDNO skip
+				ExecShell "open" "$INSTDIR\tools\bat\yong-config.bat" # 打开配置程序
+				skip:
+    ${EndIf}
 FunctionEnd
 
 Function 卸载程序
