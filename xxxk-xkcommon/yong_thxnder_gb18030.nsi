@@ -47,8 +47,8 @@ Function 预定义：一些常量
 FunctionEnd
 !define AppName "xxxk"
 !define PRODUCT_NAME "小小星空"
-!define PRODUCT_VERSION "1.0.0.1"
-!define PRODUCT_VERSION_MINOR "20201213"
+!define PRODUCT_VERSION "1.0.1.0"
+!define PRODUCT_VERSION_MINOR "20210505"
 !define PRODUCT_PUBLISHER "thXnder"
 !define PRODUCT_WEB_SITE "http://xkinput.gitee.io/xxxk-help"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
@@ -122,12 +122,12 @@ FunctionEnd
 # 完成页
 !define MUI_FINISHPAGE_TITLE "安装完成"
 !define MUI_FINISHPAGE_TEXT_LARGE
-!define MUI_FINISHPAGE_TEXT "小小星空需要运行后才能使用（若采取外挂式安装，还需在运行后按Ctrl+Alt才可使用）。$\n在设置界面，可以选择加载哪些星空系列方案。"
+!define MUI_FINISHPAGE_TEXT "小小星空需要运行开始菜单或程序目录下的“小小星空”快捷方式后才能使用。$\n为了使用方便，将为您添加开机自启动，请您确认。"
 !define MUI_FINISHPAGE_RUN # 若想直接运行程序，就!define MUI_FINISHPAGE_RUN xxx.exe，不需要下面的RUN_FUNCTION
 !define MUI_FINISHPAGE_RUN_FUNCTION RunXxxk # 安装完成后执行指定函数
 !define MUI_FINISHPAGE_RUN_TEXT "现在立刻运行 小小星空"
 !define MUI_FINISHPAGE_SHOWREADME
-!define MUI_FINISHPAGE_SHOWREADME_TEXT "取消开机自启（不建议勾选）"
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "不要添加开机自启动（不建议勾选）"
 !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
 !define MUI_FINISHPAGE_SHOWREADME_FUNCTION DelStartup
 !define MUI_FINISHPAGE_LINK '阅读 使用说明'
@@ -356,7 +356,7 @@ FunctionEnd
 # 设置区段是否选中：SectionSetFlags ${SecXkjd6Dic} 0或1
 # 多个区段可以被包裹在区段组SectionGroup /e "区段组标签" SecGroupName ... SectionGroupEnd里，以形成层次结构。/e表示默认展开区段组。
 #
-Section /o "外挂模式" SecPortable
+Section /o "便携安装（外挂模式）" SecPortable
 		# 不干啥，仅用于判断该区段是否选中
 SectionEnd
 
@@ -740,7 +740,7 @@ Section "-恢复yongdir\yong.ini" SecSetUser
 		#（如果只有序号键而没有相应的[方案ID]段，会导致yong-config.exe重复识别该方案的入口文件；如果只有[方案ID]而没有相应的序号键，会导致yong-config.exe识别不到该方案的入口文件）
 		# 其次明确本次恢复的目标为：把$TEMP\yong.ini的[IM]段序号键和[方案ID]段尽量还原为$yongdir\yong.ini的状态。但是对于内置方案应进行覆盖更新，对于错误（如序号键和[方案ID]段缺一）应予以修正。
 		#
-		# $TEMP\yong.ini的初始状态：[IM]0=pinyin，[IM]default=0，[pinyin]段。请不要擅自在$INSTDIR\yong.ini中添加其他方案的序号键或方案ID。
+		# $TEMP\yong.ini的初始状态：[IM]0=pinyin，[IM]default=0，[pinyin]段(仅示范、重置设定用)。请不要擅自在$INSTDIR\yong.ini中添加其他方案的序号键或[方案ID]段。
 		DeleteINISec $TEMP\yong.ini pinyin # 先清空$TEMP\yong.ini中原有的[方案ID]段
 		#
 		# 遍历$yongdir\yong.ini中，[IM]段里序号键0~99的值——.
@@ -766,17 +766,10 @@ Section "-恢复yongdir\yong.ini" SecSetUser
 				    ${EndIf}
 				${EndIf}
 		${Next}
-		# 确保有pinyin方案来兜底
-    ReadINIStr $2 "$yongdir\yong.ini" "pinyin" "name"  # $2是一个flag，如果有pinyin方案，$2应不为空
-    ${If} $2 == ""
-        IntOp $9 $9 + 1
-				WriteINIStr "$TEMP\yong.ini" "IM" "$9" "pinyin"
-				!insertmacro CopyINISec "$INSTDIR\entry\pinyin_entry.ini" "$TEMP\yong.ini" "pinyin" # 复制整段
-    ${EndIf}
 		#
 		# $0~$8已释放，$9是$TEMP\yong.ini中的最大方案编号
 		#
-		# 尝试还原default
+		# 尝试还原default（默认为0）
 		WriteINIStr "$TEMP\yong.ini" "IM" "default" "0"
 		ReadINIStr $0 "$yongdir\yong.ini" "IM" "default"
 		ReadINIStr $1 "$yongdir\yong.ini" "IM" "$0" # 读取$yongdir\yong.ini的default方案ID到$1
@@ -789,19 +782,33 @@ Section "-恢复yongdir\yong.ini" SecSetUser
 				    ${EndIf}
 				${Next}
 		${EndIf}
-		# 变量已释放，$9还有用
+		# 变量已释放，$9可能还有用
 		
 		Step3:
+		# 为了应急，确保存在pinyin方案
+    ReadINIStr $2 "$TEMP\yong.ini" "pinyin" "name"  # $2是一个flag，如果有pinyin方案，$2应不为空
+    ${If} $2 == ""
+        IntOp $9 $9 + 1
+				WriteINIStr "$TEMP\yong.ini" "IM" "$9" "pinyin"
+				!insertmacro CopyINISec "$INSTDIR\entry\pinyin_entry.ini" "$TEMP\yong.ini" "pinyin" # 复制整段
+    ${EndIf}
+		# 只有1个方案（必为pinyin）时，追加键道方案
+		${If} $9 < 1
+	      IntOp $9 $9 + 1
+				WriteINIStr "$TEMP\yong.ini" "IM" "$9" "xkjd6"
+				!insertmacro CopyINISec "$INSTDIR\entry\xkjd6_entry.ini" "$TEMP\yong.ini" "xkjd6" # 复制整段
+    ${EndIf}
+    # 应用配置文件
 		CopyFiles /SILENT $TEMP\yong.ini $yongdir\yong.ini
+		# 变量已释放，$9可能还有用
 SectionEnd
 #
 Function .onInstSuccess
-    ${If} $9 == 0 # 检测首次安装
-				MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON1 "您可能是首次安装本软件。$\n本软件内置了多种星空系列方案，但是默认不加载（除非您之前安装过本软件），需要您在设置界面里按需加载。$\n是否现在为您打开设置界面？" \
-						   /SD IDYES IDNO skip
-				ExecShell "open" "$INSTDIR\tools\bat\yong-config.bat" # 打开配置程序
-				skip:
-    ${EndIf}
+    # 问用户是否打开图形配置程序
+		MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON1 "$\n是否为您打开图形化配置程序？$\n您可以在其中管理输入方案，或者进行一些个性化定制。$\n您也可以通过开始菜单或者输入法状态条来打开图形化配置程序。" \
+				   /SD IDYES IDNO skip
+		ExecShell "open" "$INSTDIR\tools\bat\yong-config.bat" # 打开配置程序
+		skip:
 FunctionEnd
 
 Function 卸载程序

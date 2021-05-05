@@ -3,5 +3,5 @@ cd /d "%~dp0"
 cd /d ..
 cd /d ..
 if not exist yong-config.exe (cd /d ..)
-echo 正在启动输入法主程序...
+echo 正在启动输入法配置程序...
 start yong-config.exe

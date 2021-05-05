@@ -83,6 +83,7 @@ c 此
 d 都
 e 识
 e 实
+f 之
 f 支
 h 好
 i 打
@@ -91,13 +92,14 @@ l 啦
 m 嘛
 n 能
 o 着
-q 期
+q 其
 x 嗯
 y 意
 w 玩
 z 咋
 # 一简三重
 y 疫
+q 期
 # 二简二重
 bs 叭
 ek 氏
@@ -123,6 +125,7 @@ yk 咦
 yk 噫
 yl 哟
 yl 愈
+xt 玄
 ze 啧
 # syxb 单字
 ekbo 实
@@ -257,7 +260,7 @@ vu 丆
 vui 廾
 vviv 龶
 vvvuo 𡗗
-#sb,sbb
+# sb,sbb
 ba 不能
 baa 班级
 bai 不了
@@ -327,7 +330,7 @@ dav 当即
 di 多少
 dia 当中
 dii 大人
-dio 灯光
+dio 短信
 diu 动作
 div 地上
 do 但是
@@ -386,7 +389,7 @@ fau 只好
 fav 发展
 fi 这个
 fia 这里
-fii 众人
+fii 专业
 fio 非常
 fiu 直接
 fiv 这些
@@ -445,7 +448,7 @@ hao 还能
 hau 还好
 hav 喝酒
 hi 好像
-hia 怀里
+hia 后果
 hii 好人
 hio 黄金
 hiu 好看
@@ -518,7 +521,7 @@ kou 看着
 kov 渴望
 ku 可爱
 kua 快乐
-kui 卡片
+kui 空白
 kuo 开支
 kuu 靠近
 kuv 空气
@@ -527,7 +530,7 @@ kva 看到
 kvi 快速
 kvo 看来
 kvu 客厅
-kvv 魁梧
+kvv 苦于
 la 例如
 laa 立马
 lai 露出
@@ -583,7 +586,7 @@ muo 摸索
 muu 矛盾
 muv 陌生
 mv 没有
-mva 马车
+mva 密切
 mvi 没事
 mvo 模样
 mvu 忙碌
@@ -875,7 +878,7 @@ zoa 再说
 zoi 暂时
 zoo 在家
 zou 作为
-zov 再次
+zov 最新
 zu 怎么
 zua 自然
 zui 走向

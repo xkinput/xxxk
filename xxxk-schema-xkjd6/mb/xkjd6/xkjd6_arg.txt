@@ -2045,6 +2045,7 @@ eeav 滠
 eeavii 滠
 eei 舍
 eeia 蛇
+eeiaa 虵
 eeiaoo 蛇
 eeiu 摄
 eeiui 拾
@@ -3426,6 +3427,7 @@ fni 份
 fnii 芬
 fniiu 蕡
 fniiuo 芬
+fniiuo 蕡
 fniiv 棻
 fniivv 棻
 fniu 偾
@@ -9071,7 +9073,8 @@ mhvaau 劢
 mhvaoa 迈
 mhvo 霾
 mhvoia 埋
-mhvoo 売
+mhvou 売
+mhvoua 売
 mhvouo 霾
 mhvv 麦
 mhvvua 麦
@@ -13021,8 +13024,9 @@ tsiu 拓
 tsiuvu 拓
 tsiuvu 挞
 tso 它
-tsoa 褟
+tsoa 祂
 tsoaa 祂
+tsoao 褟
 tsoaoi 褟
 tsoi 踏
 tsoiao 踏
@@ -17158,6 +17162,8 @@ zsu 杂
 zsuavv 杂
 zsuo 臜
 zsuouv 臜
+zsuu 臜
+zsuuvi 臜
 zsv 砸
 zsvi 匝
 zsviai 匝
@@ -17264,7 +17270,6 @@ zzvu 𥖨
 zzvuoo 𥖨
 zzvv 璪
 zzvvoo 璪
-# 超级字
 bcvuv 猋
 bcvuvi 嫑
 bcvuvu 猋
@@ -17300,8 +17305,8 @@ dpaavv 𬍡
 dsiov 𫟼
 dsiovu 𫟼
 dsooiv 呾
-dsvuv 
-dsvuvu 
+dsvuv 弌
+dsvuvu 弌
 dwvoo 墫
 dwvoou 墫
 dyiava 𬟽
@@ -17335,7 +17340,7 @@ flovua 𬸦
 fnva 𮝷
 fnvauo 𮝷
 fsia 甴
-fwaaiv 
+fwaaiv 橒
 fzioa 𬬿
 fzioau 𬬿
 fzua 𬶐
@@ -17350,8 +17355,8 @@ glai 𬇹
 glaiav 𬇹
 glii 菓
 gliiia 菓
-gpvou 
-gpvoua 
+gpvou 埝
+gpvoua 埝
 grua 㹴
 gruavi 㹴
 grvu 𬒔
@@ -17564,8 +17569,8 @@ tloooi 鼍
 tluao 𬶍
 tluaoo 𬶍
 tsoaai 祂
-tsvu 
-tsvuvu 
+tsvu 弌
+tsvuvu 弌
 tyoai 𫍣
 tyoaia 𫍣
 tzaaua 𫘦
@@ -17660,6 +17665,8 @@ yfiauo 𪩘
 yfoiuo 昖
 yfooia 喦
 yfvoua 𬸘
+ygvo 桜
+ygvoou 桜
 yhia 曱
 yhiavv 曱
 yhua 𬸚
