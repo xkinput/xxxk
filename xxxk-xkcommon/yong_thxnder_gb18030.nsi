@@ -47,8 +47,8 @@ Function 预定义：一些常量
 FunctionEnd
 !define AppName "xxxk"
 !define PRODUCT_NAME "小小星空"
-!define PRODUCT_VERSION "1.0.1.0"
-!define PRODUCT_VERSION_MINOR "20210505"
+!define PRODUCT_VERSION "1.0.1.2"
+!define PRODUCT_VERSION_MINOR "20210607"
 !define PRODUCT_PUBLISHER "thXnder"
 !define PRODUCT_WEB_SITE "http://xkinput.gitee.io/xxxk-help"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
@@ -593,7 +593,7 @@ Section "-释放主要文件" SecInstMainFiles
 				CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\3.教程.lnk" "$INSTDIR\doc" "" "$WINDIR\System32\SHELL32.dll" 23
 				CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\4.官网.lnk" ${PRODUCT_WEB_SITE} "" "$WINDIR\System32\SHELL32.dll" 17
 				CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\5.网盘.lnk" "http://xxjd.ys168.com/" "" "$WINDIR\System32\SHELL32.dll" 17
-				CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\6.卸载.lnk" "$INSTDIR\uninstall.exe"
+				CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\6.卸载.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
 				# 注册TSF模块（在64位操作系统上，即使只用32位的yong.exe，也需要同时注册32位和64位的dll）
 				DetailPrint "注册TSF模块..."
 				SetOutPath $INSTDIR\tsf
@@ -797,6 +797,7 @@ Section "-恢复yongdir\yong.ini" SecSetUser
 	      IntOp $9 $9 + 1
 				WriteINIStr "$TEMP\yong.ini" "IM" "$9" "xkjd6"
 				!insertmacro CopyINISec "$INSTDIR\entry\xkjd6_entry.ini" "$TEMP\yong.ini" "xkjd6" # 复制整段
+				WriteINIStr "$TEMP\yong.ini" "IM" "default" "1" # 把默认方案设为键道
     ${EndIf}
     # 应用配置文件
 		CopyFiles /SILENT $TEMP\yong.ini $yongdir\yong.ini
@@ -872,6 +873,9 @@ Section "Uninstall"
 		Delete "$INSTDIR\learn.dat"
 		Delete "$INSTDIR\yong.chm"
 		Delete "$INSTDIR\menu.ini"
+		Delete "$INSTDIR\crab.txt"
+		Delete "$INSTDIR\layout.txt"
+		Delete "$INSTDIR\urls.txt"
 
 		# 删除自己
 		Delete "$INSTDIR\uninstall.exe"
@@ -882,7 +886,7 @@ Section "Uninstall"
 		RMDir /r "$APPDATA\yong"
 		RMDir /r "$INSTDIR\.yong"
 		
-		# ExecShell "open" "$INSTDIR" # 打开给用户看
+		ExecShell "open" "$INSTDIR" # 打开给用户看
 
 		# 删除注册表
 		DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
