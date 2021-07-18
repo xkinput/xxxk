@@ -4,19 +4,19 @@ o $[公式l]
 o $[日文假名r]
 o $[拼音注音p]
 
-oo $[官网gw]$GO(https://xkinput.gitee.io/xxxk-help)
+oo $[官网gw]$GO(https://xkinput.github.io/xxxk-help)
 oo $[码表mb]$GO(mb)
 oo $[目录ml]$GO(.)
-oo $[入门rm]$GO(https://xkinput.gitee.io/xxxk-help)
+oo $[入门rm]$GO(https://xkinput.github.io/xxxk-help)
 oo $[小小xx]$GO(tools\bat\yong-config.bat)
 oo $[日期rq]$yyyy年$mon月$day日
 oo $[时间sj]$hour:$min:$sec
 oo $[星期xq]星期$WEEK
 
-oorm $GO([最新Web帮助],https://xkinput.gitee.io/xxxk-help)
+oorm $GO([最新Web帮助],https://xkinput.github.io/xxxk-help)
 oorm $GO([本地帮助文档],doc)
-oogw $GO([小小星空首页],https://xkinput.gitee.io/xxxk-help)
-oogw $GO([星空输入法首页],https://xkinput.gitee.io)
+oogw $GO([小小星空首页],https://xkinput.github.io/xxxk-help)
+oogw $GO([星空输入法首页],https://xkinput.github.io)
 oogw $GO([小小星空网盘],http://xxxk.ys168.com/)
 oomb $GO([本地码表],mb)
 ooml $GO([程序目录],.)

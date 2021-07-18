@@ -47,10 +47,10 @@ Function 预定义：一些常量
 FunctionEnd
 !define AppName "xxxk"
 !define PRODUCT_NAME "小小星空"
-!define PRODUCT_VERSION "1.0.2.0"
+!define PRODUCT_VERSION "1.0.2.1"
 !define PRODUCT_VERSION_MINOR "20210718"
 !define PRODUCT_PUBLISHER "thXnder"
-!define PRODUCT_WEB_SITE "http://xkinput.gitee.io/xxxk-help"
+!define PRODUCT_WEB_SITE "http://xkinput.github.io/xxxk-help"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
