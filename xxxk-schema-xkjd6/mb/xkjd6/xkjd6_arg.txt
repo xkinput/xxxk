@@ -20,13 +20,13 @@ bbaooa 滨
 bbi 摈
 bbia 髌
 bbiaoo 髌
-bbiav 豳
-bbiavu 豳
 bbio 傧
 bbioo 镔
 bbiooa 傧
 bbiooo 镔
 bbiuoo 摈
+bbiv 豳
+bbivua 豳
 bbo 斌
 bbooui 宾
 bbovvv 斌
@@ -2433,7 +2433,7 @@ ekvvi 示
 ekvviu 示
 ekvviv 式
 ekvvu 奭
-ekvvuv 奭
+ekvvui 奭
 ekvvv 栻
 ekvvvi 栻
 el 说
@@ -11150,6 +11150,7 @@ qkviu 欺
 qkviua 欺
 qkviuo 其
 qkviuu 期
+qkviv 碁
 qkvo 圻
 qkvoav 起
 qkvouu 圻
@@ -11713,10 +11714,10 @@ qxioov 锵
 qxiov 锖
 qxiovv 锖
 qxiuia 抢
-qxo 跄
+qxo 呛
 qxoa 襁
 qxoaav 襁
-qxoi 呛
+qxoi 跄
 qxoiaa 呛
 qxoiia 跄
 qxou 羌
@@ -16731,8 +16732,8 @@ yyoo 咏
 yyooaa 咏
 yyooo 慵
 yyooov 慵
-yyoou 㶲
-yyooua 㶲
+yyouu 㶲
+yyouua 㶲
 yyov 庸
 yyova 雍
 yyovaa 雍
@@ -17270,422 +17271,3 @@ zzvu 𥖨
 zzvuoo 𥖨
 zzvv 璪
 zzvvoo 璪
-bcvuv 猋
-bcvuvi 嫑
-bcvuvu 猋
-bhkeuo 兡
-bjovvi 誧
-bjviu 𬷕
-bjviua 𬷕
-bkvuv 夶
-bkvuvu 夶
-blioa 𬭛
-blioaa 𬭛
-ckivu 𫚖
-ckivua 𫚖
-cwvo 壿
-cwvoou 壿
-cyvvuu 瑽
-dcavai 弔
-ddiav 𫶇
-ddiavi 𫶇
-dfaa 𬘘
-dfaaoa 𬘘
-dfio 𫢸
-dfioui 𫢸
-dfooiv 呾
-dfouo 𬊤
-dfouou 𬊤
-djiov 𬭊
-djiovv 𬭊
-dkiavu 𬱖
-dkoaoi 𬤊
-dpaa 𬍡
-dpaavv 𬍡
-dsiov 𫟼
-dsiovu 𫟼
-dsooiv 呾
-dsvuv 弌
-dsvuvu 弌
-dwvoo 墫
-dwvoou 墫
-dyiava 𬟽
-eeiav 𪨶
-eeiavu 𪨶
-efvoou 𫮃
-ejio 𬬸
-ejiovo 𬬸
-ekkeuo 兙
-ekoaoi 𬤊
-ekuaiu 𫚕
-enaau 𬳽
-enaauv 𬳽
-enio 𬬹
-enioia 𬬹
-ffiou 𫔍
-ffiouo 𫔍
-ffuou 𬸪
-ffuoua 𬸪
-fjbfi 𮔅蝂
-fjiaua 𮔅
-fjiov 𫓧
-fjiovv 𫓧
-fjuovu 𫖯
-fkaauo 𫄨
-fkoiov 蹠
-fkuauo 㩼
-fkvuuu 𬃊
-flovu 𬸦
-flovua 𬸦
-fnva 𮝷
-fnvauo 𮝷
-fsia 甴
-fwaaiv 橒
-fzioa 𬬿
-fzioau 𬬿
-fzua 𬶐
-fzuauo 𬶐
-geiivo 佮
-gfuvvi 𬕂
-ghaii 𬮿
-ghaiia 𬮿
-gjviv 巭
-gjvivv 巭
-glai 𬇹
-glaiav 𬇹
-glii 菓
-gliiia 菓
-gpvou 埝
-gpvoua 埝
-grua 㹴
-gruavi 㹴
-grvu 𬒔
-grvuiv 𬒔
-gyfnuo 兝
-gyuvv 𬕂
-gyuvvi 𬕂
-hboavi 𬤝
-hdio 𬭤
-hdioia 𬭤
-heva 𬌗
-hevaiv 𬌗
-hlaa 𬴃
-hlaavv 𬴃
-hnoaa 𬣳
-hnoaav 𬣳
-hqviii 椛
-htaao 𬘫
-htaaoo 𬘫
-hwio 𬭶
-hwioia 𬭶
-hyio 𫟹
-hyioo 𬭎
-hyiooo 𬭎
-hyiovi 𫟹
-hzkeuo 兞
-hzuoui 䜰
-jbiouu 𬬱
-jfiiou 苂
-jfouo 𬊤
-jfouou 𬊤
-jgvvoo 丼
-jhaa 𫘝
-jhaaav 𫘝
-jhioao 𫔎
-jjiv 𬺓
-jjivvv 𬺓
-jkaio 𬯀
-jkaiov 𬯀
-jkavua 𬶨
-jkiov 𫓯
-jkiovi 𫓹
-jkiovo 𫓯
-jkivu 𫚖
-jkivua 𫚖
-jkoavv 𫌀
-jkuaua 𬶭
-jkvaao 檵
-jkvva 𪟝
-jkvvau 𪟝
-jluau 𬶋
-jluaua 𬶋
-jmoavv 𬣡
-jnaa 𬘭
-jnaavv 𬘭
-jpiouv 𬬮
-jslwau 嗧
-jsvvou 𬂩
-jtioou 𫓶
-jtvuva 奆
-jwavv 𫖳
-jwavvu 𫖳
-jwioo 𬭚
-jwioov 𬭚
-jyaai 𬳶
-jyaaia 𬳶
-kbuo 𫠆
-kbuovu 𫠆
-kda 𫸩
-kdavvu 𫸩
-kxua 𫛭
-kxuaua 𫛭
-lbaa 𬘭
-lbaao 𬴊
-lbaaou 𬴊
-lbaavv 𬘭
-lbioo 𬭸
-lbioou 𬭸
-lcvo 𪤗
-lcvoao 𪤗
-ldua 𫚭
-lduaaa 𫚭
-ldvoo 𪣻
-ldvoou 𪣻
-lfvu 𬒗
-lfvuii 𬒗
-lhiavu 𫵷
-ljaaa 𫘧
-ljaaav 𫘧
-ljioi 𬬻
-ljioiv 𬬻
-lkiavu 𫵷
-lkkeuo 兣
-lkmkou 糎
-lkvvua 𬍛
-lmuav 𬶠
-lmuavi 𬶠
-lqvvua 瑠
-lsua 𬶟
-lsuavi 𬶟
-lwioi 𬬭
-lwioiu 𬬭
-lwvoi 𫭢
-lwvoiu 𫭢
-lxaao 𫟅
-lxaaov 𫟅
-lxiiv 𬜯
-lxiivi 𬜯
-lyuvv 𬕂
-lyuvvi 𬕂
-lzuooo 䜮
-lzvo 𫭼
-lzvoii 𫭼
-mfav 𬇕
-mfavau 𬇕
-mfiio 𬜬
-mfiioi 𬜬
-mhio 鿏
-mhiovv 鿏
-mjioa 𬭁
-mjioaa 𬭁
-mlaa 𬙊
-mlaaia 𬙊
-mliuiu 尛
-mnvv 𫞩
-mnvvii 𫞩
-mroa 𫑡
-mroaii 𫑡
-mwovo 槑
-mwovov 槑
-mzvuia 冇
-ndoiu 𫔶
-ndoiui 𫔶
-nkiv 𫠜
-nkivui 𫠜
-nkva 𫐐
-nkvaui 𫐐
-nmuaio 鲶
-nyiu 挊
-nyiuiv 挊
-nyvi 𬪩
-nyvioa 𬪩
-pbii 𬞟
-pbiiiv 𬞟
-pdio 𬭯
-pdioou 𬭯
-pkaav 𬳵
-pkaavu 𬳵
-pkiava 蚍
-pwaao 𬇙
-pwaaoo 𬇙
-qciaov 骹
-qfuao 𫗴
-qfuaov 𫗴
-qgaa 𬘬
-qgaavv 𬘬
-qhoovu 𬒈
-qhuivu 礐
-qjoao 𬣞
-qjoaoo 𬣞
-qkaii 𬮿
-qkaiia 𬮿
-qkvao 炁
-qkvaoo 炁
-qkvau 𬨂
-qkvaua 𬨂
-qliaia 𪨰
-qmaav 𬘬
-qmaavv 𬘬
-qmkeuo 兛
-qmmkou 粁
-qmwsva 瓩
-qnau 姫
-qnauvi 姫
-qraa 𬘬
-qraavv 𬘬
-qwaa 𬘯
-qwaaov 𬘯
-qzioa 𬬿
-qzioau 𬬿
-qzua 𬶐
-qzuauo 𬶐
-rdva 𫐓
-rdvaao 𫐓
-rlao 叒
-rlaoao 叒
-sbio 𬭼
-sbioou 𬭼
-sbva 𫟦
-sbvaou 𫟦
-sjuavi 𫗧
-skvvv 亖
-skvvvv 亖
-sloaoa 惢
-syav 𪨊
-syavii 𪨊
-tbai 𬯎
-tbaiia 𬯎
-tgaa 𬘩
-tgaauv 𬘩
-thvu 𡘙
-thvuvu 𡘙
-tjaa 𬳿
-tjaaiv 𬳿
-tkaaoi 𫘨
-tkiiu 薙
-tkiiuv 薙
-tloo 鼍
-tloooi 鼍
-tluao 𬶍
-tluaoo 𬶍
-tsoaai 祂
-tsvu 弌
-tsvuvu 弌
-tyoai 𫍣
-tyoaia 𫍣
-tzaaua 𫘦
-wfaao 𬘫
-wfaaoo 𬘫
-wfaivi 卍
-wfav 𬇕
-wfavau 𬇕
-wfaviv 卐
-whoiaa 喎
-wkaau 𫄨
-wkaauo 𫄨
-wkao 翄
-wkaouo 翄
-wnaao 𫘜
-wnaaov 𫘜
-wrio 𬭩
-wriouo 𬭩
-wwiio 𫇭
-wwiiou 𫇭
-wwiov 𬭬
-wwiovv 𬭬
-wwoivv 𬀩
-wwuau 𬶏
-wwuaua 𬶏
-wwuavu 𬱟
-xbovi 𫷷
-xbovio 𫷷
-xbvioa 枔
-xcoau 𫍲
-xcoaui 𫍲
-xcoou 敩
-xcoouv 敩
-xdivi 𬹼
-xdiviu 𬹼
-xdouv 𬉼
-xdouvu 𬉼
-xdvo 𫭟
-xdvovu 𫭟
-xeovi 𫫇
-xeovii 𫫇
-xgaua 𫰛
-xgauao 𫰛
-xhai 𬮿
-xhaiia 𬮿
-xkaau 𫘬
-xkaauo 𫘬
-xkiov 𬭳
-xkiovo 𬭳
-xkuavo 𬶮
-xkviii 卌
-xloav 𬣙
-xloavv 𬣙
-xmaaui 𫄧
-xmiaia 𪾢
-xmoavu 𫍯
-xmoii 𬀪
-xmoiia 𬀪
-xmooua 𬸣
-xtaao 𫠊
-xtaaov 𫠊
-xtioou 𫓶
-xtoaia 𫍽
-xtovi 譞
-xtovia 譞
-xwaaui 𬘓
-xwaauv 𫄸
-xwava 𬩽
-xwavai 𬩽
-xwou 𬊈
-xwouav 𬊈
-xwvva 𬍤
-xwvvav 𬍤
-xxaaov 𬙋
-ybaai 𬘡
-ybaaia 𬘡
-ybiiou 苂
-yboavi 𬤇
-yboiv 𬮱
-yboivi 𬮱
-ybvvou 烎
-ydia 甴
-ydiavi 甴
-ydva 𬨎
-ydvaou 𬨎
-yeoiav 嘢
-yeovui 鵺
-yfaaoo 𬙂
-yfaau 𫄧
-yfaaui 𫄧
-yfiauo 𪩘
-yfoiuo 昖
-yfooia 喦
-yfvoua 𬸘
-ygvo 桜
-ygvoou 桜
-yhia 曱
-yhiavv 曱
-yhua 𬸚
-yhuaua 𬸚
-yhva 𫐄
-yhvavu 𫐄
-ykaaov 𫄷
-ykiavu 𫖮
-ykiivo 𬟁
-ykiova 𬬩
-ykivv 𬺈
-ykivvu 𬺈
-ysuava 犽
-ytaav 𫘪
-ytaavu 𫘪
-ytiaiv 円
-yzvvvv 垚
-zsovii 囃
-zwvo 墫
-zwvoou 墫
-zyvo 𭎂
-zyvoii 𭎂
