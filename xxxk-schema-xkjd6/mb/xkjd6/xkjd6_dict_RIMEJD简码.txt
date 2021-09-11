@@ -260,7 +260,7 @@ vu 丆
 vui 廾
 vviv 龶
 vvvuo 𡗗
-# sb,sbb
+# sbb
 ba 不能
 baa 班级
 bai 不了
