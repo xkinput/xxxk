@@ -47,8 +47,8 @@ Function 预定义：一些常量
 FunctionEnd
 !define AppName "xxxk"
 !define PRODUCT_NAME "小小星空"
-!define PRODUCT_VERSION "1.0.3.0"
-!define PRODUCT_VERSION_MINOR "20210911"
+!define PRODUCT_VERSION "1.0.4.0"
+!define PRODUCT_VERSION_MINOR "20211219"
 !define PRODUCT_PUBLISHER "thXnder"
 !define PRODUCT_WEB_SITE "http://xkinput.github.io/xxxk-help"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
