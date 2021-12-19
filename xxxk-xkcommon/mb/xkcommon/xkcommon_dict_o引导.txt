@@ -143,6 +143,7 @@ olprod ∏
 olint ∫
 olbigcup ∪
 olbigcap ∩
+olinfty ∞
 
 ora あ
 ori い
@@ -605,6 +606,7 @@ orx ゝ゚
 orx ヽ
 orx ヾ
 orx ヽ゚
+orx 々
 orvha わ゙
 orvhi ゐ゙
 orvhe ゑ゙

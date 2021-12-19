@@ -8634,6 +8634,8 @@ lsiavi 蜡
 lsiavi 蝲
 lsii 落
 lsiiau 落
+lsiii 菈
+lsiiiu 菈
 lsio 镴
 lsioaa 镴
 lsiuov 拉
@@ -17274,6 +17276,11 @@ zzvuoo 𥖨
 zzvv 璪
 zzvvoo 璪
 # 超级字词
+---
+name: xkjd6.chaojizici
+version: "Q1"
+sort: original
+...
 bcvuv 猋
 bcvuvi 嫑
 bcvuvu 猋
@@ -17309,8 +17316,6 @@ dpaavv 𬍡
 dsiov 𫟼
 dsiovu 𫟼
 dsooiv 呾
-dsvuv 弌
-dsvuvu 弌
 dwvoo 墫
 dwvoou 墫
 dyiava 𬟽
@@ -17344,7 +17349,6 @@ flovua 𬸦
 fnva 𮝷
 fnvauo 𮝷
 fsia 甴
-fwaaiv 橒
 fzioa 𬬿
 fzioau 𬬿
 fzua 𬶐
@@ -17359,8 +17363,6 @@ glai 𬇹
 glaiav 𬇹
 glii 菓
 gliiia 菓
-gpvou 埝
-gpvoua 埝
 grua 㹴
 gruavi 㹴
 grvu 𬒔
@@ -17573,8 +17575,6 @@ tloooi 鼍
 tluao 𬶍
 tluaoo 𬶍
 tsoaai 祂
-tsvu 弌
-tsvuvu 弌
 tyoai 𫍣
 tyoaia 𫍣
 tzaaua 𫘦
@@ -17683,10 +17683,12 @@ ykiivo 𬟁
 ykiova 𬬩
 ykivv 𬺈
 ykivvu 𬺈
+ykvvao 弌
 ysuava 犽
 ytaav 𫘪
 ytaavu 𫘪
 ytiaiv 円
+ywvvoa 橒
 yzvvvv 垚
 zsovii 囃
 zwvo 墫
