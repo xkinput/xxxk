@@ -1,0 +1,18 @@
+name: Mirror this repo to Gitee
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror a repository using SSH
+        uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+        with:
+          source-repo: "git@github.com:xkinput/xxxk.git"
+          destination-repo: "git@gitee.com:xkinput/xxxk.git"
