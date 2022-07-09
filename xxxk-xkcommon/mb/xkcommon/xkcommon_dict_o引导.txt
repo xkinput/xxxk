@@ -17,7 +17,7 @@ oorm $GO([最新Web帮助],https://xkinput.github.io/xxxk-help)
 oorm $GO([本地帮助文档],doc)
 oogw $GO([小小星空首页],https://xkinput.github.io/xxxk-help)
 oogw $GO([星空输入法首页],https://xkinput.github.io)
-oogw $GO([小小星空网盘],http://xxxk.ys168.com/)
+oogw $GO([小小星空网盘],http://xxxk.ysepan.com)
 oomb $GO([本地码表],mb)
 ooml $GO([程序目录],.)
 ooml $GO([配置目录],tools\bat\yongdir.bat)
@@ -61,6 +61,60 @@ of $[麻将(🀀)mj]
 of $[扑克(🂠)pk]
 of $[空白kb]
 of $[IDC(⿰)id]
+
+ofa 𝐚 𝑎 𝒂 𝖺 𝗮 𝘢 𝙖 𝒶 𝓪 𝔞 𝖆 𝚊 𝕒
+ofb 𝐛 𝑏 𝒃 𝖻 𝗯 𝘣 𝙗 𝒷 𝓫 𝔟 𝖇 𝚋 𝕓
+ofc 𝐜 𝑐 𝒄 𝖼 𝗰 𝘤 𝙘 𝒸 𝓬 𝔠 𝖈 𝚌 𝕔
+ofd 𝐝 𝑑 𝒅 𝖽 𝗱 𝘥 𝙙 𝒹 𝓭 𝔡 𝖉 𝚍 𝕕
+ofe 𝐞 𝑒 𝒆 𝖾 𝗲 𝘦 𝙚 ℯ 𝓮 𝔢 𝖊 𝚎 𝕖
+off 𝐟 𝑓 𝒇 𝖿 𝗳 𝘧 𝙛 𝒻 𝓯 𝔣 𝖋 𝚏 𝕗
+ofg 𝐠 𝑔 𝒈 𝗀 𝗴 𝘨 𝙜 ℊ 𝓰 𝔤 𝖌 𝚐 𝕘
+ofh 𝐡 ℎ 𝒉 𝗁 𝗵 𝘩 𝙝 𝒽 𝓱 𝔥 𝖍 𝚑 𝕙
+ofi 𝐢 𝑖 𝒊 𝗂 𝗶 𝘪 𝙞 𝒾 𝓲 𝔦 𝖎 𝚒 𝕚
+ofj 𝐣 𝑗 𝒋 𝗃 𝗷 𝘫 𝙟 𝒿 𝓳 𝔧 𝖏 𝚓 𝕛
+ofk 𝐤 𝑘 𝒌 𝗄 𝗸 𝘬 𝙠 𝓀 𝓴 𝔨 𝖐 𝚔 𝕜
+ofl 𝐥 𝑙 𝒍 𝗅 𝗹 𝘭 𝙡 𝓁 𝓵 𝔩 𝖑 𝚕 𝕝
+ofm 𝐦 𝑚 𝒎 𝗆 𝗺 𝘮 𝙢 𝓂 𝓶 𝔪 𝖒 𝚖 𝕞
+ofn 𝐧 𝑛 𝒏 𝗇 𝗻 𝘯 𝙣 𝓃 𝓷 𝔫 𝖓 𝚗 𝕟
+ofo 𝐨 𝑜 𝒐 𝗈 𝗼 𝘰 𝙤 ℴ 𝓸 𝔬 𝖔 𝚘 𝕠
+ofp 𝐩 𝑝 𝒑 𝗉 𝗽 𝘱 𝙥 𝓅 𝓹 𝔭 𝖕 𝚙 𝕡
+ofq 𝐪 𝑞 𝒒 𝗊 𝗾 𝘲 𝙦 𝓆 𝓺 𝔮 𝖖 𝚚 𝕢
+ofr 𝐫 𝑟 𝒓 𝗋 𝗿 𝘳 𝙧 𝓇 𝓻 𝔯 𝖗 𝚛 𝕣
+ofs 𝐬 𝑠 𝒔 𝗌 𝘀 𝘴 𝙨 𝓈 𝓼 𝔰 𝖘 𝚜 𝕤
+oft 𝐭 𝑡 𝒕 𝗍 𝘁 𝘵 𝙩 𝓉 𝓽 𝔱 𝖙 𝚝 𝕥
+ofu 𝐮 𝑢 𝒖 𝗎 𝘂 𝘶 𝙪 𝓊 𝓾 𝔲 𝖚 𝚞 𝕦
+ofv 𝐯 𝑣 𝒗 𝗏 𝘃 𝘷 𝙫 𝓋 𝓿 𝔳 𝖛 𝚟 𝕧
+ofw 𝐰 𝑤 𝒘 𝗐 𝘄 𝘸 𝙬 𝓌 𝔀 𝔴 𝖜 𝚠 𝕨
+ofx 𝐱 𝑥 𝒙 𝗑 𝘅 𝘹 𝙭 𝓍 𝔁 𝔵 𝖝 𝚡 𝕩
+ofy 𝐲 𝑦 𝒚 𝗒 𝘆 𝘺 𝙮 𝓎 𝔂 𝔶 𝖞 𝚢 𝕪
+ofz 𝐳 𝑧 𝒛 𝗓 𝘇 𝘻 𝙯 𝓏 𝔃 𝔷 𝖟 𝚣 𝕫
+
+ofaa A 𝐀 𝐴 𝑨 𝖠 𝗔 𝘈 𝘼 𝒜 𝓐 𝔄 𝕬 𝙰 𝔸
+ofbb B 𝐁 𝐵 𝑩 𝖡 𝗕 𝘉 𝘽 ℬ 𝓑 𝔅 𝕭 𝙱 𝔹
+ofcc C 𝐂 𝐶 𝑪 𝖢 𝗖 𝘊 𝘾 𝒞 𝓒 ℭ 𝕮 𝙲 ℂ
+ofdd D 𝐃 𝐷 𝑫 𝖣 𝗗 𝘋 𝘿 𝒟 𝓓 𝔇 𝕯 𝙳 𝔻
+ofee E 𝐄 𝐸 𝑬 𝖤 𝗘 𝘌 𝙀 ℰ 𝓔 𝔈 𝕰 𝙴 𝔼
+offf F 𝐅 𝐹 𝑭 𝖥 𝗙 𝘍 𝙁 ℱ 𝓕 𝔉 𝕱 𝙵 𝔽
+ofgg G 𝐆 𝐺 𝑮 𝖦 𝗚 𝘎 𝙂 𝒢 𝓖 𝔊 𝕲 𝙶 𝔾
+ofhh H 𝐇 𝐻 𝑯 𝖧 𝗛 𝘏 𝙃 ℋ 𝓗 ℌ 𝕳 𝙷 ℍ
+ofii I 𝐈 𝐼 𝑰 𝖨 𝗜 𝘐 𝙄 ℐ 𝓘 ℑ 𝕴 𝙸 𝕀
+ofjj J 𝐉 𝐽 𝑱 𝖩 𝗝 𝘑 𝙅 𝒥 𝓙 𝔍 𝕵 𝙹 𝕁
+ofkk K 𝐊 𝐾 𝑲 𝖪 𝗞 𝘒 𝙆 𝒦 𝓚 𝔎 𝕶 𝙺 𝕂
+ofll L 𝐋 𝐿 𝑳 𝖫 𝗟 𝘓 𝙇 ℒ 𝓛 𝔏 𝕷 𝙻 𝕃
+ofmm M 𝐌 𝑀 𝑴 𝖬 𝗠 𝘔 𝙈 ℳ 𝓜 𝔐 𝕸 𝙼 𝕄
+ofnn N 𝐍 𝑁 𝑵 𝖭 𝗡 𝘕 𝙉 𝒩 𝓝 𝔑 𝕹 𝙽 ℕ
+ofoo O 𝐎 𝑂 𝑶 𝖮 𝗢 𝘖 𝙊 𝒪 𝓞 𝔒 𝕺 𝙾 𝕆
+ofpp P 𝐏 𝑃 𝑷 𝖯 𝗣 𝘗 𝙋 𝒫 𝓟 𝔓 𝕻 𝙿 ℙ
+ofqq Q 𝐐 𝑄 𝑸 𝖰 𝗤 𝘘 𝙌 𝒬 𝓠 𝔔 𝕼 𝚀 ℚ
+ofrr R 𝐑 𝑅 𝑹 𝖱 𝗥 𝘙 𝙍 ℛ 𝓡 ℜ 𝕽 𝚁 ℝ
+ofss S 𝐒 𝑆 𝑺 𝖲 𝗦 𝘚 𝙎 𝒮 𝓢 𝔖 𝕾 𝚂 𝕊
+oftt T 𝐓 𝑇 𝑻 𝖳 𝗧 𝘛 𝙏 𝒯 𝓣 𝔗 𝕿 𝚃 𝕋
+ofuu U 𝐔 𝑈 𝑼 𝖴 𝗨 𝘜 𝙐 𝒰 𝓤 𝔘 𝖀 𝚄 𝕌
+ofvv V 𝐕 𝑉 𝑽 𝖵 𝗩 𝘝 𝙑 𝒱 𝓥 𝔙 𝖁 𝚅 𝕍
+ofww W 𝐖 𝑊 𝑾 𝖶 𝗪 𝘞 𝙒 𝒲 𝓦 𝔚 𝖂 𝚆 𝕎
+ofxx X 𝐗 𝑋 𝑿 𝖷 𝗫 𝘟 𝙓 𝒳 𝓧 𝔛 𝖃 𝚇 𝕏
+ofyy Y 𝐘 𝑌 𝒀 𝖸 𝗬 𝘠 𝙔 𝒴 𝓨 𝔜 𝖄 𝚈 𝕐
+ofzz Z 𝐙 𝑍 𝒁 𝖹 𝗭 𝘡 𝙕 𝒵 𝓩 ℨ 𝖅 𝚉 ℤ
 
 ofys ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
 ofks ⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇
@@ -128,15 +182,13 @@ olomega ω Ω
 olsqrt √
 oltimes ×
 oldiv ÷
+olratio ∶
 olpm ±
 olcdot ·
 olleq ≤
 olgeq ≥
 olneq ≠
 olapprox ≈
-olin ∈
-olnotin ∉
-olsubseteq ⊆
 olpropto ∝
 olsum ∑
 olprod ∏
@@ -144,6 +196,75 @@ olint ∫
 olbigcup ∪
 olbigcap ∩
 olinfty ∞
+ollfloor ⌊
+olrfloor ⌋
+ollceil ⌈
+olrceil ⌉
+
+olbecause ∵
+oltherefore ∴
+olin ∈
+olni ∋
+olnotin ∉
+olemptyset ∅
+olsubset ⊂
+olsupset ⊃
+olsubseteq ⊆
+olsupseteq ⊇
+oliff ⟺
+olimplies ⟹
+olimpliedby ⟸
+
+olforall ∀
+olexist ∃
+ollor ∨
+olland ∧
+ollnot ¬
+oloplus ⊕
+olodot ⊙
+olto →
+olgets ←
+olrightarrow →
+olleftarrow ←
+olrightarrow ⇒
+olleftarrow ⇐
+olnrightarrow ↛
+olnleftarrow ↚
+olnrightarrow ⇏
+olnleftarrow ⇍
+ollongrightarrow ⟶
+ollongleftarrow ⟵
+ollongrightarrow ⟹
+ollongleftarrow ⟸
+olrightrightarrows ⇉
+olleftleftarrows ⇇
+olrrightarrow ⇛
+olmapsto ↦
+ollongmapsto ⟼
+olrightarrowtail ↣
+olrightharpoonup ⇀
+olrightharpoondown ⇁
+olleftharpoonup ↼
+olleftharpoondown ↽
+olhookrightarrow ↪
+olhookleftarrow ↩
+ollooparrowright ↬
+ollooparrowleft ↫
+olrsh ↱
+ollsh ↰
+oldashrightarrow ⇢
+oldashleftarrow ⇠
+oltwoheadrightarrow ↠
+oltwoheadleftarrow ↞
+olvdash ⊢
+olvdash ⊨
+olleftrightarrow ↔
+olleftrightarrow ⇔
+oliff ⟺
+olleftrightarrows ⇆
+olrightleftarrows ⇄
+olleftrightharpoons ⇋
+olrightleftharpoons ⇌
 
 ora あ
 ori い
