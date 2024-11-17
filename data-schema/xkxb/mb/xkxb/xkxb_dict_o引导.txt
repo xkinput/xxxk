@@ -1,0 +1,13 @@
+bxoooa $[bi¨¢ng]$FILE(mb/xkjd6/biang.bmp)
+oojp $[¼üÅÌÍ¼]$GO(skin/xkxb_keymap.png)
+
+oyi ¢Ù
+ovu ¢Ú
+osj ¢Û
+osi ¢Ü
+owu ¢Ý
+olq ¢Þ
+oqi ¢ß
+oba ¢à
+ojq ¢á
+osij ¢â
