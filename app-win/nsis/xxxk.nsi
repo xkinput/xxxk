@@ -20,7 +20,7 @@
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
 InstallDir "$LOCALAPPDATA\${XXXK_NAME_EN}"
-OutFile "${XXXK_NAME_CN}-v${XXXK_VER}-build${XXXK_VER_DATE}.exe"
+OutFile "${XXXK_NAME_EN}-v${XXXK_VER}-build${XXXK_VER_DATE}.exe"
 Name "${XXXK_NAME_CN}" # 修改变量 $(^Name)。影响欢迎页的有关文本
 VIProductVersion "${XXXK_VER}" # 安装包的文件属性 > 详细信息 > 安装文件版本号
 VIAddVersionKey ProductVersion "${XXXK_VER}" # 安装包的文件属性 > 详细信息 > 产品版本号
