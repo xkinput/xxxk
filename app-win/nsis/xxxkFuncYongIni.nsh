@@ -2,6 +2,7 @@
 !include "IniGetSectionNames.nsh"
 !include "xxxkFuncBase.nsh"
 !include "WinVer.nsh"
+Var /GLOBAL xxxkVarHomeDir # 变量不会自动提升，因此要放前面
 
 # 把 pinyin 方案添加到目标 yong.ini
 # 调用方法：${xxxkAddPinyinToIni} "目标ini"
@@ -148,7 +149,6 @@ FunctionEnd
 
 Function xxxkFuncYongIni
 
-    Var /GLOBAL xxxkVarHomeDir
     ${xxxkGetHomeDir} $xxxkVarHomeDir "$INSTDIR"
     ${If} "$xxxkVarHomeDir" == "$INSTDIR\.yong"
     ${OrIf} ${SectionIsSelected} ${optPortable}

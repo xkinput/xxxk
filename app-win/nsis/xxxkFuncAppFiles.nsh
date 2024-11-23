@@ -39,8 +39,6 @@ Function xxxkFuncAppFiles
     File "${XXXK_DIR_DATA_BASE}\bd.txt"
     File "${XXXK_DIR_DATA_BASE}\bihua.bin"
     File "${XXXK_DIR_DATA_BASE}\crab.txt"
-    File "${XXXK_DIR_DATA_BASE}\keyboard.ini"
-    File "${XXXK_DIR_DATA_BASE}\layout.txt"
     File "${XXXK_DIR_DATA_BASE}\menu.ini"
     WriteINIStr $INSTDIR\menu.ini "about" "exec" "$$MSG(v${XXXK_VER}-Build${XXXK_VER_DATE})"
     File "${XXXK_DIR_DATA_BASE}\README.txt"
@@ -101,8 +99,8 @@ Function un.xxxkFuncAppFiles
     Delete "$INSTDIR\bd.txt"
     Delete "$INSTDIR\bihua.bin"
     Delete "$INSTDIR\crab.txt"
-    Delete "$INSTDIR\keyboard.ini"
-    Delete "$INSTDIR\layout.txt"
+    Delete "$INSTDIR\keyboard.ini"   # 历史遗留
+    Delete "$INSTDIR\layout.txt"     # 历史遗留
     Delete "$INSTDIR\menu.ini"
     Delete "$INSTDIR\README.txt"
     Delete "$INSTDIR\urls.txt"
