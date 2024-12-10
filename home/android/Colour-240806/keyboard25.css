@@ -1,0 +1,57 @@
+:root{
+  --键盘背景色: #fff;
+  --⇧键单击: #4876FF;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: 0.1rem;
+  --键圆角: .35rem;
+  --键间距: .15rem;		/* 键(||)*/
+  --键阴影: none;
+
+/*字母键*/
+  --背景色1: transparent;
+  --字体色1: #000;
+  --字大小1: 1.7rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: transparent;
+  --字体色2: #000;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: transparent;
+  --⏎字体色: #000;
+
+/*候选栏*/
+  --候背景色: transparent;
+  --候字体颜色: #000;
+  --候高亮首选色: #000;
+  --候底线颜色: transparent;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: #fff;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-selection="true"]{
+  position: relative; z-index: 100;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first{
+  color: #000 !important;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first:before{
+  height: 2.2rem;
+  border-radius: .3rem;
+  line-height:1;
+  background: transparent;
+	border: .1rem dashed #555;
+  content: "";
+  position:absolute;
+  bottom:0;top:23%;left:.1rem;right:0%;
+  z-index: -1;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first label.codetip{
+	color: #555;
+}

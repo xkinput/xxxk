@@ -1,3 +1,9 @@
-app-win/yong/
-app-win/nsis/*.exe
-app-win/test/
+/build/android/*
+!/build/android/xxxk.bat
+
+/build/win/test/*
+/build-win/*.exe
+
+/data/yong-android/*
+/data/yong-win/*
+!/data/yong-win/yong-update.bat

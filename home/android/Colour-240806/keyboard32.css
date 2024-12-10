@@ -1,0 +1,77 @@
+:root{
+  --键盘背景色: #424542;
+  --⇧键单击: #fF9000;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: none;
+  --键圆角: none;
+  --键间距: none;		/* 键(||)*/
+  --行间距: none;		/*行(=)*/
+  --键阴影:	none;	/* 键 底部阴影 */
+
+/*字母键*/
+  --背景色1: #424542;
+  --字体色1: #eee;
+  --字大小1: 1.5rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #292D29;
+  --字体色2: #FFF;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none; 
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #0875FF;
+  --⏎字体色: #FFF;
+
+/*候选栏*/
+  --候背景色: var(--键盘背景色);
+  --候字体颜色: #FFF;
+  --候高亮首选色: #FFF900;
+  --候底线颜色: transparent;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);  /*候选下拉展开键背景色*/
+	
+	--键字符上下位置: -18%;
+	--键字符左右位置: 9%;
+	--预设: none;
+}
+
+.bottom-zg span{
+	color: #ddd !important;
+	bottom: 0% !important;
+}
+
+.keyboard-key {
+  background: var(--背景色1) !important;
+}
+.keyboard-key.special-key,
+.keyboard-key.special-keya {
+  background: var(--背景色2) !important;
+}
+
+.keyboard-key[data-keycode="13"] {
+  background: var(--⏎背景色) !important;
+}
+.keyboard-key{
+  border: .03rem solid #000 !important;
+  padding: 0;
+}
+.hii-note {
+  bottom: -5% !important; /* 调整下标位置(上下) */
+}
+.keyboard-key.kbr-key-hold> .visual-wrapper {
+  border: none !important;
+}
+.keyboard-key.highlighted2{
+  background: #C800C8 !important;
+}
+
+/*调整按键高度*/
+.keyboard-key:not(.special-keya) > .visual-wrapper {
+  height: calc(var(--键高度) / 1.017) !important;
+}

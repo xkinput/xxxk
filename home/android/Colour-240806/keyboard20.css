@@ -1,0 +1,70 @@
+:root{
+  --键盘背景色: #ccc;
+  --⇧键单击: #fF9000;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: .01rem;
+  --键圆角: .3rem;
+  --键间距: .15rem;		/* 键(||)*/
+  --行间距: .1rem;		/*行(=)*/
+  --键阴影:	none;	/* 键 底部阴影 */
+
+/*字母键*/
+  --背景色1: none;
+  --字体色1: #000;
+  --字大小1: 1.5rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: none;
+  --字体色2: #000;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none; 
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: none;
+  --⏎字体色: #000;
+
+/*候选栏*/
+  --候背景色: #ddd;
+  --候字体颜色: #000;
+  --候高亮首选色: #Ff0000;
+  --候底线颜色: transparent;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);  /*候选下拉展开键背景色*/
+  --底栏字色: #000;
+	--键字符上下位置: -18%;
+	--键字符左右位置: 9%;
+	--预设: none;
+}
+
+.hii-note {
+  bottom: -5% !important; /* 调整下标位置(上下) */
+}
+.keyboard-key.kbr-key-hold> .visual-wrapper {
+  border: none !important;
+}
+
+/*调整按键高度*/
+.keyboard-key:not(.special-keya) > .visual-wrapper {
+  height: calc(var(--键高度) / 1.01) !important;
+}
+
+.keyboard .keyboard-key{
+  border-radius: .4rem;
+  background: #e5e5e5;
+  border: .01rem solid #000;
+  box-shadow: 
+    inset .3rem -.3rem 0rem rgba(0, 0, 0, .2),
+    inset -.4rem .3rem .5rem rgba(0,0,0,.1),
+    inset -.3rem .3rem 0 #fff;
+}
+
+/* Standard key styles. */
+.keyboard .keyboard-key>.visual-wrapper{
+  background: none;
+  border: none;
+}

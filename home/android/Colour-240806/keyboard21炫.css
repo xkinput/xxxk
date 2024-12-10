@@ -1,0 +1,80 @@
+:root{
+  --键盘背景色: #444;
+  --⇧键单击: #fF0000;		/*shift键_单按_高亮_文字色*/
+  --⇧键锁定: #acacac;		/*shift键_二按_锁定_背景色*/
+  --键边框颜色: #000;
+  --键边框大小: 0.1rem;
+  --键圆角: .6rem;
+  --键间距: 0.15rem;		/* 键(||)*/
+  --键阴影:		/* 键 底部阴影 */
+		0 -.1rem .2rem #111 inset,
+		-.1rem 0 .1rem #111 inset,
+		.1rem 0 .1rem #111 inset,
+		0 .1rem 0 #000,
+		0 -.1rem 0 #000,
+		-.1rem 0 0 #000,
+		.1rem 0 0 #000;
+
+/*字母键*/
+  --背景色1: transparent;
+  --字体色1: #ff3e96;
+  --字大小1: 1.4rem;
+  --上标字符色1: pink;
+  --case: uppercase;		/*uppercase 大写 , none 小写*/
+  --字阴影1: none;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #333;
+  --字体色2: #ff3e96;
+  --上标字符色2: pink;
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: pink;
+
+/*候选栏*/
+  --候背景色: #444;
+  --候字体颜色: #fff;
+  --候高亮首选色: #fff900;
+  --候底线颜色: transparent;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);
+}
+
+div.adds button,
+.keyboard .keyboard-key > .visual-wrapper{
+  border: .1rem solid rgba(255,255,255,0.45);
+  border-left-color: #f99;
+  border-right-color: #f59;
+  border-bottom-color: #f20;
+  border-top-color: #f70;
+}
+
+.keyboard-key[data-keycode="32"] > .visual-wrapper span{
+	background: linear-gradient(to right, #f32170,
+					#f0f, #ff6b08, #cf23cf, #eedd44);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.keyboard .keyboard-key.kbr-key-hold> .visual-wrapper {
+	border-color: #fff;
+}
+/*
+.keyboard::after{
+  content: ""; position: absolute;
+  top: 30%; bottom: 30%; right: 20%; left: 35%;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle closest-side at 11% 20%,
+    #000 40%,
+    rgba(255,250,0,.3) 50%,
+    transparent
+  );
+}
+*/

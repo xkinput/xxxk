@@ -1,0 +1,77 @@
+:root{
+  --键盘背景色: linear-gradient(217deg, rgba(255,0,0,.2), rgba(255,0,0,0) 70.71%),linear-gradient(127deg, rgba(0,255,0,.3), rgba(0,255,0,0) 70.71%),linear-gradient(336deg, rgba(0,0,255,.2), rgba(0,0,255,0) 70.71%),#fff;
+/* 颜色显示异常的用下面这行替换上面这行, 在43行替换一个颜色.
+  --键盘背景色: linear-gradient(217deg, #BDECAC 30%,#fECFCe 100%,#D5D3FB 60%);
+*/
+  --⇧键单击: #f90000;		/*shift键_单按_高亮_文字色*/
+  --⇧键锁定: #fff;		/*shift键_二按_锁定_背景色*/
+  --键边框颜色: #000;
+  --键边框大小: .05rem;
+  --键圆角: .5rem;
+  --键间距: .16rem;		/* 键(||)*/
+  --键阴影:		/* 键 底部阴影 */
+		0 -.1rem .2rem rgba(0,0,0,.3) inset,
+		.1rem .2rem .2rem rgba(0,0,0,.3);
+
+/*字母键*/
+  --背景色1: #efefef;
+  --字体色1: #111;
+  --字大小1: 1.4rem;
+  --上标字符色1: var(--字体色1);
+  --case: uppercase;		/*uppercase 大写 , none 小写*/
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: 0 .2rem .2rem #fff inset;
+
+/*功能键*/
+  --背景色2: #52D7BD;
+  --字体色2: #111;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: 0 .1rem .1rem rgba(255,255,255,.3) inset;
+
+/*回车键*/
+  --⏎背景色: #4876ff;
+  --⏎字体色: #EEE;
+
+/*候选栏*/
+  --候背景色: transparent;
+  --候字体颜色: var(--字体色2);
+  --候高亮首选色: #FF5000;
+  --候底线颜色: transparent;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: #F3C9CC;
+  /* V背景色, 颜色值替换为 #BDECAC */
+}
+
+#keyboard-overlay{
+/*	background: #ffffee !important;*/
+}
+
+.keyboard-key.special-key[data-keycode="-1"] > .visual-wrapper {
+  background: #52D7BD;  /* shift */
+}
+.keyboard-key.special-key[data-keycode="-2"] > .visual-wrapper {
+  background: #FFBE00;  /* 中英切换键 */
+}
+.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper {
+  background: #DE537D;  /* 退格键 */
+}
+.keyboard-key.special-key[data-keycode="8"] .alt-note ,
+.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper span{
+  color: #fff;
+}
+.keyboard-key.special-key[data-keycode="-10"] > .visual-wrapper,
+.keyboard-key.special-key[data-keycode="-12"] > .visual-wrapper {
+  background: #ee0;  /* 数字&符号 */
+}
+.emoji, .cands, .clipboard, .phrase, .mymy{
+	background: var(--键盘背景色) !important;
+}
+.emoji button, .clipboard button, .phrase button, .mymy div > div, .cands div > div{
+	background: rgba(255,255,255,.5) !important;
+}
+.keyboard-key.special-key[data-keycode="-11"] > .visual-wrapper,
+.keyboard-key.special-key[data-keycode="-110"] > .visual-wrapper {
+  background: #9aff9a;  /* 返回 */
+}

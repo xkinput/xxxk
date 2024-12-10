@@ -1,0 +1,51 @@
+:root{
+  --键盘背景色: #BBB;
+  --⇧键单击: #fF9000;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #43474a;
+  --键边框大小: 0;
+  --键圆角: .35rem;
+  --键间距: .25rem;		/* 键(||)*/
+  --键阴影:		/* 键 底部阴影 */
+			#222 0 -.08rem 0 inset,
+			rgba(0,0,0,.2) 0 -.1rem .2rem inset,
+			rgba(0,0,0,.7) 0 .2rem .2rem;
+
+/*字母键*/
+  --背景色1: #4A494A;
+  --字体色1: #DDD;
+  --字大小1: 1.4rem;
+  --上标字符色1: #999;
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #292929;
+  --字体色2: #CCC;
+  --上标字符色2: #999;
+  --字阴影2: none;
+  --键阴影2: var(--键阴影1);
+
+/*回车键*/
+  --⏎背景色: #3A7DEF;
+  --⏎字体色: #DDD;
+
+/*候选栏*/
+  --候背景色: transparent;
+  --候字体颜色: #111;
+  --候高亮首选色: #907;
+  --候底线颜色: transparent;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+}
+
+body:not(.landscape) .keyboard:not(.popup) .keyboard-candidate-panel span[data-page="true"] {
+	background: #bbb !important;
+	box-shadow: var(--候阴影) !important;
+}
+
+.keyboard-key.special-key[data-keycode="-1"] > .visual-wrapper ,
+.keyboard-key.special-key[data-keycode="-2"] > .visual-wrapper ,
+.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper {
+  background: var(--背景色2);  /* 退格键 */
+  border-radius: var(--键圆角);
+}

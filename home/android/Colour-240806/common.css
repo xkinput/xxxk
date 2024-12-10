@@ -1,0 +1,935 @@
+/* 字母键 字体 */
+@font-face {
+	font-family: "英文字体";
+	font-weight: 600;
+	src: url('../fonts/000.ttf');
+}
+
+/* 候选栏/剪贴板/候选展开/ 字体 */
+@font-face {
+	font-family: "汉字字体";
+	font-weight: 600;
+	src: url('../fonts/001.ttf');
+}
+
+/*大字集字体TH-Feon.ttf*/
+@font-face {
+	font-family: '大字集';
+	font-weight: 600;
+	src: url('../fonts/TH-Feon.ttf');
+}
+
+@font-face {
+	font-family: '默认';
+	font-weight: 600;
+	src: url('fonts/Keyboard-Symbols.ttf');
+}
+
+:root {
+	--键高度: 3.5rem;
+	--数字行高度: calc(var(--键高度)/1.31);
+	/*数字行[sa:true]*/
+	--行间距: .2rem;
+	/*行(=)*/
+	--底部增高: 1.2rem;
+
+	--候高度: 3.7rem;
+	--候字体大小: 1.7rem;
+	--候字体间距: .43rem;
+	--候编码字大小: 1rem;
+	--候编码位置: -0.4rem;
+	/*上下,正数下移 负数上移*/
+	--候字体位置: 2.2;
+	--候工具间距: .38rem;
+	/*候选工具栏*/
+	--候顶部线色: transparent;
+	--候顶部线色2: rgba(0, 0, 0, .4);
+
+	--悬浮栏宽度: 280;
+	/* 推荐180至423,会影响悬浮栏字体大小 */
+	--悬浮栏字体大小: 35;
+
+	--字母键字体:
+		var(--字大小1) 英文字体, 默认, sans-serif;
+	--候选栏字体:
+		600 var(--候字体大小) 汉字字体, sans-serif;
+
+	/* 剪贴板/候选下拉展开 界面字体 */
+	--界面字体大小: 1.4rem;
+	--界面字体:
+		var(--界面字体大小) 汉字字体, sans-serif;
+	--界面背景色: var(--键盘背景色);
+	--界面按键色: var(--背景色2);
+	--界面字体色: var(--字体色2);
+	--展开编码颜色: #1874cd;
+	--展开编码位置: -.8em;
+	/*调小向上*/
+
+
+	/* u, i ,f, j键字体色,
+取消下面行的注释,字母键会变为默认字体色:*/
+	/*	--uifj键色: var(--字体色1); */
+}
+
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	-webkit-tap-highlight-color: transparent;
+	-webkit-focus-ring-color: rgba(0, 0, 0, 0);
+	outline: none;
+}
+
+html {
+	pointer-events: none;
+}
+
+body {
+	overflow: hidden;
+	background: var(--背景色0, none);
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+.keyboard-key:focus {
+	outline: none;
+}
+
+/* Keyboard */
+.keyboard:not(.popup) {
+	box-sizing: border-box;
+	position: absolute;
+	z-index: 15;
+	border-top: solid max(0.05rem, 1px) var(--键盘背景色);
+	pointer-events: auto;
+	width: var(--缩小, 100%);
+	background: var(--键盘背景色);
+}
+
+/* Rows */
+.keyboard-row {
+	width: 100%;
+	white-space: nowrap;
+	text-align: center;
+	transform: scale(var(--左右间距, 0.998));
+}
+
+.keyboard-key[data-row="0"] {
+	display: var(--数字栏, none);
+}
+
+/*候选栏 首行_键 分隔间距*/
+.keyboard-row.first-row {
+	padding-top: var(--栏键间距, 0.45rem);
+}
+
+/* Buttons: logic keys */
+.keyboard-key {
+	box-sizing: border-box;
+	background: none;
+	display: inline-block;
+	border: none;
+	padding: 0 var(--键间距);
+}
+
+/* Visible keys */
+.keyboard-key>.visual-wrapper {
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
+	position: relative;
+	height: var(--键高度);
+	background: var(--背景色1);
+	border-radius: var(--键圆角);
+	border: var(--键边框大小) solid var(--键边框颜色);
+	box-shadow: var(--键阴影);
+	margin-bottom: var(--行间距);
+}
+
+/* Standard key styles. */
+.keyboard-key>.visual-wrapper>span {
+	top: var(--键字符上下位置, 0);
+	left: var(--键字符左右位置, 0);
+	right: var(--预设, 0);
+	bottom: var(--预设, 0);
+	position: absolute;
+	text-align: center;
+	padding-top: 0.5rem;
+	padding-bottom: 0.2rem;
+	font: var(--字母键字体);
+	text-shadow: var(--字阴影1);
+	text-transform: var(--case);
+	color: var(--字体色1);
+	border-radius: var(--键圆角);
+	box-shadow: var(--键阴影1);
+	line-height: calc(var(--键高度)/1.1);
+	z-index: 0;
+}
+
+.keyboard-key[data-keycode='32']>.visual-wrapper>span,
+.keyboard-key.special-key>.visual-wrapper>span,
+.keyboard-key.special-keya>.visual-wrapper>span {
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+
+/*  Special keys */
+.keyboard-key.special-key>.visual-wrapper,
+.keyboard-key.special-keya>.visual-wrapper {
+	background: var(--背景色2);
+}
+
+.keyboard-key.special-key>.visual-wrapper>span,
+.keyboard-key.special-keya>.visual-wrapper>span {
+	color: var(--字体色2);
+	font: var(--字母键字体);
+	text-shadow: var(--字阴影2);
+	box-shadow: var(--键阴影2);
+}
+
+.keyboard-key.special-key>.visual-wrapper>span {
+	line-height: calc(var(--键高度)/1.1);
+}
+
+.keyboard-key.special-keya>.visual-wrapper {
+	height: var(--数字行高度);
+}
+
+.keyboard-key.special-keya>.visual-wrapper>span {
+	line-height: calc(var(--键高度)/1.5);
+	/*数字行字体位置*/
+}
+
+.keyboard-key[data-keycode="13"]>.visual-wrapper {
+	background: var(--⏎背景色);
+	border-radius: var(--键圆角);
+}
+
+.keyboard-key[data-keycode="13"]>.visual-wrapper span {
+	color: var(--⏎字体色);
+	transform: rotateY(180deg);
+	/* 反转回车键字符 */
+}
+
+.keyboard-key[data-keycode="32"]>.visual-wrapper span {
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	/* 空格键大写 */
+}
+
+.keyboard-key[data-keycode="32"]>.visual-wrapper span a {
+	color: green;
+}
+
+.keyboard-key:not(.special-key)[data-keycode="32"]>.visual-wrapper span::first-letter {
+	/*  color: #D29; /* 空格键第一个字颜色 */
+}
+
+.keyboard-key[data-keycode="102"]>.visual-wrapper span {
+	color: var(--uifj键色, #f56);
+}
+
+.keyboard-key[data-keycode="105"]>.visual-wrapper span {
+	color: var(--uifj键色, #FF9000);
+}
+
+.keyboard-key[data-keycode="106"]>.visual-wrapper span {
+	color: var(--uifj键色, green);
+}
+
+.keyboard-key[data-keycode="117"]>.visual-wrapper span {
+	color: var(--uifj键色, #56c);
+}
+
+/* 按键时高亮色 */
+.keyboard-key.highlighted2 {
+	padding: 0 0;
+}
+
+.keyboard-key.highlighted2>.visual-wrapper {
+	background: rgba(0, 0, 0, .1);
+}
+
+.keyboard-key.highlighted2>.visual-wrapper span {
+	font-size: calc(var(--字大小1)*1.3);
+	text-shadow: 0 .1rem .2rem rgba(0, 0, 0, .3);
+	color: red;
+}
+
+.keyboard-key.highlighted2.alt-show>.visual-wrapper {
+	background: rgba(0, 0, 255, .3);
+}
+
+.keyboard-key.highlighted2 .alt-note {
+	visibility: hidden;
+}
+
+/* 按键气泡弹出提示 */
+.keyboard-key.highlighted {
+	position: relative;
+	z-index: 100;
+}
+
+.keyboard-key.highlighted>.visual-wrapper {
+	background: var(--背景色1);
+	/* 字母键 按下背景色 */
+	border-top: none;
+	margin: -0.5rem 0 0;
+	height: var(--键高度);
+	bottom: 0rem;
+}
+
+.keyboard-key.highlighted>.visual-wrapper:after {
+	content: "";
+	position: absolute;
+	left: -0.15rem;
+	top: 0.15rem;
+	bottom: -0.15rem;
+	right: -0.15rem;
+	z-index: -1;
+	border-radius: var(--键圆角);
+	border: 2px solid #f90000;
+	/*按下字母键高亮边框*/
+}
+
+.keyboard-key.highlighted>.visual-wrapper>span {
+	font: 300 2.3rem/3.2rem Sans-serif;
+	background: var(--背景色1);
+	/* 字母键 弹出显示 背景色 */
+	color: #f90000;
+	/* 字母键 弹出显示 字体色 */
+	height: calc(var(--键高度)/1.1);
+	top: -4.3rem;
+	left: -0.8rem;
+	right: -0.8rem;
+	border-radius: none;
+	box-shadow: none;
+}
+
+.keyboard-key.special-keya.highlighted>.visual-wrapper,
+.keyboard-key.special-keya.highlighted>.visual-wrapper>span {
+	height: calc(var(--键高度)/1.31);
+}
+
+.keyboard-key.special-key.highlighted>.visual-wrapper>span {
+	background: var(--背景色2);
+	/* 特殊键 弹出显示 背景色 */
+	color: var(--字体色2);
+	/* 特殊键 弹出显示 字体色 */
+}
+
+/* 空格键不显示 */
+.keyboard-key.highlighted[data-keycode="32"]>.visual-wrapper span {
+	display: none;
+}
+
+/* 边缘键弹出偏移*/
+.keyboard-key.highlighted:last-child>.visual-wrapper>span:after {
+	right: 0rem;
+}
+
+.keyboard-key.highlighted:last-child>.visual-wrapper>span {
+	right: 4%;
+	border-bottom-right-radius: 0;
+}
+
+.keyboard-key.highlighted:first-child>.visual-wrapper>span {
+	left: 4%;
+	border-bottom-left-radius: 0;
+}
+
+/* Key states */
+/* Active */
+.keyboard-key.kbr-key-active>.visual-wrapper>span {
+	color: var(--⇧键单击);
+}
+
+/* Hold */
+.keyboard-key.kbr-key-hold>.visual-wrapper {
+	/*background: var(--⇧键锁定);*/
+	/*box-shadow: none;*/
+	text-shadow: none;
+	border: .1rem solid #f00;
+}
+
+.keyboard-key.kbr-key-hold>.visual-wrapper::after {
+	content: "▪";
+	position: absolute;
+	left: 25%;
+	top: 20%;
+	bottom: 0;
+	right: 0;
+	color: red;
+	font-size: 1rem;
+	z-index: 17;
+}
+
+.keyboard-key.kbr-key-hold>.visual-wrapper>span {
+	color: var(--⇧键单击);
+}
+
+/* IMEs */
+.keyboard-candidate-panel {
+	box-sizing: border-box;
+	overflow: auto;
+	white-space: nowrap;
+	display: block;
+	width: 100%;
+	height: var(--候高度);
+	color: var(--候字体颜色);
+	background: var(--候背景色);
+	/*候选栏背景色*/
+	border-bottom: .1rem solid var(--候底线颜色);
+	border-top: .05rem solid var(--候顶部线色);
+	box-shadow: var(--候阴影);
+}
+
+.keyboard-candidate-panel span {
+	min-width: 2.5rem;
+	display: inline-block;
+	text-align: center;
+	font: var(--候选栏字体);
+	text-shadow: var(--候字阴影);
+	text-shadow: 0 0 0 #000;
+	line-height: var(--候字体位置);
+	padding: 0.1rem var(--候字体间距) 0;
+	/*字和字之间的间距*/
+	position: relative;
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span.first {
+	color: var(--候高亮首选色);
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-data="0"] label.codetip {
+	color: var(--补码2, var(--候高亮首选色));
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span.first label.codetip {
+	color: var(--补码1);
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span:not([data-data="0"]) label.codetip {
+	color: var(--候高亮首选色);
+	/*候选栏编码补全字体_色*/
+	position: absolute;
+	top: -.7em;
+	/* 调整上下位置 */
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.keyboard-candidate-panel span label.codetip {
+	font-size: 1rem;
+	/* 候选栏编码补全字体_大小*/
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-page="true"] {
+	position: absolute;
+	right: 0;
+	min-width: 2.5rem;
+	/*下拉键最小宽度*/
+	height: calc(var(--候高度) - 0.2rem) !important;
+	background: var(--V背景色);
+	color: var(--候高亮首选色);
+	border-left: .05rem solid rgba(0, 0, 0, .3);
+}
+
+body:not(.landscape) .keyboard:not(.popup) .keyboard-candidate-panel.page span:nth-last-child(2) {
+	margin-right: calc(3.6rem);
+}
+
+.keyboard-candidate-panel span[data-active="1"] {
+	background: rgb(161, 158, 153) !important;
+}
+
+/* 上下标 */
+.alt-note,
+.hii-note {
+	position: absolute;
+	color: var(--上标字符色1);
+	font-family: 汉字字体, 默认, Sans-serif;
+	/*text-shadow: 0 0 0 #444;*/
+	font-size: .6rem
+}
+
+.alt-note {
+	top: 3%;
+	right: 0.2rem;
+}
+
+.hii-note {
+	bottom: 4%;
+	left: 0.2rem;
+}
+
+.keyboard-key.special-key .hii-note,
+.keyboard-key.special-key .alt-note,
+.keyboard-key.special-keya .alt-note {
+	/*text-shadow: var(--字阴影2);*/
+	color: var(--上标字符色2);
+}
+
+.keyboard-key[data-keycode="13"] .alt-note {
+	color: var(--⏎字体色);
+}
+
+.keyboard-key.highlighted2 .alt-note {
+	visibility: hidden;
+}
+
+/* 候选工具栏 */
+.keyboard-candidate-panel .tool {
+	font-family: 默认, sans-serif;
+	font-size: 1.9rem;
+	padding: 0rem var(--候工具间距);
+}
+
+/* 候选栏 上标 */
+.keyboard-candidate-panel .tool sup {
+	font-size: 0.8rem;
+	/* 设置上标的字体大小 */
+	position: relative;
+	top: -0.8rem;
+	/* 调整上标向上的距离 */
+	right: 0.2rem;
+	/* 调整上标向右的位置,数值越小越靠右 */
+}
+
+.keyboard-code-panel {
+	position: absolute;
+	left: 1rem;
+	top: var(--候编码位置);
+	background: transparent;
+	/*编码_背景色 */
+	white-space: nowrap;
+}
+
+.keyboard-code-panel .code-got,
+.keyboard-code-panel .code-text {
+	color: var(--候字体颜色);
+	font: var(--候选栏字体);
+	font-size: var(--候编码字大小);
+}
+
+.keyboard-code-panel .code-caret {
+	color: var(--候字体颜色);
+	border: max(0.05rem, 1px) solid var(--候高亮首选色);
+	/* 编码光标 */
+}
+
+.keyboard:not(.popup) .keyboard-border-inner {
+	margin: 0;
+	padding: 0;
+	border-top: max(0.05rem, 1px) solid var(--键盘背景色);
+}
+
+.keyboard-key-panel {
+	width: 100%;
+	padding: 0.4rem 1px 0;
+	box-sizing: border-box;
+}
+
+.overlay {
+	box-sizing: border-box;
+	position: absolute;
+	border-top: 1px solid #000;
+	background: var(--键盘背景色);
+	z-index: 99;
+	overflow-y: auto;
+	overflow-x: hidden;
+	pointer-events: auto;
+}
+
+.emoji button:active {
+	background-color: #6ec5d5;
+	color: #000;
+}
+
+.editor button.selected {
+	background: rgba(255, 255, 255, .3);
+	text-shadow: 0 .1rem .8rem #ddd 0.05rem 0 #000;
+	color: red;
+}
+
+/* 符号界面 */
+.emoji button {
+	background: var(--界面按键色);
+	color: var(--界面字体色);
+	font: 2rem/3.4rem Sans-serif;
+	border: 1px solid #000;
+	display: inline-block;
+	border-radius: 0px;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* 编辑界面 */
+.editor {
+	background: var(--键盘背景色);
+}
+
+.editor button {
+	-webkit-user-select: none;
+	user-select: none;
+	position: absolute;
+	background: var(--背景色2);
+	width: 4.2rem;
+	color: var(--字体色2);
+	font: 1.1rem Sans-serif;
+	border: 2px solid #000;
+	display: inline-block;
+	border-radius: .5rem;
+	height: calc(var(--键高度)/1.2);
+	line-height: calc(var(--键高度)/1.2);
+	box-shadow: 0 .1rem .2rem rgba(0, 0, 0, .3);
+}
+
+.editor button.arrow,
+.editor button.select {
+	width: 4.2rem;
+}
+
+/*候选下拉展开界面*/
+.mymy,
+.cands {
+	border-top: .1rem SOLID #000;
+	background: var(--界面背景色);
+	color: var(--界面字体色);
+	padding: 0;
+}
+
+.mymy div,
+.cands div {
+	display: flex;
+	min-width: calc(100% / 6.35);
+	min-height: 2.8rem;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	flex-wrap: wrap;
+	border-radius: .3rem;
+	-webkit-user-select: none;
+	user-select: none;
+	margin: .1rem;
+}
+
+.mymy div>div,
+.cands div>div {
+	border: .05rem solid #000;
+	background: var(--界面按键色);
+}
+
+.cands span {
+	color: var(--界面字体色);
+	font: var(--界面字体);
+	text-shadow: 0 0 0 #000;
+	position: relative;
+	line-height: 1.2;
+	margin-top: .6rem;
+	/* 按键"上半"高度 */
+	margin-bottom: 0;
+}
+
+.cands span>a {
+	color: var(--展开编码颜色);
+	font: .9rem/.5rem Sans-serif;
+	text-shadow: 0 0 0 #000;
+	position: absolute;
+	transform: translateX(-50%);
+	left: 50%;
+	top: var(--展开编码位置);
+	/* 编码"上下"位置 */
+}
+
+.landscape .cands div {
+	font: 2.2rem/3.0rem Sans-serif;
+	padding: 0 0.4rem;
+}
+
+/*剪贴板界面*/
+.clipboard {
+	background: var(--界面背景色);
+}
+
+.clipboard button {
+	box-sizing: border-box;
+	width: calc(100% - 0.2rem);
+	min-height: 3rem;
+	margin: 0.1rem;
+	background: var(--界面按键色);
+	color: var(--界面字体色);
+	font: var(--界面字体);
+	text-shadow: 0 0 0 #000;
+	border: 0.1rem solid #000;
+	display: block;
+	border-radius: .3rem;
+	-webkit-user-select: none;
+	user-select: none;
+	padding: 0 0.2rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: left;
+}
+
+.clipboard button span {
+	position: absolute;
+	right: 1%;
+	font-size: .6rem;
+	background: rgba(0, 0, 0, .1);
+	border-radius: 1rem;
+	color: #4169e1;
+	/*剪贴板_时间字体色*/
+}
+
+.clipboard button.active {
+	background: #6ec5d5;
+	color: #000;
+}
+
+.clipboard p {
+	background: rgba(0, 0, 0, .3);
+	color: #ddd;
+	font-size: 2rem;
+}
+
+.msgbox,
+.setting,
+.phrase,
+.theme {
+	background: var(--界面背景色);
+	padding: 0 0.1rem;
+}
+
+.msgbox button,
+.setting button,
+.phrase button,
+.theme button {
+	/*临时⚝/设置/短语/配色 界面字体设置*/
+	font-family: serif-sans;
+	font-size: 1.4rem;
+	background: var(--界面按键色);
+	color: var(--界面字体色);
+	text-shadow: 0 0 0 #000;
+	text-align: left;
+	border: 0.1rem solid #000;
+	display: inline-block;
+	border-radius: .4rem;
+	-webkit-user-select: none;
+	user-select: none;
+	margin: 0.1rem;
+}
+
+/* 临时信息⚝界面 */
+.msgbox {
+	border-top: 0.1rem solid #000;
+}
+
+.msgbox button {
+	border: none;
+	position: absolute;
+	line-height: 1.6;
+	width: 99.3%;
+	height: 99.3%;
+	white-space: pre-wrap;
+}
+
+/* 设置界面 */
+.setting button {
+	min-width: calc(98.4% / 2);
+}
+
+.setting button:nth-last-child(-n+2) {
+	color: red;
+	text-align: center;
+}
+
+/* 配色界面 */
+.theme button {
+	margin-top: .5rem;
+	font-size: 1.1rem;
+	text-align: center;
+	white-space: nowrap;
+	line-height: 1;
+}
+
+/* 短语界面 */
+.phrase button {
+	padding: .2rem;
+	min-height: 3rem;
+}
+
+.action-shadow {
+	position: absolute;
+	z-index: 100;
+	display: none;
+	background-color: rgba(200, 200, 200, 0.8);
+	width: 100%;
+	height: 100px;
+	pointer-events: auto;
+	overflow: hidden;
+}
+
+.action-center {
+	position: relative;
+	width: fit-content;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.action-menu {
+	background: var(--键盘背景色);
+	border-radius: .8rem;
+	/* 外圆角 */
+	width: fit-content;
+	border: 0.2rem solid #444;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: stretch;
+}
+
+.action-menu>.action-item {
+	position: relative;
+	background: var(--背景色1);
+	min-width: 4.6rem;
+	border: 0.1rem solid #000;
+	color: var(--字体色1);
+	margin: .4rem;
+	box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, .7);
+	border-radius: .5rem;
+	user-select: none;
+	font: 500 1.4rem/3.5rem Sans-serif;
+	text-align: center;
+}
+
+.action-menu>.action-item:active {
+	background: #6ec5d5;
+	color: #000;
+}
+
+/*工具栏*/
+.keyboard.popup .adds,
+.keyboard.popup .zg {
+	display: none;
+}
+
+.adds,
+.zg {
+	display: var(--工具栏, none);
+	justify-content: center;
+	align-items: center;
+}
+
+.adds button {
+	padding: 0 2px;
+	width: 13%;
+	margin: 0 auto;
+	background: var(--背景色2);
+	color: var(--字体色2);
+	border: var(--键边框大小) solid var(--键边框颜色);
+	border-radius: var(--键圆角);
+	font-size: 1rem;
+	text-shadow: var(--字阴影2);
+	box-shadow: var(--键阴影);
+	height: 2rem;
+	white-space: nowrap;
+}
+
+.adds button[data-active="1"] {
+	background: red;
+}
+
+/* 底部显示 */
+body:not(.landscape) .keyboard:not(.popup) .bottom-zg {
+	display: inline-block;
+	height: var(--底部增高);
+}
+
+.bottom-zg span {
+	position: absolute;
+	width: 10%;
+	left: 45%;
+	font-family: 汉字字体, sans-serif;
+	font-size: var(--底栏字大小, 1.1rem);
+	color: var(--底栏字色, #000);
+	text-align: center;
+	bottom: var(--底栏字上下位置, 0.5%);
+	line-height: 1;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.landscape .bottom-zg span {
+	display: none;
+}
+
+/* 单手模式,缩放键盘 */
+.keyboard,
+.action-shadow {
+	width: var(--缩小, 100%);
+}
+
+.keyboard,
+.action-shadow,
+#keyboard-overlay {
+	right: var(--右, initial);
+}
+
+.editor button {
+	transform: scaleX(var(--缩小, 100%));
+}
+
+.action-menu>.action-item {
+	margin: var(--间, .4rem);
+}
+
+/* 悬浮候选栏 */
+.keyboard.popup,
+.popup .keyboard-candidate-panel {
+	height: auto;
+	/*自动高度*/
+	white-space: pre-wrap;
+	/*nowrap不换行, pre-wrap换行*/
+	background-color: transparent;
+	/*背景色*/
+	border: none;
+}
+
+.popup .keyboard-candidate-panel span {
+	background-color: #273238;
+	/*候选背景色*/
+	color: #eee;
+	/*候选字体色*/
+	text-align: left;
+	padding-top: 0.2rem;
+	margin: 0.1rem;
+	line-height: 1;
+	border-radius: 0.2rem;
+	/*圆角*/
+}
+
+.popup .keyboard-candidate-panel span.first {
+	color: #0ff;
+	/*候选首选字体色*/
+}
+
+.popup .keyboard-candidate-panel span label.codetip {
+	color: #ff0;
+	/*补全编码颜色*/
+}
+
+.popup .keyboard-code-panel,
+.popup .keyboard-candidate-panel span[data-page="true"] {
+	display: none;
+}

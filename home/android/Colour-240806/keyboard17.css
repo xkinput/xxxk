@@ -1,0 +1,62 @@
+:root{
+  --键盘背景色: #484848;
+  --⇧键单击: #fF0000;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: 0.1rem;
+  --键圆角: .6rem;
+  --键间距: .15rem;		/* 键(||)*/
+  --键阴影:		/* 键 底部阴影 */
+			#777 0 .05rem 0 inset;
+
+/*字母键*/
+  --背景色1: #3A3A3A;
+  --字体色1: #ddd;
+  --字大小1: 1.2rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #3A3A3A;
+  --字体色2: #ddd;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #3A3A3A;
+  --⏎字体色: #FFF;
+
+/*候选栏*/
+  --候背景色: #484848;
+  --候字体颜色: #eee;
+  --候高亮首选色: #fff900;
+  --候底线颜色: transparent;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: #484848;
+  --底栏字色: #eee;
+}
+.keyboard-key:not(.special-key) > .visual-wrapper {
+  z-index: 0;
+}
+.keyboard-key:not(.special-key) > .visual-wrapper::after {
+  content: ""; position: absolute;
+  left: 8%; top: 5%; bottom: 8%; right: 8%;
+  background: linear-gradient(0deg, #555 0%, #252525 100%);
+  border-radius: .9rem;
+  z-index: -1;
+}
+.keyboard-key[data-row="4"][data-column="0"] > .visual-wrapper {
+  border-radius: .6rem .6rem .6rem 1.7rem;
+}
+.keyboard-key[data-row="4"]:nth-last-child(1) > .visual-wrapper {
+  border-radius: .6rem .6rem 1.7rem .6rem;
+}
+.keyboard-key:not(.special-key) .alt-note {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
