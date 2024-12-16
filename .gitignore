@@ -2,7 +2,7 @@
 !/build/android/xxxk.bat
 
 /build/win/test/*
-/build-win/*.exe
+/build/win/*.exe
 
 /data/yong-android/*
 /data/yong-win/*
