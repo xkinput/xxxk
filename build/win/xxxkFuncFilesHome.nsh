@@ -130,7 +130,6 @@ Function xxxkSubFuncFilesInCurrentHome
     File "${XXXK_DIR_HOME}\bihua.bin"
     File "${XXXK_DIR_HOME}\crab.txt"
     File "${XXXK_DIR_HOME}\menu.ini"
-    WriteINIStr "$xxxkVarHomeDir\menu.ini" "about" "exec" "$$MSG(v${XXXK_VER}-Build${XXXK_VER_DATE})"
     File "${XXXK_DIR_HOME}\README.txt"
     File "${XXXK_DIR_HOME}\urls.txt"
     File "${XXXK_DIR_HOME}\yong-win.ini"

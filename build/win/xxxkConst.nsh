@@ -1,0 +1,11 @@
+# 声明常量
+!define XXXK_NAME_CN "小小星空"
+!define XXXK_NAME_EN "xxxk"
+!define XXXK_VER "2.0.4.0"
+!define XXXK_VER_DATE "20250111"
+!define XXXK_URL_HOME "https://xkinput.github.io/xxxk-help"
+!define XXXK_URL_DOWNLOAD "http://xxxk.ysepan.com"
+!define XXXK_REG_ROOT "HKLM"
+!define XXXK_REG_MAIN "Software\Microsoft\Windows\CurrentVersion\Uninstall" # 注意由于 NSIS 创建的安装包为 32 位，"Software\Microsoft" 会被重定向为 "Software\Wow6432Node\Microsoft"
+!define XXXK_DIR_DATA "..\..\data\yong-win"
+!define XXXK_DIR_HOME "..\..\home"

@@ -1,22 +1,18 @@
-﻿# 引入文件
+﻿# 声明常量和变量
+!include "xxxkConst.nsh"
+Var /GLOBAL xxxkVarHomeDir # 该变量实际由 xxxkFuncFilesHome.nsh 产生，并且只在那里面用到，因此也可以放在那个文件中。
+Var /GLOBAL xxxkIsPortable # 仅用于卸载程序。该变量实际由 xxxkFuncUninstaller.nsh 产生，并且只在那里面用到，因此也可以放在那个文件中。
+
+# 更新版本信息
+!makensis "xxxkUpdateVersion.nsi"
+!system "xxxkUpdateVersion.exe"
+!delfile "xxxkUpdateVersion.exe"
+
+# 引入文件
 !include "MUI2.nsh"
 !include "LogicLib.nsh"
 !include "xxxkFuncBase.nsh"
 !include "x64.nsh"
-
-# 声明常量
-!define XXXK_NAME_CN "小小星空"
-!define XXXK_NAME_EN "xxxk"
-!define XXXK_VER "2.0.3.0"
-!define XXXK_VER_DATE "20241216"
-!define XXXK_URL_HOME "https://xkinput.github.io/xxxk-help"
-!define XXXK_URL_DOWNLOAD "http://xxxk.ysepan.com"
-!define XXXK_REG_ROOT "HKLM"
-!define XXXK_REG_MAIN "Software\Microsoft\Windows\CurrentVersion\Uninstall" # 注意由于 NSIS 创建的安装包为 32 位，"Software\Microsoft" 会被重定向为 "Software\Wow6432Node\Microsoft"
-!define XXXK_DIR_DATA "..\..\data\yong-win"
-!define XXXK_DIR_HOME "..\..\home"
-Var /GLOBAL xxxkVarHomeDir # 该变量实际由 xxxkFuncFilesHome.nsh 产生，并且只在那里面用到，因此也可以放在那个文件中。
-Var /GLOBAL xxxkIsPortable # 仅用于卸载程序。该变量实际由 xxxkFuncUninstaller.nsh 产生，并且只在那里面用到，因此也可以放在那个文件中。
 
 # 设定安装程序属性
 RequestExecutionLevel highest
