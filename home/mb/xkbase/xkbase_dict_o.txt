@@ -5,23 +5,21 @@ oogw $[小小星空首页]$GO(https://xkinput.github.io/xxxk-help)
 oogw $[星空输入法首页]$GO(https://xkinput.github.io)
 oogw $[小小星空网盘]$GO(http://xxxk.ysepan.com)
 
-oo $[码表mb]$GO(mb)
-oomb $[本地码表]$GO(mb)
-# 在线码表见各方案
-
 oo $[目录ml]$GO($(_DATA))
-ooml $[程序目录]$GO($(_DATA))
-ooml $[配置目录]$GO($(_HOME))
+ooml $[程序目录(Win)]$GO($(_DATA))
+ooml $[配置目录(Win)]$GO($(_HOME))
+ooml $[本地码表目录(Win)]$GO($(_HOME)/mb)
+# 在线码表见各方案
 
 oo $[入门rm]$GO(https://xkinput.github.io/xxxk-help)
 oorm $[在线帮助文档]$GO(https://xkinput.github.io/xxxk-help)
-oorm $[本地帮助文档]$GO($(_HOME)/doc)
+oorm $[本地帮助文档(Win)]$GO($(_HOME)/doc)
 
-oo $[小小xx]$GO(tools/yong-config.bat)
-ooxx $[配置小小]$GO($(_HOME)/tools/yong-config.bat)
+oo $[小小xx]$GO(yong-config)
+ooxx $[配置小小]$GO(yong-config)
 ooxx $[重载小小]$RELOAD()
-ooxx $[重启小小]$GO($(_HOME)/tools/yong.bat)
-ooxx $[退出小小]$GO($(_HOME)/tools/quit.bat)
+ooxx $[重启小小(Win)]$GO($(_HOME)/tools/yong.bat)
+ooxx $[退出小小(Win)]$GO($(_HOME)/tools/quit.bat)
 
 oo $[日期rq]$yyyy年$mon月$day日
 oorq $yyyy年$mon月$day日
