@@ -1,0 +1,85 @@
+.jsload div div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffef;
+    user-select: none;
+  }
+  
+  .jsload .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: #fff;
+
+  }
+  
+  .jsload .reset {
+    padding: .2rem .5rem;
+    width: 100%;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    outline: .1rem solid #000;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .jsload .reset:focus {
+    color: #ec38bc;
+    background-color: #262809;
+  }
+  
+  .jsload .game {
+    width: 30rem;
+    height: 15rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+  }
+  
+  .jsload .item {
+    position: relative;
+    width: 4rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: .01rem solid #000;
+    border-radius: .4rem;
+    font-size: 1.5rem;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+  }
+  
+  .jsload .item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #B1B7C8;
+    border: .01rem solid #000;
+    border-radius: .4rem;
+    /* opacity: 0.85; */
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+  }
+  
+  .jsload .item.boxOpen {
+    transform: rotateY(0deg);
+  }
+  
+  .jsload .boxOpen::after,
+  .jsload .boxMatch::after {
+    transform: rotateY(180deg);
+  }
+

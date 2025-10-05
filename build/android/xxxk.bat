@@ -32,8 +32,8 @@ rem home\skin\xxxktray2.png -> yong-android\res\drawable-*dpi\app_icon.png -> AP
 copy %dirHome%\skin\xxxktray2.png %dirData%\res\drawable-hdpi\app_icon.png /y
 copy %dirHome%\skin\xxxktray2.png %dirData%\res\drawable-mdpi\app_icon.png /y
 copy %dirHome%\skin\xxxktray2.png %dirData%\res\drawable-xhdpi\app_icon.png /y
-rem home\android -> yong-android\assets\www -> APP SKIN
-xcopy %dirHome%\android %dirData%\assets\www /i /s /e /y
+rem home\skin-android -> yong-android\assets\www -> APP SKIN
+xcopy %dirHome%\skin-android %dirData%\assets\www /i /s /e /y
 rem home\mb -> yong-android\assets\mb -> sdcard\yong\mb
 rmdir /s /q %dirData%\assets\mb
 xcopy %dirHome%\mb\xkbase %dirData%\assets\mb\xkbase /i /s /e /y

@@ -1,0 +1,118 @@
+:root{
+  --键盘背景色: #FDF7EB;
+  --⇧键单击: #fF0000;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #444;
+  --键边框大小: 0;
+  --键圆角: .8rem;
+  --键间距: 0.13rem;		/* 键(||)*/
+  --键阴影: none;
+
+/*字母键*/
+  --背景色1: #FDF7EB;
+  --字体色1: #000;
+  --字大小1: 1.4rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #E5DCD5;
+  --字体色2: #000;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #F1A29D;
+  --⏎字体色: #000;
+
+/*候选栏*/
+  --候背景色: #FDF7EB;
+  --候字体颜色: #000;
+  --候高亮首选色: #f00;
+  --候底线颜色: transparent;
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: #FDF7EB;
+	--底栏字色: #000;
+	
+	--下标: transparent;
+	--动画框色: transparent;
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .7rem Sans-serif;
+}
+
+.keyboard-key.special-key[data-keycode="-1"] > .visual-wrapper {
+  background: #f4fde7;  /* shift */
+}
+.keyboard-key.special-key[data-keycode="-2"] > .visual-wrapper {
+  background: #f3f4f0;  /* 中英切换键 */
+}
+.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper {
+  background: #e6e4cb;  /* 退格键 */
+}
+.keyboard-key.special-key[data-keycode="-12"] > .visual-wrapper {
+	background: #faf3ea; /* 数字键盘 */
+}
+
+.keyboard-key-panel {
+  transform:scaleX(var(--左右间距, 0.98)) !important;
+	border-radius: .4rem;
+	background: #e5e5e5;
+	margin:0;
+	box-shadow: inset 0 0 .05rem #000;
+}
+
+.keyboard-key.highlighted2 > .visual-wrapper,
+.keyboard-key > .visual-wrapper{
+  pointer-events: none;
+}
+
+/* 按键旋转飞起特效 */
+/* ●●
+.keyboard-key:not(.special-key):not(.special-keya):not([data-keycode="32"]).highlighted2 > .visual-wrapper{
+  display: inline-block;
+  animation: 0.3s shake cubic-bezier(1, 1, 1, 1) forwards;
+	pointer-events: none;
+	box-shadow: none;
+}
+@keyframes shake {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4rem) rotate(180deg);
+  }
+  100% {
+    transform: translateY(-4rem) rotate(360deg);
+  }
+}
+●● */
+
+/* 按键放大框特效 */
+/*
+.keyboard-key:not(.special-key):not(.special-keya):not([data-keycode="32"]).highlighted2 > .visual-wrapper{
+  color: #0d172a;
+  transition: all .2s cubic-bezier(.4, 0, .2, 4);
+  outline: .05rem solid red;
+  outline-offset: .2rem;
+}
+*/
+
+/* 按键弹起特效 */
+.keyboard-key:not(.special-key):not(.special-keya):not([data-keycode="32"]) > .visual-wrapper span{
+  transition: transform 0.3s ease;
+}
+.keyboard-key:not(.special-key):not(.special-keya):not([data-keycode="32"]).highlighted2 > .visual-wrapper span{
+	background: var(--背景色1);
+  transform: translateY(-100%) scale(1.2);
+  pointer-events: none;
+}
+
+

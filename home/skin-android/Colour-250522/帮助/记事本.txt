@@ -1,0 +1,36 @@
+### 记事本
+`输入法`
+[小鹤](https://flypy.cc)
+[声笔](https://singbit.pages.dev)
+[虎码](https://tiger-code.com)
+[同文](https://github.com/osfans/trime/releases)
+[yong](http://sj.ysupan.com/yongim)
+---
+`词库`:
+[雾凇](https://dvel.me/posts/rime-ice/)
+[白霜](https://github.com/gaboolic/rime-frost/)
+[白霜扩展](https://github.com/HuangJian/rime-frost/tree/hj/)
+`使用白霜词库的方案`:
+[墨奇音形](https://github.com/gaboolic/rime-shuangpin-fuzhuma/)
+[墨奇五笔整句](https://github.com/gaboolic/rime-wubi-sentence/)
+[薄荷拼音](https://github.com/Mintimate/oh-my-rime/)
+[雨燕输入法](https://github.com/gurecn/YuyanIme)
+---
+[万象](https://github.com/amzxyz/RIME-LMDG/releases)
+
+---
+[T级语料库](https://github.com/esbatmop/MNBVC)
+
+---
+`工具`:
+[词库处理工具html本地版](https://github.com/asd2fque1/DictTool)
+[rime_bin转txt](https://github.com/nopdan/rime-table-decompiler)
+
+---
+**安装这个apk后,可以在小小输入法分享文本到手机系统剪贴板**
+```
+console.log(`yong:action share com.tengu.sharetoclipboard `+"文本内容");
+```
+[链接](https://github.com/tengusw/share_to_clipboard)
+
+---

@@ -1,0 +1,151 @@
+.jsload {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+background-color: darkgreen;
+}
+.jsload #table {
+  background-color: darkgreen;
+  min-height: 50px;
+  height: 100%;
+  width: 100%;
+}
+
+.jsload #templates {
+  display: none;
+}
+
+.jsload #stock-waste-foundations,
+.jsload #piles {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-height: 440px;
+  padding: .2rem .4rem;
+}
+
+.jsload #stock-waste-foundations > div,
+.jsload #piles > div {
+  width: 100%;
+  margin: .2rem;
+}
+
+.jsload #stock-waste-foundations > #stock > .card:not(:first-child),
+.jsload #stock-waste-foundations > #waste > .card:not(:first-child),
+.jsload #stock-waste-foundations > .foundation > .card:not(:first-child),
+.jsload #piles .pile .card:not(:first-child) {
+  margin-top: -5rem;
+}
+
+.jsload #table[data-debug='true'] #stock-waste-foundations > #stock > .card:not(:first-child),
+.jsload #table[data-debug='true'] #stock-waste-foundations > #waste > .card:not(:first-child),
+.jsload #table[data-debug='true'] #stock-waste-foundations > .foundation > .card:not(:first-child),
+.jsload #table[data-debug='true'] #piles .pile .card:not(:first-child),
+.jsload #piles .pile .card[data-blocks-card='true'] {
+  margin-top: -4.3rem;
+}
+
+.jsload .card,
+.jsload #stock:empty,
+.jsload #waste:empty,
+.jsload .foundation:empty,
+.jsload .pile:empty {
+  position: relative;
+  box-sizing: border-box;
+  border: .1rem solid #000;
+  border-radius: .4rem;
+  height: 5.2rem;
+  width: 100%;
+  display: line-block;
+}
+
+.jsload .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: white;
+  user-select: none;
+}
+
+.jsload .card * {
+  pointer-events: none;
+}
+
+.jsload .card[data-upturned=''] {
+  background-color: aquamarine;
+}
+.jsload #table[data-debug=''] .card[data-upturned=''] * {
+  display: none !important;
+}
+
+.jsload .card[data-suit='spades'],
+.jsload .card[data-suit='clubs'] {
+  color: black;
+}
+.jsload .card[data-suit='diamonds'],
+.jsload .card[data-suit='hearts'] {
+  color: red;
+}
+
+.jsload .card > .card-top,
+.jsload .card > .card-bot {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.1rem;
+}
+/* 牌数字 红黑桃*/
+.jsload .card > .card-top > div,
+.jsload .card > .card-bot > div {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.jsload .card > .card-bot {
+  position:relative;
+  top: -5%;
+  transform: rotate(180deg);
+}
+
+.jsload .card > .card-mid {
+  position:relative;
+  top: -5%;
+  text-align: center;
+  font-size: 2.1rem;
+  line-height: 1;
+}
+
+.jsload #table[data-debug='true'] .card[data-debug]:hover::before {
+  content: attr(data-debug);
+  position: absolute;
+  left: 8%;
+  top: 30%;
+  white-space: pre;
+  background: black;
+  color: white;
+  z-index: 1;
+}
+
+.jsload #stock-waste-foundations>.foundation>.card:not(:last-child) ,
+.jsload #stock-waste-foundations>#waste>.card:not(:last-child),
+.jsload #stock-waste-foundations>#stock>.card:not(:last-child) {
+  background: blue;
+  display: none;
+}
+
+.jsload #stock-waste-foundations>.foundation>.card:last-child,
+.jsload #stock-waste-foundations>#stock>.card:last-child,
+.jsload #stock-waste-foundations>#waste>.card:last-child {
+  margin-top: 0;
+}
+
+.jsload #resetbutton{
+  display: line-block;
+  border: .1rem solid #000;
+  border-radius: .4rem;
+  position:absolute;
+  font-size: 1.3rem;
+  background: transparent;
+  top: 10%;
+  left: 31%;
+}

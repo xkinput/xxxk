@@ -1,0 +1,11 @@
+.jsload #colorPalette {
+  border-collapse: collapse;
+  width: 100%;
+	overflow-y: auto;
+}
+
+.jsload #colorPalette td {
+  width: 5rem;
+  height: 3rem;
+  cursor: pointer;
+}

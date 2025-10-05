@@ -1,0 +1,85 @@
+.jsload div div{
+		font-family: Arial, sans-serif;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: #f0f0f0;
+}
+
+.jsload .controls {
+		margin: 0.1rem;
+		display: flex;
+		gap: 5px;
+		align-items: center;
+		width: 100%;
+}
+
+.jsload #grid {
+		display: grid;
+		gap: 10px;
+		background-color: #fff;
+		padding: .1rem;
+		border-radius: 5px;
+		box-shadow: 0 0 10px rgba(0,0,0,0.1);
+		width: 70%;
+		height: 100%;
+}
+
+.jsload .cell {
+		background-color: #4CAF50;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 1.5rem;
+		cursor: pointer;
+		border-radius: 3px;
+		transition: background-color 0.3s;
+		aspect-ratio: 1;
+		padding: .4rem .9rem;
+}
+
+.jsload .cell:active {
+	background: pink;
+}
+
+del.jsload .cell.correct {
+		background-color: #9E9E9E;
+		cursor: default;
+}
+
+.jsload #result { /*成功/失败 弹窗*/
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: #fff;
+		font-size: 2rem;
+		margin: 10px;
+		display: none;
+}
+
+.jsload button {
+		padding: 8px 16px;
+		font-size: 1rem;
+		cursor: pointer;
+		background-color: #2196F3;
+		color: white;
+		border: none;
+		border-radius: 4px;
+		position:absolute;
+		right:0;
+}
+
+.jsload button:hover {
+		background-color: #1976D2;
+}
+
+.jsload #time {
+		font-size: 1.5rem;
+		margin: .5rem;
+}
+.jsload #gridSize {
+		font-size: 1.2rem;
+		display:none;
+}

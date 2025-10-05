@@ -1,0 +1,35 @@
+.jsload{
+  background: #EFDDBE;
+}
+.jsload .test{
+	color: #000;
+  font-size: 1.3rem;
+  text-align: left;
+	white-space: pre-wrap;
+	line-height: 1.4;
+	text-shadow: 0 0 0 #333;
+}
+.test .col-1{  /* #文本 */
+	font-size: 1.3rem;
+	color: #36393C;
+}
+.test pre {
+	line-height: 1.5;
+	padding: .5rem;
+	font-family: fantasy;
+	background-color: #eee;
+	color: #111;
+	white-space: pre-wrap;
+	border-top: .1rem solid #000;
+	border-left: .4rem solid #999;
+	box-shadow: 0 .05rem 0 #fff;
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.jsload .bar2,
+.jsload .bar1{
+  color: #3E575F;
+	text-align: center;
+  width: 100%;
+}

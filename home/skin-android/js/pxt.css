@@ -1,0 +1,63 @@
+.jsload {
+	margin: 0;
+	background: #f1f1f1;
+	touch-action: manipulation;
+	font-family: Arial, sans-serif;
+}
+
+.jsload div{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.jsload #gameContainer {
+	position: absolute;
+	width: 100%;
+	height: 70%;
+	overflow: hidden;
+	background: #ffffb3;
+	border-bottom: 2px solid #333;
+	display: block;
+}
+
+#crab {
+	position: absolute;
+	bottom: 0;
+	left: 30%;
+	font-size: 40px; /* 螃蟹大小 */
+	transition: transform 0.4s ease-out;
+}
+
+.cactus {
+	position: absolute;
+	bottom: 0;
+	left: 100%;
+	font-size: 40px; /* 仙人掌大小 */
+}
+
+#score {
+	font-size: 24px;
+	margin: 20px;
+	position:absolute;
+	bottom: 20%;
+}
+
+#restartBtn {
+	padding: 15px 30px;
+	font-size: 18px;
+	background: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	touch-action: manipulation;
+	margin-top: 20px;
+	position:absolute;
+	bottom: 10%;
+}
+
+#alert{
+	position:absolute;
+	bottom: 3%;
+}

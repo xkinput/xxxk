@@ -1,0 +1,92 @@
+/* Existing CSS code */
+.jsload{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#0a3c2f;
+}
+
+.jsload .container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.jsload h2{
+    font-size: 3em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: none;
+}
+
+.jsload .game{
+    width: 100%;
+    height: 98%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    transform-style: preserve-3d;
+        perspective: 500px;
+}
+
+.jsload .item{
+    position: relative;
+    width: calc(100% / 4.07);
+    height: calc(100% / 4.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    background-color: #fff;
+    transition: 1s;
+    transform: rotateY(180deg);
+    outline: .1rem solid #000;
+}
+
+.jsload .item.boxopen{
+    transform: rotateY(0deg);
+}
+
+.jsload .item::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #209d7b;
+    transition: 1s;
+    transform: rotate(0deg);
+    backface-visibility: hidden;
+}
+
+.jsload .boxopen:after, .jsload .boxmatch:after{
+
+    transform: rotateY(180deg);
+}
+
+.jsload #alert {
+  color: #19b188;
+  background: rgba(238, 228, 218, 0.73);
+  font-size: 1.8rem;
+  font-weight: bold;
+  width: 98%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 5%;
+}
+
+.jsload #alert button {
+  font-size: 1.6rem;
+  height: 5rem;
+  line-height:1.5;
+  width: 98%;
+}

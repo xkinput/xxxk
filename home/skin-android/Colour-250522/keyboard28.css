@@ -1,0 +1,92 @@
+:root{
+  --键盘背景色: #efe4e6;
+  --⇧键单击: #fff900;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #111;
+  --键边框大小: .1rem;
+  --键圆角: .3rem;
+  --键间距: .1rem;		/* 键(||)*/
+  --键阴影:	none;	/* 键 底部阴影 */
+
+/*字母键*/
+  --背景色1: #fff;
+  --字体色1: #111;
+  --字大小1: 1.3rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: linear-gradient(0deg,#EA3B54,rgba(255,0,0,.8));
+  --字体色2: #fff;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none; 
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: rgba(255,0,0,.75);
+  --⏎字体色: #fff;
+
+/*候选栏*/
+  --候背景色: #eee;
+  --候字体颜色: #111;
+  --候高亮首选色: #EA3B54;
+  --候底线颜色: none;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);  /*候选下拉展开键背景色*/
+  --底栏字色: #000;
+  --uifj键色: var(--字体色1);
+	--⇧方块: white;
+	--选重: #ffff1a;
+}
+
+.keyboard .keyboard-key>.visual-wrapper{
+  box-shadow:
+    0 .1rem .1rem rgba(0,0,0,.2),
+    inset .26rem .1rem 0rem #eee,
+    inset -.26rem -.35rem 0rem #ccc;
+}
+
+.keyboard .keyboard-key.special-keya>.visual-wrapper,
+.keyboard .keyboard-key.special-key>.visual-wrapper {
+  box-shadow:
+    0 .1rem .1rem rgba(0,0,0,.2),
+    inset -.3rem -.3rem 0 red,
+    inset .3rem .15rem 0 rgba(255, 255, 255, .2);
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-selection="true"]{
+  position: relative; z-index: 100;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first{
+  color: #fff !important; /* 首选字体色 */
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first:before{
+  height: 2.2rem;
+	border: .01rem solid #999;
+  border-radius: .2rem;
+  line-height:1.1;
+  background: #EA3B54; /* 首选背景色 */
+  box-shadow: none;
+  content: "";
+  position:absolute;
+  bottom:0;
+	top:23%; /* 上下位置调整 */
+	left:.1rem;
+	right:0%;
+  z-index: -1;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first label.codetip{
+	color: #ff5; /* 首选补全编码色 */
+}
+
+/* 候选展开键 图片 */
+.keyboard-candidate-panel span[data-page="true"] svg.icon {display: none;}
+.keyboard-candidate-panel span[data-page="true"] {
+	background: var(--V背景色) url(images/page3.png) no-repeat center / 74% 85% !important;
+	border-left: .05rem dotted rgba(100,100,100,.5) !important;
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-data="0"] p.desc{
+  color: #fff !important;
+}

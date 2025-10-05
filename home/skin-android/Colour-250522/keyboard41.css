@@ -1,0 +1,75 @@
+@font-face { font-family: "字体一"; font-weight: 600; src: url('file:///storage/emulated/0/fonts/文道小鸡体.ttf');}
+:root{
+  --键盘背景色: #eee;
+  --⇧键单击: #f00;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #555;
+  --键边框大小: 0.01rem;
+  --键圆角: .3rem;
+  --键间距: .15rem;		/* 键(||)*/
+  --行间距2: .1rem !important;		/*行(=)*/
+  --键阴影:	 
+    0 .1rem .2rem #555,
+  inset 0 .2rem .2rem rgba(255, 255, 255, .9),
+  inset 0 -.3rem .3rem rgba(0, 0, 0, .3);
+
+/*字母键*/
+  --背景色1: linear-gradient(180deg,#dcdedd,#fff);
+  --字体色1: #222;
+  --字大小1: 1.5rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: none;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: var(--背景色1);
+  --字体色2: #333;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: blue;
+
+/*候选栏*/
+  --候背景色: #fff;
+  --候字体颜色: #111;
+  --候高亮首选色: #0A80FF;
+  --候底线颜色: transparent !important;	
+  --候字阴影: none;
+  --候阴影: none;
+  --候底线颜色: #333;
+  --V背景色: transparent;  /*候选下拉展开键背景色*/
+  --底栏字色: #222;
+  --uifj键色: var(--字体色1);
+  --候顶部线色2: none;
+  --高亮色1: #24ACE5;
+  --候编码位置: 0.01rem !important;
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+.keyboard-key .hii-note {
+  color: transparent !important;
+}
+
+.keyboard-candidate-panel {
+  border-top: .1rem solid rgba(0,0,0,.5) !important;
+  border-bottom: .1rem solid rgba(0,0,0,.3) !important;
+	border-radius: 1rem;
+}
+.keyboard-candidate-panel span{
+	font-family: "默认","字体一","汉字字体",serif !important;
+}
+.keyboard-border-inner{
+  height: .5rem;
+}
+
+.keyboard-row {
+  margin: .1rem !important;
+}

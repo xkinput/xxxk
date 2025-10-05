@@ -1,0 +1,69 @@
+.jsload {
+	margin: 0;
+	padding: 10px;
+	height: 100%;
+	background-color: #e0e0e0;
+	font-family: sans-serif;
+	overscroll-behavior: none; /* Prevent pull-to-refresh */
+	color: #333;
+}
+.jsload div{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+canvas {
+	touch-action: none;
+	background: #f8f8f8; /* Slightly off-white canvas */
+	border: 1px solid #b0b0b0; /* Slightly darker border */
+	display: block;
+	margin-top: 5px;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	cursor: pointer; /* Indicate it's interactive */
+}
+canvas.automoving {
+	cursor: wait; /* Show waiting cursor during auto-move */
+}
+
+#message {
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	font-weight: bold;
+	height: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+#controls {
+	 margin-top: 10px;
+	 text-align: center;
+	 width: 100%;
+	 display: block;
+	 flex-wrap: wrap;
+	 justify-content: center;
+	 gap: 8px;
+}
+
+#controls button {
+	padding: 8px 12px;
+	font-size: 1em;
+	cursor: pointer;
+	background-color: #f0f0f0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	transition: background-color 0.1s ease; /* Smooth hover effect */
+}
+#controls button:hover:not(:disabled) {
+	background-color: red;
+}
+#controls button:active:not(:disabled) {
+	background-color: #d0d0d0;
+}
+#controls button:disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
+	background-color: #e8e8e8;
+}

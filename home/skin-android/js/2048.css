@@ -1,0 +1,233 @@
+/* ===--------------------=== */
+/* ===-- General styles --=== */
+/* ===--------------------=== */
+
+.jsload{
+  font-family: monospace;
+  color: #000;
+  background-color: #FAF8EF;
+}
+
+.jsload .btn {
+  color: red;
+  background-color: #fff;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #000;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.jsload .game-board {
+  height: 100%;
+  width: 100%;
+}
+/* ===----------------=== */
+/* ===-- Typography --=== */
+/* ===----------------=== */
+
+.jsload .gameOver .muted-text {
+  position:absolute;
+  top:1%; right: 10%;
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  opacity: 0.75;
+  line-height: 1;
+	width: 100%;
+}
+
+.jsload .gameOver .number-large {
+  display: line-block;
+  position:absolute;
+  right: 10%;
+  top:1%;
+  color: red;
+  font-size: 0.75rem;
+  line-height: 1
+}
+
+.jsload .gameOver .accent-text {
+  color: black;
+}
+
+/* ===----------------=== */
+/* ===-- Components --=== */
+/* ===----------------=== */
+
+.jsload .game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: .5rem;
+}
+
+.jsload .grid {
+  margin: .1rem;
+  width: min(57.5%, 30rem);
+  display: grid;
+  grid-template-columns: repeat(4, 4.3rem);
+  grid-template-rows: repeat(4, 1fr);
+  margin-inline: auto;
+	background: #BBAAA0;
+	padding: .2rem;
+}
+
+.jsload .grid > div {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg, #CDBFB4);
+  color: var(--fg, #000);
+  margin: 0.125rem;
+}
+
+.jsload .grid > .zero {
+  color: transparent;
+  z-index: -2;
+}
+
+.jsload .grid > .zero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  background-color: #CDBFB4;
+  z-index: -1;
+}
+
+.jsload .grid > .new {
+  animation: fadein 0.4s ease-in-out;
+}
+
+.jsload .grid > .two {
+  --fg: #813c85;
+  --bg: #EEE4DA;
+}
+.jsload .grid > .four {
+  --bg: #D5CC81;
+}
+.jsload .grid > .eight {
+  --bg: orange;
+}
+.jsload .grid > .sixteen {
+  --bg: #EAC6D8;
+}
+.jsload .grid > .thirty-two {
+  --bg: #f3b27a;
+}
+.jsload .grid > .sixty-four {
+  --bg: #AD71CC;
+}
+.jsload .grid > .one-twenty-eight {
+  --bg: #CC71C4;
+}
+.jsload .grid > .two-fifty-six {
+  --bg: #D541C8;
+}
+.jsload .grid > .five-twelve {
+  --bg: #A40E97;
+}
+.jsload .grid > .ten-twenty-four {
+  --bg: #EC6EA2;
+}
+.jsload .grid > .twenty-forty-eight {
+  --bg: #DD3C7E;
+}
+.jsload .grid > .forty-ninety-six {
+  --bg: #B01B58;
+}
+.jsload .grid > .eighty-one-ninety-two {
+  --bg: #E27F1F;
+}
+.jsload .grid > .sixteen-three-eighty-four {
+  --fg: #000;
+  --bg: #FFFF00;
+}
+
+.jsload .end-game {
+  display: none;
+  width: 100%;
+  height: 100%;
+  inset: 1%;
+  color: #000;
+  background-color: #7C92A5;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .01rem;
+}
+
+.jsload .end-game h1{
+  font-size: 1.2rem;
+}
+.jsload .end-game > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.1rem;
+  font-size: 1rem;
+}
+
+.jsload .scores-list {
+  columns: 2;
+  column-gap: 5rem;
+  color: var(--fg);
+  padding: 0;
+  margin: 0;
+}
+
+.jsload .scores-list > li::marker {
+  color: violet;
+}
+
+.jsload .left-swipe {
+  --translate: -0.25rem;
+  animation: swipeX 0.1s ease-out;
+}
+.jsload .right-swipe {
+  --translate: 0.25rem;
+  animation: swipeX 0.1s ease-out;
+}
+.jsload .up-swipe {
+  --translate: -0.25rem;
+  animation: swipeY 0.1s ease-out;
+}
+.jsload .down-swipe {
+  --translate: 0.25rem;
+  animation: swipeY 0.1s ease-out;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes swipeX {
+  from {
+    transform: translateX(1rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes swipeY {
+  from {
+    transform: translateY(1rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

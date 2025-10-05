@@ -1,0 +1,213 @@
+.jsload {
+background-color: #f0f0f0;
+padding: 45px;
+touch-action: manipulation;
+}
+.jsload div{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.game-container {
+background-color: #fff;
+padding: 10px;
+border-radius: 10px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+text-align: center;
+width: 100%;
+display: flex;
+flex-direction: column;
+	transform: scale(1.2);
+}
+
+.game-info {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 5px;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+#timer {
+font-size: 16px;
+color: #666;
+margin: 5px 0;
+flex-shrink: 0; /* Prevent timer from shrinking too much */
+}
+
+/* --- Level Navigation Controls --- */
+.level-controls {
+display: flex;
+align-items: center;
+justify-content: center; /* Center items horizontally */
+gap: 10px; /* Gap between buttons and display */
+margin: 5px 0;
+flex-grow: 1; /* Allow controls to take available space */
+justify-content: flex-end; /* Align controls to the right */
+}
+#current-level-display {
+font-size: 16px;
+font-weight: bold;
+color: #555;
+min-width: 60px; /* Ensure space for text */
+text-align: center;
+}
+.level-nav-btn {
+padding: 6px 12px; /* Smaller padding for nav buttons */
+font-size: 13px;
+border-radius: 20px;
+}
+
+
+#status {
+margin: 5px 0;
+font-size: .8em;
+color: #555;
+min-height: 1.5em;
+font-weight: bold;
+position:absolute;
+left: 5px;
+}
+
+#game-board {
+display: grid;
+gap: 1px;
+margin: 15px auto;
+border: 2px solid #ccc;
+background-color: #eee;
+aspect-ratio: 1 / 1;
+width: 100%;
+touch-action: none;
+}
+
+/* --- Base Cell (Outer Container) --- */
+.pipe-cell {
+position: relative;
+aspect-ratio: 1 / 1;
+border: 1px solid #ddd;
+overflow: hidden;
+cursor: pointer;
+transition: transform 0.2s ease-in-out;
+}
+.pipe-cell.no-rotate {
+cursor: default;
+}
+.pipe-cell:not(.no-rotate):active {
+transform: scale(0.95) rotate(var(--current-rotation, 0deg));
+opacity: 0.8;
+}
+
+
+/* --- Inner Content Layer --- */
+.pipe-content {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #f8f8f8;
+z-index: 1;
+pointer-events: none;
+}
+.no-rotate .pipe-content {
+ background-color: #e0e0e0;
+}
+
+
+/* --- Pipe Drawing Pseudo-elements --- */
+/* (Targeting .pipe-cell or specific types like .pipe-start) */
+/* (Ensure z-index: 2) */
+.pipe-start { background-color: #90ee90}
+.pipe-start::before { content: ""; position: absolute; z-index: 2; top: 50%; left: 50%; width: 50%; height: 5px; background: #55f;transform: translateY(-50%); }
+.pipe-end { background-color: #ffcccb; }
+.pipe-end::before { content: ""; position: absolute; z-index: 2; top: 50%; right: 50%; width: 50%; height: 5px; background: #55f; transform: translateY(-50%); }
+.pipe-straight::before { content: ""; position: absolute; z-index: 2; top: 0; left: 50%; width: 5px; height: 100%; background: #555; transform: translateX(-50%); }
+/* Using 上右 opening version for corner */
+/* .pipe-corner { background-color: lightblue; } */ /* Background optional */
+.pipe-corner::before { content: ""; position: absolute; z-index: 2; top: 50%; left: 50%; width: 50%; height: 5px; background: #555; transform: translateY(-50%); }
+.pipe-corner::after { content: ""; position: absolute; z-index: 2; top: 0; left: 50%; width: 5px; height: 50%; background: #555; transform: translateX(-50%); }
+
+
+/* --- Connection/Win State Overlay --- */
+/* (Targeting inner content's ::after) */
+.pipe-cell.connected .pipe-content::after,
+.pipe-cell.win-path .pipe-content::after {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+pointer-events: none;
+opacity: 0.6;
+}
+.pipe-cell.connected .pipe-content::after {
+background-color: rgba(70, 130, 180, 0.5); /* Steel blue */
+}
+.pipe-cell.win-path .pipe-content::after {
+background-color: rgba(60, 179, 113, 0.6); /* Medium sea green */
+}
+
+/* --- Rotation Classes (On .pipe-cell) --- */
+.rotate-0 { transform: rotate(0deg); --current-rotation: 0deg; }
+.rotate-90 { transform: rotate(90deg); --current-rotation: 90deg; }
+.rotate-180 { transform: rotate(180deg); --current-rotation: 180deg; }
+.rotate-270 { transform: rotate(270deg); --current-rotation: 270deg; }
+
+
+/* --- Control Buttons (Bottom) --- */
+.controls {
+display: flex; /* Use flexbox for bottom controls */
+justify-content: center; /* Center restart button */
+gap: 0px;
+margin-top: 1px;
+}
+
+/* General Button Style */
+.jsload button {
+padding: 10px 20px;
+border: none;
+border-radius: 25px;
+font-size: 14px;
+cursor: pointer;
+transition: background-color 0.2s, color 0.2s, transform 0.1s, opacity 0.2s;
+background-color: #eee;
+color: #333;
+}
+.jsload button:active {
+transform: scale(0.98);
+}
+.jsload button:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+
+
+#reset-button {
+background-color: #ff6b6b;
+color: white;
+/* width: 100%; /* Make restart button full width */
+/* max-width: 200px; /* Optional max width */
+}
+#reset-button:hover:not(:disabled) {
+background-color: #ff4757;
+}
+
+.pipe-end .pipe-content{
+background: #B36C3C !important;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 480px) {
+.game-container { padding: 15px; }
+h1 { font-size: 20px; }
+button { padding: 8px 16px; font-size: 13px; }
+.game-info {
+		flex-direction: column; /* Stack timer and level controls */
+		align-items: center; /* Center items */
+}
+ .level-controls {
+		 width: 100%; /* Make level controls take full width */
+		 justify-content: space-around; /* Space out nav items */
+ }
+ #current-level-display { min-width: 50px; } /* Adjust min-width */
+ .level-nav-btn { padding: 5px 10px; }
+}

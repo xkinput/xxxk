@@ -1,0 +1,142 @@
+.jsload {
+    font-family: sans-serif;
+    background-color: #964b00;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.jsload h1 {
+    font-size: 1.2rem;
+    color: #d8bf8c;
+    margin: 20px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: none;
+}
+
+.jsload #game-container {
+    display: inline-block;
+    background-color: #d8bf8c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.jsload #game-board {
+    display: grid;
+    grid-template-columns: repeat(15, 1.7rem);
+    grid-template-rows: repeat(15, 1.7rem);
+    gap: 1px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #d4a373;
+    padding: 10px;
+}
+
+.jsload .cell {
+    width: 1.7rem;
+    height: 1.7rem;
+    background-color: #f0d9b5;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.jsload .cell:hover {
+    background-color: #e0c79b;
+}
+
+.jsload .black {
+    background-color: black;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.jsload .white {
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.jsload #status {
+	position:absolute;
+	top: -.2rem;
+	left: 40%;
+    font-size: 1rem;
+    margin: .1rem;
+    color: #555;
+}
+
+.jsload #restart-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #B5651D;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.jsload #restart-button:hover {
+    background-color: #654321;
+}
+
+.jsload #popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.jsload #popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.jsload #popup h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.jsload #popup p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.jsload #close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.jsload #popup-container.hidden {
+    display: none;
+}
+.jsload .red-text {
+    color: red;
+}

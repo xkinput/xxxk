@@ -1,0 +1,141 @@
+:root{
+  --键盘背景色: #73615A;
+  --⇧键单击: #F9C93A;
+  --键边框颜色: #000;
+  --键边框大小: .15rem;
+  --键圆角: .8rem;
+  --键间距: .12rem;
+  --键阴影: none;
+
+/*字母键*/
+  --背景色1: #7A8E94;
+  --字体色1: #ddd;
+  --字大小1: 1.4rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 .05rem 0 #777;
+  --键阴影1: none;
+  
+/*功能键*/
+  --背景色2: #9B796B;
+  --字体色2: #eee;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #7B759C;
+  --⏎字体色: #eee;
+
+/*候选栏*/
+  --候背景色: #73615A;
+  --候字体颜色: var(--字体色1);
+  --候高亮首选色: #FFE807;
+  --候底线颜色: none;
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: #73615A;
+  --底栏字色: #ddd;
+	--uifj键色: var(--字体色1);
+}
+
+.keyboard-key[data-keycode="113"] > .visual-wrapper {
+  background: #7B655A; /*q*/
+}
+.keyboard-key[data-keycode="119"] > .visual-wrapper {
+  background: #D16C63; /*w*/
+}
+.keyboard-key[data-keycode="101"] > .visual-wrapper {
+  background: #B1613D; /*e*/
+}
+.keyboard-key[data-keycode="114"] > .visual-wrapper {
+  background: #8499BC; /*r*/
+}
+.keyboard-key[data-keycode="116"] > .visual-wrapper {
+  background: #737963; /*t*/
+}
+.keyboard-key[data-keycode="121"] > .visual-wrapper {
+  background: #B57D7B; /*y*/
+}
+.keyboard .keyboard-key[data-keycode="117"] > .visual-wrapper {
+  background: #7A8E94; /*u*/
+}
+.keyboard .keyboard-key[data-keycode="105"] > .visual-wrapper {
+  background: #885C48; /*i*/
+}
+.keyboard-key[data-keycode="111"] > .visual-wrapper {
+  background: #C68C60; /*o*/
+}
+.keyboard-key[data-keycode="112"] > .visual-wrapper {
+  background: #7B759C; /*p*/
+}
+
+.keyboard-key[data-keycode="97"] > .visual-wrapper {
+  background: #737663; /*a*/
+}
+.keyboard-key[data-keycode="115"] > .visual-wrapper {
+  background: #B57D7B; /*s*/
+}
+.keyboard-key[data-keycode="100"] > .visual-wrapper {
+  background: #7B759C; /*d*/
+}
+.keyboard .keyboard-key[data-keycode="102"] > .visual-wrapper {
+  background: #BF8164; /*f*/
+}
+.keyboard-key[data-keycode="103"] > .visual-wrapper {
+  background: #AD7EC3; /*g*/
+}
+.keyboard-key[data-keycode="104"] > .visual-wrapper {
+  background: #8496BD; /*h*/
+}
+.keyboard .keyboard-key[data-keycode="106"] > .visual-wrapper {
+  background: #D66963; /*j*/
+}
+.keyboard-key[data-keycode="107"] > .visual-wrapper {
+  background: #738F94; /*k*/
+}
+.keyboard-key[data-keycode="108"] > .visual-wrapper {
+  background: #B57D7B; /*l*/
+}
+
+.keyboard-key[data-keycode="122"] > .visual-wrapper {
+  background: #B35959; /*z*/
+}
+.keyboard-key[data-keycode="120"] > .visual-wrapper {
+  background: #B57D84; /*x*/
+}
+.keyboard-key[data-keycode="99"] > .visual-wrapper {
+  background: #CE6D63; /*c*/
+}
+.keyboard-key[data-keycode="118"] > .visual-wrapper {
+  background: #7B769C; /*v*/
+}
+.keyboard-key[data-keycode="98"] > .visual-wrapper {
+  background: #73785D; /*b*/
+}
+.keyboard-key[data-keycode="110"] > .visual-wrapper {
+  background: #D4A394; /*n*/
+}
+.keyboard-key[data-keycode="109"] > .visual-wrapper {
+  background: #7F98BD; /*m*/
+}
+.keyboard-key[data-keycode="32"] > .visual-wrapper {
+  background: #EFE7CE;
+}
+.keyboard-key[data-keycode="32"] > .visual-wrapper span{
+  color: #000;
+  text-shadow: none;
+}
+.keyboard-key[data-keycode="32"] .alt-note{
+  color: var(--透明,#000);
+}
+/*  上标居中 */
+.keyboard-key .alt-note {
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ●隐藏下标 */
+.keyboard-key .hii-note {
+  color: transparent !important;
+}

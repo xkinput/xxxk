@@ -1,0 +1,31 @@
+.jsload div {
+  text-align: center;
+}
+
+#board {
+  border: solid 1px black;
+  border-spacing: 0;
+  margin: auto;
+  box-shadow: 5px 5px 5px lightgray;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+#board td {
+  height: 30px;
+  width: 30px;
+  border: solid 3px white;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+}
+
+#board td.hovering {
+  border: solid 3px black;
+}
+
+.score-area {
+  padding-top: 1em;
+  text-align: center;
+}
+

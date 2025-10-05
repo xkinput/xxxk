@@ -1,0 +1,52 @@
+.jsload {
+	margin: 0;
+	background: #f1f1f1;
+	touch-action: manipulation;
+	font-family: Arial, sans-serif;
+}
+
+.jsload div{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.spot {
+	fill: white;
+	stroke: white;
+	stroke-width: 0;
+}
+
+.spot.blocked {
+	fill: grey;
+}
+
+.spot.cat {
+	fill: #813c85;
+	top:0;left:0;
+}
+.spot:hover {
+	stroke: black;
+	stroke-width: 5;
+}
+
+.spot.blocked:hover,
+.spot.cat:hover {
+    stroke-width: 0;
+}
+
+.debug {
+	text-anchor: middle;
+	fill: white;
+	font-size: 70%;
+	font-family: sans-serif;
+}
+
+.jsload svg { 
+	position:absolute;
+	top: 20%; /* 上下位置 */
+	background-color: #fbcb8b;
+	border-radius: .2rem;
+	font-size: .8rem;
+	transform: scale(1.7); /* 缩放游戏面板 */
+}

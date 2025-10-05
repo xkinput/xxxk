@@ -1,0 +1,379 @@
+###快捷
+
+[`网盘`](http://sj.ysupan.com/kaikaikai#/p/2227575)
+
+⁽
+|缩写||缩写||缩写
+1|Jan|5|May|9|Sep
+2|Feb|6|Jun|10|Oct
+3|Mar|7|Jul|11|Nov
+4|Apr|8|Aug|12|Dec
+⁾
+⁽
+上下标|功能
+加|选择内容后加词
+查|选择内容后反查
+造|复制内容后加词
+反|复制内容后反查
+⁾
+
+**分享到第三方app,间接转到到剪贴板**
+```
+	console.log(`yong:action share com.tengu.sharetoclipboard •••###${text}\n${o}\n`);
+```
+
+⁺
+⁻javascript⁻
+**封装**
+```
+var abcd = (function(){
+	function msg(){
+			alert("hello")
+		}
+
+	return {
+		msg: msg
+	};
+})();
+abcd.msg();
+```
+
+**监听按键**
+```
+const resetButton = document.querySelector('#reset-button');
+resetButton.addEventListener('click', () => {
+    initGame(currentLevelIndex);
+});
+```
+
+**循环**
+```
+for(let i=0;i<temp.length;i++){
+
+}
+```
+
+**检查函数是否存在**
+```
+if (typeof myFunction === 'function') {
+}
+```
+⁺
+
+⁺
+⁻数组循环⁻
+```
+var nums=[1, 2, 3];
+nums.forEach(prop => {prop;});
+```
+```
+var nums = [1, 2, 3];
+if (nums.includes(num)) temp = true;
+```
+⁺
+
+⁺
+⁻CSS⁻
+**不换行, 可以横向滑动**
+```
+	white-space: nowrap;
+	overflow-X: auto;
+```
+**before & after**
+```
+  content: '';
+  position: relative;
+  right: 0%;
+```
+**截取字符串片段**
+```
+.substring(start,end);
+```
+**放大元素**
+```
+	transform: scale(1.7);
+```
+**高宽**
+```
+	width:100%;
+	height:100%;
+```
+**背景模糊**
+```
+	backdrop-filter: blur(10px);
+```
+**元素居中**
+```
+	top: 50%;
+	left: 50%;	
+	transform: translate(-50%,-50%);
+```
+⁺
+
+  元素文本循环变色
+```
+function changeHue(textElement) {
+  let hue = 0;
+  setInterval(() => {
+    hue = (hue + 1) % 300;
+    const color = `hsl(${hue}, 100%, 60%)`;
+    textElement.style.color = color;
+  }, 50);
+}
+let textContainer = [
+  document.querySelector("#title"),
+  document.querySelector("#title-image"),
+  document.querySelector("#message"),
+];
+textContainer.forEach((text) => changeHue(text));
+```
+
+  去除 html 标签(个别 HTML 标签不能被剔除)
+```
+.replace(/<[^>]*>/g, '')
+```
+
+  js,正则只匹配<>里面的内容, 如<aa>bb<cc>
+```
+const regex = /<([^>]*)>/g;
+```
+
+---
+  去除字符串中的非数字字符
+```javascript
+function removeNonNumeric(str) {
+  return str.replace(/\D/g, '');
+}
+
+// 示例用法
+const input = "abc123def456";
+const result = removeNonNumeric(input);
+console.log(result); // 输出: "123456"
+```
+
+---
+  返回一个包含该字符串中所有数字的数组：
+```javascript
+function extractNumbers(str) {
+    // 使用正则表达式匹配所有的数字
+    const matches = str.match(/\d+/g);
+    // 如果没有找到任何数字，返回空数组
+    return matches ? matches.map(Number) : [];
+}
+
+// 示例用法
+const text = "这里有123个苹果和456个橙子。";
+const numbers = extractNumbers(text);
+console.log(numbers); // 输出: [123, 456]
+```
+
+---
+  匹配多个汉字,排除单个汉字的正则
+```
+/[\u4e00-\u9fa5]{2,}/
+
+- [\u4e00-\u9fa5]：表示匹配任意一个汉字字符
+- {2,}：表示匹配前面的字符至少出现两次
+
+因此，这个正则表达式可以用来匹配包含至少两个汉字的字符串。
+```
+
+---
+  找到结尾不是","的行：
+
+```
+^(?!.*,$).*$
+
+- ^：匹配行的开头
+- (?!.*,$)：负向前瞻，表示不以","结尾，其中：
+- .*：匹配任意字符零次或多次
+- ,$：匹配以","结尾的情况
+- .*：匹配任意字符零次或多次
+- $：匹配行的结尾
+```
+
+```
+if (window.navigator.vibrate) {
+    const vibrationPattern = [100, 500, 100, 500, 100]; // 100ms振动，500ms停顿，100ms振动，500ms停顿，100ms振动
+    window.navigator.vibrate(vibrationPattern);
+} else {
+    console.log('设备不支持振动');
+}
+```
+
+---
+  去除空行
+```
+str.replace(/^\s*[\r\n]/gm, '');
+// 去除空行并去除每行的行首和行尾空白字符
+str.replace(/^\s*[\r\n]/gm, '').replace(/^\s+|\s+$/gm, '');
+```
+---
+⁺
+⁻击壤歌⁻
+```
+朝代:先秦　作者:先秦无名　
+日出而作，
+日入而息。
+凿井而饮，
+耕田而食。
+帝力于我何有哉。
+```
+⁺
+
+⁺
+⁻楚人谣⁻
+```
+朝代:先秦　作者:先秦无名　体裁:乐府　
+楚虽三户。亡秦必楚。
+```
+⁺
+
+⁺
+⁻垓下歌⁻
+```
+朝代:汉　作者:项羽　
+力拔山兮气盖世。
+时不利兮骓不逝。
+骓不逝兮可奈何！
+虞兮虞兮奈若何！
+```
+⁺
+
+---
+⁽
+英文月份|
+1. January（一月）|2. February（二月）
+3. March（三月）|4. April（四月）
+5. May（五月）|6. June（六月）
+7. July（七月）|8. August（八月）
+9. September（九月）|10. October（十月）
+11. November（十一月）|12. December（十二月）
+⁾
+---
+
+⁺
+⁻js各种格式转换⁻
+在 JavaScript 中，可以编写各种格式转换函数来处理不同的数据类型或格式之间的转换。以下是一些常见的格式转换函数示例：
+
+1. JSON 和字符串之间的转换
+
+```
+// JSON to String
+function jsonToString(jsonObj) {
+    return JSON.stringify(jsonObj);
+}
+
+// String to JSON
+function stringToJson(str) {
+    try {
+        return JSON.parse(str);
+    } catch (e) {
+        console.error("Invalid JSON string:", e);
+        return null;
+    }
+}
+
+// 示例
+const jsonObj = { name: "Alice", age: 30 };
+const jsonStr = jsonToString(jsonObj);
+console.log(jsonStr); // '{"name":"Alice","age":30}'
+
+const parsedJson = stringToJson(jsonStr);
+console.log(parsedJson); // { name: 'Alice', age: 30 }
+```
+
+2. 日期格式转换
+
+```
+// Format Date to 'YYYY-MM-DD'
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+// 示例
+const date = new Date();
+const formattedDate = formatDate(date);
+console.log(formattedDate); // e.g., '2023-10-05'
+```
+
+3. 数字格式转换（如千分位）
+
+```
+// Format number with commas
+function formatNumberWithCommas(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// 示例
+const number = 1234567;
+const formattedNumber = formatNumberWithCommas(number);
+console.log(formattedNumber); // '1,234,567'
+```
+
+4. 字符串大小写转换
+
+```
+// Convert string to uppercase
+function toUpperCase(str) {
+    return str.toUpperCase();
+}
+
+// Convert string to lowercase
+function toLowerCase(str) {
+    return str.toLowerCase();
+}
+
+// 示例
+const str = "Hello World";
+console.log(toUpperCase(str)); // 'HELLO WORLD'
+console.log(toLowerCase(str)); // 'hello world'
+```
+
+5. Base64 编码和解码
+
+```
+// String to Base64
+function stringToBase64(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+}
+
+// Base64 to String
+function base64ToString(base64) {
+    try {
+        return decodeURIComponent(escape(atob(base64)));
+    } catch (e) {
+        console.error("Invalid Base64 string:", e);
+        return null;
+    }
+}
+
+// 示例
+const originalStr = "Hello, Base64!";
+const base64Str = stringToBase64(originalStr);
+console.log(base64Str); // 'SGVsbG8sIEJhc2U2NCE='
+
+const decodedStr = base64ToString(base64Str);
+console.log(decodedStr); // 'Hello, Base64!'
+```
+
+这些函数可以根据需要调整和扩展，以适应特定的格式转换需求。
+⁺
+
+⁺
+⁻跳跃龙⁻
+```
+var htmltxt=`
+<iframe src="https://dino-chrome.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
+<style type="text/css">iframe { position: absolute; width: 100%; height: 100%; z-index: 999; }</style>
+`;
+
+function jsload(){}
+```
+⁺
+
+---
+火, 物理, 冰, 暴食, 章鱼

@@ -1,0 +1,37 @@
+/*计算器*/
+.jsload table{
+	border-collapse: collapse;
+	margin: auto auto;
+  height: 95%;
+}
+.jsload td{
+	width: 7.3rem;
+	line-height: 1.8rem;
+	background: #43494D;
+}
+.jsload .btn{
+	width: 7.3rem;
+	height: 2.8rem;
+	font-size: 1.8rem;
+	background: #404578;
+	color: #ddd;
+}
+.jsload .btn_click{
+	width: 14.7rem;
+	height: 2.8rem;
+	font-size: 1.8rem;
+	background: #644078;
+	color: #ddd;
+}
+.jsload .txt{
+	width: 29.4rem;
+	height: 2.8rem;
+	font-size: 1.8rem;
+	text-align: right;
+	color: #000;
+}
+
+.jsload .btn[value="="]{
+  background: #644078;
+  color: #ddd;
+}
