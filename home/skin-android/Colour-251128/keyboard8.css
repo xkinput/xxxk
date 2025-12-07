@@ -1,0 +1,105 @@
+:root{
+  --键盘背景色: #D9E0EC;
+  --⇧键单击: #f50;
+  --键边框颜色: #333;
+  --键边框大小: 0.08rem;
+  --键圆角: 20px;
+  --键间距: .12rem;		/* 键(||)*/
+  --键阴影:
+			inset 0 -.1rem .3rem rgba(0,0,0,.15),
+			0 .1rem .1rem rgba(0,0,0,.2);
+
+/*字母键*/
+  --背景色1: linear-gradient(0deg,#fff,#E7E7E7);
+  --字体色1: #444;
+  --字大小1: 1.4rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: none;
+  --键阴影1: none;
+	--uifj键色: var(--字体色1);
+
+/*功能键*/
+  --背景色2: linear-gradient(0deg,#fff,#d5d5d5);
+  --字体色2: #444;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: #111;
+
+/*候选栏*/
+  --候背景色: #D9E0EC;
+  --候字体颜色: #111;
+  --候高亮首选色: #00f;
+  --候底线颜色: transparent;
+  --候字阴影: 0 0 0 #000;
+  --候阴影: none;
+  --V背景色: #D9E0EC;
+  --底栏字色: #111;
+  --选重: #c35000;
+
+  --上下标大小: .7rem !important;
+  --下标: transparent;
+	--动画框色: transparent;
+	--左右间距: .998;
+	--底部显示: none;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key .hii-note, .keyboard-key .alt-note {
+  position: absolute;
+  top: 25%;  /* 上标 上下位置 */
+  left: 50%; /* 居中 */
+  transform: translate(-50%, -50%); /* 居中 */
+  text-shadow:none !important;
+}
+.keyboard-key .hii-note {
+  top: 82%; /* 下标 上下位置 */
+}
+
+/* 字母键字体样式 */
+x.keyboard-key:not(.special-key, [data-keycode="32"]) > span span{
+  font-family: sans-serif !important;
+  font-weight: 500 !important;
+}
+.keyboard-key[data-keycode="32"] >span span,
+.keyboard-key.special-key >span span{
+  font-size: 1.3rem !important;
+  text-shadow: none !important;
+}
+.keyboard-key.special-key[data-keycode="13"] .alt-note{
+  color: var(--透明, var(--⏎字体色));
+}
+
+/* 按键时背景色 */
+.keyboard-key:not(.special-key):not([data-keycode="32"]).highlighted2 >.visual-wrapper{
+  background: pink;
+}
+
+.keyboard-key:not(.special-key)[data-keycode="32"] >.visual-wrapper{
+  background: linear-gradient(0deg,rgba(229, 255, 229, .8),#b3ffb3);
+	border-radius: 1.8rem;
+}
+
+.keyboard-key > .visual-wrapper::before{
+  background: rgba(255,255,255,1);
+  content: ""; position: absolute;
+  top: 3%; bottom: 0%; right: 0;
+  height:8%;
+	width:50%;
+	left:50%;transform:translate(-50%,3%);
+	border-radius: 10rem;
+}
+.keyboard-key.special-key> .visual-wrapper::before{
+  width: 65%;
+	background: rgba(255,255,255,.7);
+}
+.keyboard-key:not(.special-key)[data-keycode='32']  > .visual-wrapper::before{
+  height:10%;
+	width:70%;
+}

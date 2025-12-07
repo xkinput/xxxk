@@ -1,0 +1,96 @@
+:root{
+  --键盘背景色: #B8BBC4;
+  --⇧键单击: #f00;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: .1rem;
+  --键圆角: .4rem;
+  --键间距: .12rem;		/* 键(||)*/
+  --键阴影:
+			inset 0 -.15rem .3rem rgba(0,0,0,.3),
+			0 .2rem .3rem #777;
+
+/*字母键*/
+  --背景色1: #C7D0CF;
+  --字体色1: #111;
+  --字大小1: 1.4rem;
+  --上标字符色1: #666;
+  --字阴影1: 0 0 0 #000;
+  --键阴影1:
+			inset 0 .1rem .2rem rgba(255,255,255,.3);
+
+/*功能键*/
+  --背景色2: #aa80ff;
+  --字体色2: #000;
+  --上标字符色2: #000;
+  --字阴影2: none;
+  --键阴影2:
+			inset 0 .1rem 0rem rgba(255,255,255,.2);
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: var(--字体色2);
+
+/*候选栏*/
+  --候背景色: var(--键盘背景色);
+  --候字体颜色: #111;
+  --候高亮首选色: #51f;
+  --候底线颜色: transparent;	
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);
+	--选重: #80007f;
+	
+	--空格: green;
+	--下标: transparent;
+	--uifj键色: var(--字体色1);
+	--左右间距: .995;
+}
+
+/* 上标居中 */
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+
+/* 字母键字体样式 */
+x.keyboard-key:not(.special-key, [data-keycode="32"]) > span span{
+  font-family: sans-serif !important;
+  font-weight: 600 !important;
+}
+
+/* 键按下时缩小 */
+.keyboard-key:active,
+.keyboard-key.special-key:active{
+  transform: scale(.95) !important;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key > .visual-wrapper:before ,
+.keyboard-key.special-key> .visual-wrapper:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 8%);
+  border: .01rem solid rgba(100,100,100,.9);
+  border-color: #999 #999 #999 #bbb;
+  border-radius: 1rem;
+  box-shadow: 0 .5rem .2rem rgba(0,0,0,.2);
+  width: 84%;
+  height: 82%;
+  background: linear-gradient(0deg, #fff 0%, rgba(0,0,0,.1) 100%) !important;
+}
+.keyboard-key.special-key> .visual-wrapper:before {
+  background: linear-gradient(0deg, rgba(255,255,255,.3) 0%, rgba(0,0,0,.2) 100%) !important;
+  box-shadow: 0 .5rem .2rem rgba(0,0,0,.3);
+  width: 90%;
+}
+.keyboard-key:not(.special-key)[data-keycode="32"] > .visual-wrapper:before{
+  width: 96%;
+}

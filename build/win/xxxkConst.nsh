@@ -1,8 +1,8 @@
 # 声明常量
 !define XXXK_NAME_CN "小小星空"
 !define XXXK_NAME_EN "xxxk"
-!define XXXK_VER "2.0.8.0"
-!define XXXK_VER_DATE "20251005"
+!define XXXK_VER "2.0.9.0"
+!define XXXK_VER_DATE "20251207"
 !define XXXK_URL_HOME "https://xkinput.github.io/xxxk-help"
 !define XXXK_URL_DOWNLOAD "http://xxxk.ysepan.com"
 !define XXXK_REG_ROOT "HKLM"

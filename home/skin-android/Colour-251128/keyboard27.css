@@ -1,0 +1,193 @@
+:root{
+  --键盘背景色: #6a6d7c;
+  --⇧键单击: #ff0;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #999;
+  --键边框大小: 0rem;
+  --键圆角: .4rem;
+  --键间距: .01rem;		/* 键(||)*/
+  --行间距: none;		/*行(=)*/
+  --键阴影: inset 0 .1rem .1rem rgba(255,255,255,.25);
+
+/*字母键*/
+  --背景色1: #bdc0c9;
+  --字体色1: #111;
+  --字大小1: 1.5rem;
+  --上标字符色1: #555;
+  --字阴影1: none;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #565C6A;
+  --字体色2: #eee;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none; 
+  --键阴影2: none;
+	--字大小2: 1.3rem;
+
+/*回车键*/
+  --⏎背景色: #4d88ff;
+  --⏎字体色: #eee;
+
+/*候选栏*/
+  --候背景色: #565C6A;
+  --候字体颜色: #eee;
+  --候高亮首选色: #ff0;
+  --候底线颜色: transparent;
+  --候字阴影: none;
+  --候阴影: 0 .2rem 0 #333;
+  --V背景色: var(--候背景色);
+	--选重: #ff0;
+	
+	--字上下1: 6%; /* 字母键 */
+	--字上下2: 6%; /* 空格 和 功能键 */
+	--动画字色: #fff;
+	--动画背景: transparent;
+	--动画框色: transparent;
+	--下标: transparent;
+	--底部显示: none;
+	--uifj键色: var(--字体色1);
+  --键高度: 3.01rem !important;
+	--数字栏: inline-block !important;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+/* 上下标居中 */
+.keyboard-key :is(.alt-note, .hii-note) {
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .7rem Sans-serif;
+}
+.keyboard-key .hii-note {
+  top: 82%;
+  font: .5rem Sans-serif;
+}
+
+.keyboard-key:not(.special-key)[data-keycode="32"] > .visual-wrapper span,
+.keyboard-key.special-key > span span{
+  font-size: var(--字大小2) !important;
+}
+
+.keyboard-key {
+	border-radius: .4rem;
+  background: #848895 !important;
+}
+.keyboard-key:is(.special-key,.special-keya,.special-key[data-keycode]) {
+  background: #393d46 !important;
+}
+.keyboard-key.special-key[data-keycode="8"] .visual-wrapper {
+  background: #ff4d4d !important;
+}
+.keyboard-key.special-key[data-keycode="8"] {
+  background: #b30000 !important;
+}
+.keyboard-key.special-key[data-keycode="13"] {
+  background: #003cb3 !important;
+}
+.keyboard-key{
+  border: .01rem solid #000 !important;
+  padding: 0;
+}
+
+.keyboard-key.kbr-key-hold> .visual-wrapper {
+  border: none !important;
+}
+
+.keyboard-row {
+  margin:0 !important;
+}
+
+/* l */
+.keyboard-key:not(.special-key)[data-keycode="108"] > .visual-wrapper{
+	background: linear-gradient(rgba(200,200,200,.1),#FDBD06) !important;
+}
+/* m */
+.keyboard-key:not(.special-key)[data-keycode="109"] > .visual-wrapper{
+	background: linear-gradient(rgba(200,200,200,.1),#49B364) !important;
+}
+/* l */
+.keyboard-key:not(.special-key)[data-keycode="108"] {
+	background: #b18401 !important;
+}
+/* m */
+.keyboard-key:not(.special-key)[data-keycode="109"] {
+	background: #347f47 !important;
+}
+
+/* p */
+.keyboard-key:not(.special-key)[data-keycode="112"] > .visual-wrapper{
+	background: linear-gradient(rgba(200,200,20,.1),#aa80ff) !important;
+}
+/* p */
+.keyboard-key:not(.special-key)[data-keycode="112"] {
+	background: #884dff !important;
+}
+/* g */
+.keyboard-key:not(.special-key)[data-keycode="103"] > .visual-wrapper{
+	background: linear-gradient(rgba(255,255,255,.2),#ffff80) !important;
+}
+/* g */
+.keyboard-key:not(.special-key)[data-keycode="103"] {
+	background: #b2b300 !important;
+}
+/* z */
+.keyboard-key:not(.special-key)[data-keycode="122"] > .visual-wrapper {
+	background: linear-gradient(rgba(200,200,200,.1),#cd7e81) !important;
+}
+/* z */
+.keyboard-key:not(.special-key)[data-keycode="122"] {
+	background: #a54044 !important;
+}
+
+
+.keyboard-key:not(.special-key)[data-keycode].highlighted2 > .visual-wrapper,
+.keyboard-key:not(.special-key)[data-keycode].highlighted2,
+.keyboard-key:not(.special-key).highlighted2,
+.keyboard-key:not(.special-key, [data-keycode="32"]).highlighted2 {
+  background: rgba(255, 0, 0, .5) !important;
+}
+.keyboard-key.special-key[data-keycode]:active,
+.keyboard-key.special-key:active{
+  transform: scale(.8) !important;
+}
+
+/* 工具栏图标 */
+.keyboard-candidate-panel .tool[data-tool="0"] {
+  color: transparent;
+  background: url(images/00.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="1"] {
+  color: transparent;
+  background: url(images/01.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="2"] {
+  color: transparent;
+  background: url(images/02.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="3"] {
+  color: transparent;
+  background: url(images/03.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="4"] {
+  color: transparent;
+  background: url(images/04.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="10"] {
+  color: transparent;
+  background: url(images/10.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="12"] {
+  color: transparent;
+  background: url(images/12.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="13"] {
+  color: transparent;
+  background: url(images/13.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="7"] {
+  color: transparent;
+  background: url(images/07.svg) no-repeat center !important;
+}
+

@@ -1,0 +1,273 @@
+###★安卓直通车说明
+  `格式:`
+  **编码 $[说明]$直通车命令**
+
+  后面加$SPACE代表输入编码直接上屏(执行直通车)
+```
+xxx $[说明]$直通车命令$SPACE
+```
+---
+  可重复多次
+```
+ola $[ϟ最后上屏]$LAST
+```
+  不能重复,第二次相当于按一下"退格键"
+```
+obl $[ϟ删上屏内容]$BACKSPACE(LAST)
+```
+---
+  $IMKEY(模拟组合键) 参照yong.ini快捷键
+```
+ojf $[ϟ简繁互换]$IMKEY(CTRL_ALT_F)
+```
+```
+oqa $[ϟ全角半角]$IMKEY(SHIFT_SPACE)
+```
+```
+ovy $[ϟ中英标点]$IMKEY(CTRL_.)
+```
+
+  $IMKEY除了可以模拟组合键，还支持模拟编码。
+```
+xxx $IMKEY(a,b,c)
+```
+
+  模拟按键,()里面数字代表次数
+```
+oleft $[ϟ左移一位]$LEFT(1)
+```
+```
+oright $[ϟ右移一位]$RIGHT(1)
+```
+```
+oup $[ϟ上移一位]$UP(1)
+```
+```
+odown $[ϟ下移一位]$DOWN(1)
+```
+
+```
+ott $[ϟTAB键*2]$TAB(2)
+```
+```
+otr $[ϟTAB键*4]$TAB(4)
+```
+
+```
+ohh $[ϟ行首]$HOME
+```
+```
+oee $[ϟ行尾]$END
+```
+
+```
+ore $[ϟ重做]$GO(action:redo)
+```
+```
+oun $[ϟ撤销]$GO(action:undo)
+```
+
+```
+oaa $[ϟ全选]$GO(action:selectAll)$SPACE
+```
+```
+oxx $[ϟ剪切]$GO(action:cut)$SPACE
+```
+```
+ovv $[ϟ粘贴]$GO(action:paste)$SPACE
+```
+```
+occ $[ϟ复制]$GO(action:copy)$SPACE
+```
+---
+```
+osm $[ϟ扫码]$GO(action:qrcode)
+```
+```
+oyy $[ϟ语音]$GO(action:voice)
+```
+
+  `手机系统输入法切换菜单`
+```
+oime $[ϟ⌨]$GO(action:switchInputMethod)
+```
+
+```
+otb $[ϟ同步]$GO(sync)$SPACE
+```
+```
+ogx $[ϟ更新]$GO(update)
+```
+
+  ini和码表有效,皮肤无效
+```
+oii $[ϟ重载输入法]$RELOAD()$SPACE
+```
+
+---
+  输出一对符号, $|代表输出后光标位置
+```
+ok $[ϟ括号]($|) $[ϟ中括号][$|] $[ϟ大括号]{$|} $[ϟ双引号]"$|" $[ϟ单引号]'$|'
+```
+---
+  打开网址
+  编码 $[说明]$GO(网址)
+```
+olt $[ϟ小小论坛]$GO(https://yong.dgod.net)
+```
+  加"$(CLIPBOARD)"会传递剪贴板内容到网址
+```
+xxx $[ϟ汉典]$GO(https://www.zdic.net/hans/$(CLIPBOARD))
+```
+---
+  调用其它APP
+  其中默认了几个快捷方式
+  $GO(app,app) $GO(qq,qq) $GO(ime,ime)
+  $GO(同步,sync) $GO(升级,update)
+
+  打开手机APP
+  需打开相应app的"关联启动"权限,或者app在后台.
+  编码 $[说明]$GO(APP快捷方式)
+
+  分享文本到指定app的功能
+  如让通义千问app翻译剪贴板:
+```
+xxx $[翻译]$GO(action:share$_com.aliyun.tongyi$_翻译$_$CLIPBOARD)
+```
+
+  打开手机qq
+```
+oqq $GO(qq,qq)$SPACE
+```
+
+  特殊的，打开小小QQ群
+```
+oqg $[ϟ小小群]$GO(mqqwpa://im/chat?chat_type=group&uin=23262261)
+```
+
+  打开文件夹, 格式: $GO(/sdcard/目录路径)
+```
+odk $[ϟ词库目录]$GO(/sdcard/yong/mb)
+```
+
+```
+osz $[ϟ小小设置]$GO(net.dgod.yong/net.dgod.yong.YongSettings)
+```
+
+  将文件里面的内容输出上屏
+```
+xxx $[txt]$FILE(/sdcard/yong/mb/test.txt)
+```
+
+  将图片存到系统剪贴板,某些图片编辑app能读取
+  只支持.yong或其子目录里面的图片,如 .yong/mb/3.png
+  .yong目录放个1.png
+```
+xxx $[png]$FILE(1.png)
+```
+
+  调用JS脚本
+  命令前加|，输出会重定向到输入法的目标输入窗口
+  $CAND 当前第一候选 , $CLIPBOARD 剪贴板内容
+```
+echo $[回显]$GO(|echo.js$_$CLIPBOARD)
+```
+  这个例子里的echo.js内容如下
+```
+console.log("yong:text "+process.argv[2]+"\n多行")
+```
+
+  **临时英文模式**的管道js命令直通车
+  直通车执行结果会显示在候选栏,
+  如果结果有换行,下一行显示在候选二,还有换行类推...
+  c 参数| 开始调用, 例子: c 1+1| 会传输"1+1"到calc.js
+```
+[IM]
+en_pipe[0]=c scripts/calc.js #设置c为引导键
+```
+  这个例子里的calc.js内容, 返回 计算结果 和 计算公式
+```
+const s=process.argv[2];
+const bad=["if","else","Function","Array","function","eval","console","require","import","export"];
+for(let i=0;i<bad.length;i++){
+	if(s.includes(bad[i]))
+		process.exit(-1);
+}
+try{
+	var t=eval(s);
+	if(!isNaN(t) && typeof(t)=='number')
+		console.log(`yong:text ${t}\n${s}=${t}`);
+	else
+		console.log("yong:text ");
+}catch(e){
+	console.log("yong:text ");
+}
+```
+
+  调整显示
+  编码 $[显示的内容]输出的内容
+
+---
+  云剪贴板：（pc端,仅win最新测试版实现）
+  需要已经注册同步账号，
+  原理是把剪贴板的内容放到.yong/clipboard.txt中，
+  然后同步这个文件实现的，大小限制为1024个文字。
+  下载后需要用户手动粘贴上屏
+```
+ouc $[ϟ上传云⏍]$GO(action:copyCloud)
+```
+```
+odc $[ϟ下载云⏍]$GO(action:pasteCloud)
+```
+
+---
+###码表的特殊编码
+  $$ $
+  $_ 空格
+  $/ 换行
+  $ENGLISH 进入英文输入状态(无重且无后续编码时有效)
+  $YYYY0 年，如二〇〇八
+  $YYYY 年，如二零零八
+  $yyyy 年，如2008
+  $MON 月，汉字
+  $mon0 月，数字，如02
+  $mon 月，数字，如2
+  $DAY 日，汉字
+  $day0 日，数字，如02
+  $day 日，数字，如2
+  $HOUR 小时，汉字
+  $hour 小时，数字，如2
+  $hour0 小时，数字，如02
+  $MIN 分钟，汉字
+  $min 分钟，数字
+  $SEC 秒，汉字
+  $sec 秒，数字
+  $WEEK 星期几，汉字
+  $week 星期几，数字
+  $RIQI 农历日期
+  $| 光标定位
+
+```
+xxx $yyyy$mon0$day0
+```
+```
+xxx 第一行$/第二行
+```
+
+---
+###码表能模拟的按键
+  ENTER，BACKSPACE，DEL，HOME，LEFT，UP，
+  DOWN，RIGHT，PAGEUP，PAGEDOWN，END
+
+---
+###常用字翻转功能
+  输入法中，默认的，分为常用字非常用字（见帮助《非常用字过滤》）如果默认常用字不能满足需求的时候，那么常用字翻转功能可能就对你有用了。这里我们引入了一个特殊的符号~，
+  **举例:**
+  原来“啊”是常用字，这样一设置，进行了翻转，就不是常用字了；
+```
+a ~啊
+```
+  囧字，现在很常见，你又是一个紧跟潮流的人，那么翻转一下，这个gbk汉字也成了常用字了。
+```
+jiong ~囧
+```

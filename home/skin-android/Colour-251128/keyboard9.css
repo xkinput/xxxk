@@ -1,0 +1,104 @@
+:root{
+  --键盘背景色: #ccc;
+  --⇧键单击: #f00;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: 0rem;
+  --键圆角: .3rem;
+  --键间距: .14rem;		/* 键(||)*/
+  --键阴影: 
+	inset 0 .1rem .1rem #fff,
+	.01rem .1rem .2rem rgba(0,0,0,.3);
+
+/*字母键*/
+  --背景色1: #666;
+  --字体色1: #111;
+  --字大小1: 1.35rem;
+  --上标字符色1: #666;
+  --字阴影1: none;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #785207;
+  --字体色2: #111;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #785207;
+  --⏎字体色: #111;
+
+/*候选栏*/
+  --候背景色: #ccc;
+  --候字体颜色: #111;
+  --候高亮首选色: #25f;
+  --候底线颜色: transparent;
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);
+	--uifj键色: var(--字体色1);
+	--底部显示: none;
+	--选重: #25f;
+
+  --下标: transparent;
+	--动画框色: transparent;
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key > .visual-wrapper:before ,
+.keyboard-key.special-key> .visual-wrapper:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-radius: var(--键圆角);
+  width: 100%;
+  height: 94%;
+  background: #fff !important;
+	box-shadow: 
+	inset 0 -.15rem .3rem rgba(0,0,0,.2);
+}
+
+.keyboard-key.special-key> .visual-wrapper:before {
+  background: #FEC85B !important;
+}
+.keyboard-key.special-key[data-keycode="13"] .alt-note {
+  color: var(--透明, var(--⏎字体色)) !important;
+}
+x.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper{
+	background: #a54044 !important;
+}
+x.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper:before {
+  background: linear-gradient(rgba(220,220,220,.1),#cd7e82) !important;
+}
+x.keyboard-key.special-key[data-keycode="13"] > .visual-wrapper:before {
+  background: #1a66ff !important;
+}
+
+body:not(.landscape) .keyboard:not(.popup) .keyboard-candidate-panel span[data-page="true"] {
+  position: absolute;
+  top: 1%;
+  right: 0%;
+}
+
+.keyboard-key:active,
+.keyboard-key:not(.special-key)[data-keycode="32"]:active,
+.keyboard-key.special-key:active{
+  transform: scale(.9) !important;
+}
+
+.keyboard-candidate-panel .tool[data-tool] {
+  background-size: 65% !important;
+}

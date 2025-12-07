@@ -1,0 +1,149 @@
+:root{
+  --键盘背景色: #eee;
+  --⇧键单击: #fF0000;
+  --键边框颜色: #666;
+  --键边框大小: 0.1rem;
+  --键圆角: .4rem;
+  --键间距: .1rem;		/* 键(||)*/
+  --键阴影: 0 0 .3rem rgba(71, 184, 255, 0.3),
+    inset -.2rem -.2rem .3rem rgba(0,0,0,.2),
+		inset .3rem .3rem .1rem #fff;
+		
+/*字母键*/
+  --背景色1: radial-gradient(#ddd, #eee) 50% 0/100% 100vh fixed;
+  --字体色1: #111;
+  --字大小1: 1.4rem;
+  --上标字符色1: #777;
+  --字阴影1: 0 .1rem .2rem rgba(100,100,100,.5), 0 0 0 #000;
+  --键阴影1: none;
+	--uifj键色: var(--字体色1);
+	--空格: #f29;
+
+/*功能键*/
+  --背景色2: #ffffb3; /*rgba(0, 50, 255, .1);*/
+  --字体色2: #111;
+  --上标字符色2: #555;
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #fbe4b7;
+  --⏎字体色: #444;
+
+/*候选栏*/
+  --候背景色: #fbe4b7;
+  --候字体颜色: #222;
+  --候高亮首选色: #00f;
+  --候底线颜色: #555;
+  --候字阴影: none;
+  --候阴影: 
+			inset 0 -.1rem .2rem rgba(0,0,0,.3);
+  --V背景色: var(--候背景色);
+  --选重: #00f;
+
+	--左右间距: .995;
+	--底部显示: none;
+	--下标: transparent;
+	--动画框色: #000;
+}
+
+.keyboard-key :is(.alt-note, .hii-note) {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .7rem Sans-serif;
+}
+.keyboard-key .hii-note {
+  top: 82%;
+  font: .5rem Sans-serif;
+}
+
+.keyboard-key:is(.special-key, .special-key[data-keycode], .special-keya) .visual-wrapper {
+  box-shadow:
+	0 0 .3rem rgba(71, 184, 255, 0.3),
+	inset -.2rem -.2rem .3rem rgba(0,0,0,.2),
+	inset .2rem .2rem .2rem #fff;
+}
+
+/* 字母键字体样式 */
+x.keyboard-key:not(.special-key, [data-keycode="32"]) > span span{
+  font-family: sans-serif !important;
+  font-weight: 600 !important;
+}
+
+/* 键按下时缩小 */
+.keyboard-key:active,
+.keyboard-key.special-key:active{
+  transform: scale(.95) !important;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+x.keyboard-key.special-key[data-keycode="-1"] > .visual-wrapper {
+	background: rgba(0, 255, 150, .1) !important;
+}
+
+x.keyboard-key.special-key[data-keycode="-2"] > .visual-wrapper {
+	background: rgba(174, 146, 255, .1) !important;
+}
+
+x.keyboard-key.special-key[data-keycode="-12"] > .visual-wrapper {
+	background: rgba(0, 255, 0, .2) !important;
+}
+
+x.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper {
+	background: rgba(255, 0, 55, .1) !important;
+}
+
+.keyboard-key:not(.special-key)[data-keycode="113"] > .visual-wrapper span{
+	background: rgba(0,255,255,.1) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="119"] > .visual-wrapper span{
+	background: rgba(255,0,55,.1) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="101"] > .visual-wrapper span{
+	background: rgba(255,255,0,.1) !important;
+}
+
+.keyboard-key:not(.special-key)[data-keycode="105"] > .visual-wrapper span{
+	background: rgba(5,255,195,.3) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="111"] > .visual-wrapper span{
+	background: rgba(192, 255, 62, .3) !important;
+}
+
+
+x.keyboard-key:not(.special-key)[data-keycode="102"] > .visual-wrapper span{
+	background: rgba(0, 0, 200, .1) !important;
+}
+x.keyboard-key:not(.special-key)[data-keycode="103"] > .visual-wrapper span{
+	background: rgba(200,50,50,.1) !important;
+}
+x.keyboard-key:not(.special-key)[data-keycode="104"] > .visual-wrapper span{
+	background: rgba(148, 255, 211, .1) !important;
+}
+
+.keyboard-key:not(.special-key)[data-keycode="122"] > .visual-wrapper span{
+	background: rgba(92, 255, 62, .1) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="120"] > .visual-wrapper span{
+	background: rgba(92, 255, 62, .15) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="99"] > .visual-wrapper span{
+	background: rgba(92, 255, 62, .2) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="118"] > .visual-wrapper span{
+	background: rgba(92, 255, 62, .4) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="98"] > .visual-wrapper span{
+	background: rgba(92, 255, 62, .2) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="110"] > .visual-wrapper span{
+	background: rgba(92, 255, 62, .15) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="109"] > .visual-wrapper span{
+	background: rgba(92, 255, 62, .1) !important;
+}

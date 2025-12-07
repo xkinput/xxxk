@@ -1,0 +1,83 @@
+:root{
+  --键盘背景色: #ddd;
+  --⇧键单击: #F05;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #aaa;
+  --键边框大小: 0rem;
+  --键圆角: .5rem;
+  --键间距: .18rem;		/* 键(||)*/
+  --键阴影: 
+	.05rem .1rem .2rem rgba(0,0,0,.2),
+	inset 0 1px .1rem #fff;
+
+/*字母键*/
+  --背景色1: #848c9e;
+  --字体色1: #111;
+  --字大小1: 1.3rem;
+  --上标字符色1: #777;
+  --字阴影1: 0 2px 4px #888;
+  --键阴影1: none;
+  --字上下1: 8%;
+
+/*功能键*/
+  --背景色2: #b36a44;
+  --字体色2: #222;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: 0 0 0 #fff;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: var(--字体色2);
+
+	--uifj键色: var(--字体色1);
+
+/*候选栏*/
+  --候背景色: #e5e5e5;
+  --候字体颜色: #111;
+  --候高亮首选色: #25f;
+  --候底线颜色: #999;
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);
+  --选重: #25f;
+
+	--左右间距: .995;
+	--底部显示: none;
+	--下标: transparent;
+	--动画框色: transparent;
+}
+
+.keyboard-key :is(.alt-note, .hii-note) {
+  top: 7%;
+  font: .8rem Sans-serif;
+left:50%;transform:translate(-50%,0%);
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key > .visual-wrapper:before ,
+.keyboard-key.special-key> .visual-wrapper:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-radius: var(--键圆角);
+  width: 100%;
+  height: 94%;
+  background: linear-gradient(175deg,rgba(188, 200, 225, .8),#a3afc8) !important;
+	box-shadow: none;
+}
+
+.keyboard-key.special-key> .visual-wrapper:before {
+	box-shadow:none;
+  background: linear-gradient(#ffb289,#ff9861) !important;
+}
+
+.keyboard-key:active,
+.keyboard-key:not(.special-key)[data-keycode="32"]:active,
+.keyboard-key.special-key:active{
+  transform: scale(.9) !important;
+}

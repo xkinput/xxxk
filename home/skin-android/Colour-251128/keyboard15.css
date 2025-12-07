@@ -1,0 +1,99 @@
+:root{
+  --键盘背景色: #878382;
+  --⇧键单击: #F55;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: 0;
+  --键圆角: .35rem;
+  --键间距: .16rem;		/* 键(||)*/
+  --键阴影: 
+	inset 0 .05rem .1rem #fff,
+	inset 0 -.1rem .1rem #000,
+	inset 0 -.3rem .1rem rgba(0,0,0,.25),
+	.05rem .1rem .2rem rgba(0,0,0,.4);
+
+/*字母键*/
+  --背景色1: #CBC7C4;
+  --字体色1: #222;
+  --字大小1: 1.45rem;
+  --上标字符色1: #666;
+  --字阴影1: 0 .1rem .3rem rgba(0,0,0,.3), 0 0 0 #000;
+  --键阴影1: none;
+	--字左右1: -22%;
+
+/*功能键*/
+  --背景色2: #CBC7C4;
+  --字体色2: #000;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: 0 0 0 #000;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #29f;
+  --⏎字体色: #eee;
+
+  --空格: #f50;
+	--uifj键色: var(--字体色1);
+
+/*候选栏*/
+  --候背景色: var(--背景色2);
+  --候字体颜色: #444;
+  --候高亮首选色: #26f;
+  --候底线颜色: #000;
+  --候字阴影: none;
+  --候阴影:  inset 0 -.1rem .2rem rgba(0,0,0,.3), 0 .15rem .3rem rgba(0,0,0,.5);
+  --V背景色: var(--候背景色);
+  --选重: #f20;
+
+	--底部显示: none;
+	--下标: transparent;
+	--动画框色: transparent;
+  --候顶部线色: #000 !important;
+  --候顶部线色2: #fff !important;
+}
+
+.keyboard-key :is(.alt-note, .hii-note) {
+  top: 7%;
+  font: .8rem Sans-serif;
+}
+.keyboard-key .hii-note {
+  top: 82%;
+  font: .5rem Sans-serif;
+}
+
+/* 字母键字体样式 */
+x.keyboard-key:not(.special-key, [data-keycode="32"]) > span span{
+  font-family: sans-serif !important;
+  font-weight: 700 !important;
+}
+
+/* 键按下时缩小 */
+.keyboard-key:active,
+.keyboard-key.special-key:active{
+  transform: scale(.85) !important;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper {
+	background: #f50 !important;
+}
+.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper span{
+	color: #ddd !important;
+}
+.keyboard-key.special-key[data-keycode="8"] .hii-note,
+.keyboard-key.special-key[data-keycode="8"] .alt-note {
+  color: var(--透明, #ddd) !important;
+}
+
+.keyboard-key.special-key[data-keycode="-2"] > .visual-wrapper {
+	background: #29f !important;
+}
+.keyboard-key.special-key[data-keycode="-2"] > .visual-wrapper span{
+	color: #eee !important;
+}
+.keyboard-key.special-key[data-keycode="-2"] .hii-note,
+.keyboard-key.special-key[data-keycode="-2"] .alt-note {
+  color: var(--透明, #eee) !important;
+}

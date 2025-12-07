@@ -1,0 +1,112 @@
+.jsload div {
+	margin: 0;
+	padding: 0;
+	background: #f0f0f0;
+	touch-action: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: Arial, sans-serif;
+	overscroll-behavior: none;
+	width: 100%;
+	height: 100%;
+}
+
+.jsload #game-wrapper {
+	position: relative;
+	margin: .2rem auto;
+	width: 100%;
+	height: 100%;
+}
+
+.jsload #game-container {
+	width: 80%;
+	height: 100%;
+	background: #ffffef;
+	border-radius: .4rem;
+	position: relative;
+	padding: .1rem;
+}
+
+.jsload .grid {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(8, 1fr);
+	gap: 1px;
+	background: #999;
+}
+
+.jsload .tile {
+	background: #f8f8f8;
+	border-radius: .1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.3rem;
+	cursor: pointer;
+	transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+	color: #333;
+	user-select: none; /* Prevent text selection */
+}
+
+.jsload .tile.selected {
+	transform: scale(0.9);
+	background: #ffeeba;
+	box-shadow: 0 0 1vmin rgba(255, 204, 0, 0.5);
+}
+
+/* Use opacity and transition for smoother removal */
+.jsload .tile.removing {
+	opacity: 0;
+	transform: scale(0.5);
+	transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+	pointer-events: none;
+}
+/* Add removed class after transition to keep layout space if needed, or set display:none/visibility:hidden later */
+.jsload .tile.removed {
+	 visibility: hidden; /* Keeps space */
+	 pointer-events: none;
+}
+
+.jsload #info {
+	display: flex;
+	justify-content: space-around;
+	font-size: 1rem;
+	height:1.1rem;;
+}
+
+.jsload button {
+	padding: .2rem;
+	font-size: 1rem;
+	border: none;
+	border-radius: .2rem;
+	background: #4CAF50;
+	color: white;
+	cursor: pointer;
+	touch-action: manipulation;
+	left: 0;top:0;
+	position:absolute;
+}
+
+/* SVG Overlay for path drawing */
+.jsload #path-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none; /* Allows clicks to pass through */
+	z-index: 10; /* Ensure it's above the grid container background but below tiles if needed */
+}
+
+.jsload #path-overlay polyline {
+	fill: none;
+	stroke: #ff6347; /* Tomato color */
+	stroke-width: 5;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.jsload div[data-row="4"] {
+  margin-bottom: 0rem !important;
+}

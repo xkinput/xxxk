@@ -1,0 +1,29 @@
+.jsload .test {
+	display: flex;
+  text-align: center;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: .2rem;
+}
+.jsload .test button{
+	display: flex;
+	margin: .2rem;
+	min-width: calc(100% / 6.35);
+	min-height: 2.8rem;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	flex-wrap: wrap;
+	-webkit-user-select: none;
+	user-select: none;
+	font-size: 1.2rem;
+	background: #eee;
+	box-shadow: 
+		inset .1rem -.15rem .2rem rgba(0,0,0,.2),
+		inset -.15rem .2rem 0rem rgba(255,255,255,.1);
+	border-radius: .4rem;
+	border: .1rem solid #000;
+}
+.jsload .test button.active{
+	background: pink;
+}

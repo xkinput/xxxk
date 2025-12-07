@@ -1,0 +1,95 @@
+:root{
+  --键盘背景色: #ccc;
+  --⇧键单击: #f00;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #777;
+  --键边框大小: 0rem;
+  --键圆角: .6rem;
+  --键间距: .15rem;		/* 键(||)*/
+  --键阴影: none;
+
+/*字母键*/
+  --背景色1: linear-gradient(#F4F2E6,#ccc);
+  --字体色1: #111;
+  --字大小1: 1.4rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 .01rem .5rem rgba(155,155,155,.3), 0 -.05rem 0 #fff;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: linear-gradient(rgba(50, 185, 195, .3),#ccc);
+  --字体色2: #111;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: var(--字体色2);
+
+/*候选栏*/
+  --候背景色: transparent;
+  --候字体颜色: #111;
+  --候高亮首选色: #c35000;
+  --候字阴影: none;
+  --候阴影: none;
+  --候底线颜色: none;
+  --V背景色: #ccc;
+  --底栏字色: #222;
+  --uifj键色: var(--字体色1);
+	--高亮色2: red;
+	--下标: transparent;
+	--左右间距: .995;
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-selection="true"]{
+  position: relative; z-index: 100;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first{
+  color: #000 !important;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first:before{
+  height: 2.2rem;
+  border-radius: .3rem;
+  line-height:1;
+  background: transparent;
+	border: .1rem dashed #999;
+  content: "";
+  position:absolute;
+  bottom:0;top:23%;left:.1rem;right:0%;
+  z-index: -1;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first label.codetip{
+	color: #999 !important;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .31rem !important;
+}
+
+/* q */
+.keyboard-key:not(.special-key)[data-keycode="113"] > .visual-wrapper {
+	background: linear-gradient(#CDE8C9,#ccc) !important;
+}
+
+/* p */
+.keyboard-key:not(.special-key)[data-keycode="112"] > .visual-wrapper {
+	background: linear-gradient(#E2D5C5,#ccc) !important;
+}
+
+/* n */
+.keyboard-key:not(.special-key)[data-keycode="110"] > .visual-wrapper {
+	background: linear-gradient(#ccc 10%, #D7A7A6) !important;
+}
+/* m */
+.keyboard-key:not(.special-key)[data-keycode="109"] > .visual-wrapper {
+	background: linear-gradient(#ccc 0%, #D7A7A6) !important;
+}
+

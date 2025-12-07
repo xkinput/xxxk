@@ -1,0 +1,154 @@
+:root{
+  --键盘背景色: #111;
+  --⇧键单击: #ff9000;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: none;
+  --键圆角: none;
+  --键间距: none;		/* 键(||)*/
+  --行间距: none;		/*行(=)*/
+  --键阴影: inset 0 .1rem .1rem rgba(255,255,255,.3);
+
+/*字母键*/
+  --背景色1: #565656;
+  --字体色1: #ddd;
+  --字大小1: 1.6rem;
+  --上标字符色1: #999;
+  --字阴影1: none;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #1B1B1B;
+  --字体色2: #ccc;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none; 
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #1B1B1B;
+  --⏎字体色: #ccc;
+
+/*候选栏*/
+  --候背景色: #1B1B1B;
+  --候字体颜色: #fff;
+  --候高亮首选色: #00B9EB;
+  --候底线颜色: transparent;
+  --候字阴影: none;
+  --候阴影:
+	0 .2rem 0 #000,
+	inset 0 .1rem .2rem rgba(255,255,255,.3);
+  --V背景色: var(--候背景色);  /*候选下拉展开键背景色*/
+	
+	--字上下1: 6%; /* 字母键 */
+	--字上下2: 6%; /* 空格 和 功能键 */
+	--动画背景: transparent;
+	--动画框色: transparent;
+	--下标: transparent;
+	--底部显示: none;
+	--uifj键色: var(--字体色1);
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .8rem !important;
+}
+/* 上下标居中 */
+.keyboard-key :is(.alt-note, .hii-note) {
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .7rem Sans-serif;
+}
+.keyboard-key .hii-note {
+  top: 82%;
+  font: .5rem Sans-serif;
+}
+
+.bottom-zg span{
+	color: #ddd !important;
+	bottom: .5% !important;
+}
+
+x.keyboard-key:not(.special-key, [data-keycode="32"]) > span span{
+  font-family: sans-serif !important;
+  font-weight: 500 !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="32"] > .visual-wrapper span,
+.keyboard-key.special-key > span span{
+  font-size: 1.5rem !important;
+}
+
+
+.keyboard-key {
+  background: var(--背景色1) !important;
+}
+.keyboard-key.special-key,
+.keyboard-key.special-keya {
+  background: var(--背景色2) !important;
+}
+
+.keyboard-key[data-keycode="13"] {
+  background: var(--⏎背景色) !important;
+}
+.keyboard-key{
+  border: .1rem solid #000 !important;
+  padding: 0;
+	box-shadow: 0 .1rem 0 #000;
+}
+
+.keyboard-key.kbr-key-hold> .visual-wrapper {
+  border: none !important;
+}
+.keyboard-key[data-keycode="32"] > .visual-wrapper span{
+  font-size: var(--字大小1) !important;
+}
+
+.keyboard-row {
+  margin:0 !important;
+}
+
+.keyboard-key:not(.special-key).highlighted2,
+.keyboard-key:not(.special-key, [data-keycode="32"]).highlighted2 {
+  background: rgba(230, 0, 229, .3) !important;
+}
+.keyboard-key.special-key[data-keycode]:active,
+.keyboard-key.special-key:active{
+  transform: scale(.8) !important;
+}
+
+
+/* 工具栏图标 */
+.keyboard-candidate-panel .tool[data-tool="0"] {
+  color: transparent;
+  background: url(images/00.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="1"] {
+  color: transparent;
+  background: url(images/01.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="2"] {
+  color: transparent;
+  background: url(images/02.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="3"] {
+  color: transparent;
+  background: url(images/03.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="4"] {
+  color: transparent;
+  background: url(images/04.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="10"] {
+  color: transparent;
+  background: url(images/10.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="12"] {
+  color: transparent;
+  background: url(images/12.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="13"] {
+  color: transparent;
+  background: url(images/13.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="7"] {
+  color: transparent;
+  background: url(images/07.svg) no-repeat center !important;
+}

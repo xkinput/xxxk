@@ -1,0 +1,150 @@
+:root{
+  --蓝色: #4d88ff;
+
+  --键盘背景色: #ddd;
+  --⇧键单击: #9C36E5;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #444;
+  --键边框大小: 0.08rem;
+  --键圆角: .4rem;
+  --键间距: .1rem;		/* 键(||)*/
+  --键阴影: 
+  inset .2rem .1rem .2rem rgba(255,255,255,.3),
+  inset -.1rem -.2rem .2rem rgba(0,0,0,.3);
+
+/*字母键*/
+  --背景色1: #eee;
+  --字体色1: #444;
+  --字大小1: 1.35rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+  --字上下1: 1%;
+
+/*功能键*/
+  --背景色2: #eee;
+  --字体色2: #111;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #b3ffb3;
+  --⏎字体色: #111;
+
+  --⬆键: #b3ffb3;
+  --中英键: #b3ffb3;
+  --符数键: #b3ffb3;
+  --退格键: #b3ffb3;
+
+/*候选栏*/
+  --候背景色: transparent;
+  --候字体颜色: #000;
+  --候高亮首选色: blue;
+  --候底线颜色: transparent;
+  --候字阴影: none;
+  --候阴影: none,
+	inset 0 .1rem 0 #fff,
+	inset 0 -.1rem .2rem rgba(0,0,0,.3),
+	0 .2rem .3rem rgba(0,0,0,.4);
+  --V背景色: #ddd;
+	--uifj键色: var(--字体色1);
+	--选重: blue;
+  --候编码字大小: 0.9rem !important;
+  --候编码位置: -.1rem !important;
+
+  --下标: transparent;
+
+	--底部显示: none;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key :is(.alt-note, .hii-note) {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .7rem Sans-serif;
+}
+
+.keyboard-key .hii-note {
+  top: 88%;
+  font-size: .5rem;
+}
+
+x.keyboard-key:not(.special-key, [data-keycode="32"]) > span span{
+  font-family: sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.keyboard-key > .visual-wrapper:before ,
+.keyboard-key.special-key> .visual-wrapper:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 5%);
+  border: .01rem solid rgba(100,100,100,.9);
+  border-color: rgba(255,255,255,.3) rgba(0,0,0,.3) rgba(0,0,0,.3) rgba(0,0,0,.3);
+  border-radius: .3rem;
+  box-shadow: 0 .5rem .2rem rgba(0,0,0,.2);
+  width: 88%;
+  height: 84%;
+  background: linear-gradient(0deg, #fff 0%, rgba(0,0,0,.1) 100%) !important;
+}
+.keyboard-key.special-key> .visual-wrapper:before {
+  background: linear-gradient(0deg, rgba(255,255,255,.3) 0%, rgba(0,0,0,.2) 100%) !important;
+  box-shadow: 0 .5rem .2rem rgba(0,0,0,.3);
+  width: 90%;
+}
+
+.keyboard-key[data-keycode="32"] > .visual-wrapper span,
+.keyboard-key.special-key> .visual-wrapper span {
+  font-size: 1.4rem;
+  text-shadow:none;
+}
+.keyboard-key.special-key[data-keycode="13"] .alt-note {
+  color: var(--透明, var(--⏎字体色)) !important;
+}
+.keyboard-key.special-key[data-keycode="13"] > .visual-wrapper{
+  background: var(--⏎背景色);
+}
+
+.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper {
+  background: var(--退格键, #ff4d4d);  /* 退格键 */
+}
+.keyboard-key.special-key[data-keycode="-2"] > .visual-wrapper {
+  background: var(--中英键, #ffff4d);  /* 中英切换键 */
+}
+.keyboard-key.special-key[data-keycode="-10"] > .visual-wrapper,
+.keyboard-key.special-key[data-keycode="-12"] > .visual-wrapper {
+  background: var(--符数键, #b3ffb3);  /* 数字&符号 */
+}
+.keyboard-key.special-key[data-keycode="-1"] > .visual-wrapper {
+  background: var(--⬆键, #52D7BD);  /* shift */
+}
+.keyboard-key:not(.special-key)[data-keycode="32"] > .visual-wrapper:before{
+  width: 96%;
+}
+
+body:not(.landscape) .keyboard:not(.popup) .keyboard-candidate-panel span[data-page="true"] {
+  position: absolute;
+  top: 1.5%;
+  right: 0%;
+}
+
+body:not(.landscape) .keyboard:not(.popup) .keyboard-candidate-panel:before{
+  content: ''; position: absolute;
+  top: 1%;
+  left: .7%;
+  /*transform: translate(-50%, 5%);*/
+  border-radius: .3rem;
+  box-shadow: 
+  inset 0 .2rem .2rem rgba(0,0,0,.3),
+  0 .15rem 0 #fff;
+  width: 88%;
+  height: 16%;
+  background: linear-gradient(0deg, #fff 0%, rgba(0,0,0,.1) 100%) !important;
+}

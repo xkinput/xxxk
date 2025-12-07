@@ -1,0 +1,130 @@
+:root{
+  --键盘背景色: #B8BBC4;
+  --⇧键单击: #f00;	
+  --键边框颜色: #000;
+  --键边框大小: 0.01rem;
+  --键圆角: .8rem;
+  --键间距: .05rem;		/* 键(||)*/
+  --键阴影: 
+			inset 0 -.4rem .3rem rgba(0,0,0,.3),
+			0 .1rem .2rem rgba(0,0,0,.3);
+
+/*字母键*/
+  --背景色1: #ccc;
+  --字体色1: #111;
+  --字大小1: 1.35rem;
+  --上标字符色1: #666;
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #ff884d;
+  --字体色2: #000;
+  --上标字符色2: #000;
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: var(--字体色2);
+
+/*候选栏*/
+  --候背景色: var(--键盘背景色);
+  --候字体颜色: #111;
+  --候高亮首选色: #51f;
+  --候底线颜色: transparent;	
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);
+	--选重: #80007f;
+	
+	--空格: green;
+	--下标: transparent;
+	--uifj键色: var(--字体色1);
+	--左右间距: .995;
+	--动画框色: transparent;
+}
+
+/* 上标居中 */
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+
+/* 字母键字体样式 */
+x.keyboard-key:not(.special-key, [data-keycode="32"]) > span span{
+  font-family: sans-serif !important;
+  font-weight: 600 !important;
+}
+
+/* 键按下时缩小 */
+.keyboard-key:active,
+.keyboard-key.special-key:active{
+  transform: scale(.9) !important;
+}
+
+.keyboard-key-panel {
+	background: #B8BBc3 !important;
+	border-radius: .4rem;
+	border:none;
+  transform:scale(0.995);
+}
+.keyboard-row {
+	position: relative;
+	background: #000;
+	border-radius: .6rem;
+	box-shadow: inset 0 -.3rem .3rem #bbb;
+}
+.keyboard-row:nth-child(3) {
+	position: relative;
+	width: fit-content !important;
+	left:50%;
+	transform:translate(-50%,0%);
+}
+.keyboard-key[data-row="4"] {
+  padding-bottom: .25rem !important;
+}
+
+.keyboard-key > .visual-wrapper:before ,
+.keyboard-key.special-key> .visual-wrapper:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 2%);
+  border: .02rem solid rgba(100,100,100,.1);
+  border-color: transparent #aaa #aaa #bbb;
+  border-radius: .8rem;
+  width: 86%;
+  height: 84%;
+  background: linear-gradient(0deg, #fff 0%, rgba(0,0,0,.1) 100%) !important;
+}
+.keyboard-key.special-key> .visual-wrapper:before {
+  background: linear-gradient(0deg, rgba(255,255,255,.3) 0%, rgba(0,0,0,.1) 100%) !important;
+  width: 90%;
+}
+.keyboard-key:not(.special-key)[data-keycode="32"] > .visual-wrapper:before{
+  width: 96%;
+}
+
+.keyboard-key:not(.special-key)[data-keycode="113"] > .visual-wrapper span{
+	background: rgba(0,255,255,.1) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="119"] > .visual-wrapper span{
+	background: rgba(255,0,55,.1) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="101"] > .visual-wrapper span{
+	background: rgba(255,255,0,.1) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="105"] > .visual-wrapper span{
+	background: rgba(5,255,195,.3) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="111"] > .visual-wrapper span{
+	background: rgba(192, 255, 62, .3) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="118"] > .visual-wrapper span{
+	background: rgba(92, 255, 62, .3) !important;
+}

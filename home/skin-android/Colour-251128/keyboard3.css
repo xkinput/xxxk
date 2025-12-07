@@ -1,0 +1,68 @@
+:root{
+  --键盘背景色: #EBEBEB;
+  --⇧键单击: #F05;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #aaa;
+  --键边框大小: 0.1rem;
+  --键圆角: .6rem;
+  --键间距: .1rem;		/* 键(||)*/
+  --键阴影: 
+	inset .15rem -.1rem .2rem rgba(0,0,0,.15),
+	inset -.1rem .1rem .2rem #fff;
+
+/*字母键*/
+  --背景色1: linear-gradient(to left, #e2e5e8,#fff);
+  --字体色1: #444;
+  --字大小1: 1.4rem;
+  --上标字符色1: #999;
+  --字阴影1: 0 .1rem .4rem rgba(0,0,0,.3), 0 0 0 #fff;
+  --键阴影1: none;
+  --字上下1: 8%;
+	--字左右1: -22%;
+
+/*功能键*/
+  --背景色2: linear-gradient(to left, #e2e5e8,#fff);
+  --字体色2: #444;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: 0 0 0 #fff;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: var(--字体色2);
+
+  --空格: #f50;
+	--uifj键色: var(--字体色1);
+
+/*候选栏*/
+  --候背景色: #EBEBEB;
+  --候字体颜色: #444;
+  --候高亮首选色: #80007f;
+  --候底线颜色: #ddd;
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);
+  --选重: #80007f;
+
+	--左右间距: .995;
+	--底部显示: none;
+	--下标: transparent;
+}
+
+.keyboard-key :is(.alt-note, .hii-note) {
+  top: 7%;
+  font: .8rem Sans-serif;
+}
+.keyboard-key .hii-note {
+  top: 82%;
+  font: .5rem Sans-serif;
+}
+
+/* 字母键字体样式 */
+x.keyboard-key:not(.special-key, [data-keycode="32"]) > span span{
+  font-family: sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}

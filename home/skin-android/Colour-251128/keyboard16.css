@@ -1,0 +1,92 @@
+:root{
+  --键盘背景色: #ddd;
+  --⇧键单击: #f90000;		/*shift键_单按_高亮_文字色*/
+  --⇧键锁定: #fff;		/*shift键_二按_锁定_背景色*/
+  --键边框颜色: #000;
+  --键边框大小: 0rem;
+  --键圆角: .8rem;
+  --键间距: .15rem;		/* 键(||)*/
+  --键阴影:		/* 键 底部阴影 */
+		.05rem 0 .3rem rgba(0,0,0,.1),
+		0 .1rem .2rem rgba(0,0,0,.3),
+		0 0 .1rem #fff inset;
+
+/*字母键*/
+  --背景色1: linear-gradient(#fff,#d2d2d2);
+  --字体色1: #222;
+  --字大小1: 1.3rem;
+  --上标字符色1: #444;
+  --字阴影1: 0 0 0 #fff;
+  --键阴影1: none;
+	--字上下1: 7%;
+
+/*功能键*/
+  --背景色2: linear-gradient(#eee,#ccc);
+  --字体色2: #111;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: 0 .1rem .1rem rgba(255,255,255,.3) inset;
+
+/*回车键*/
+  --⏎背景色: linear-gradient(#ffeee5,#ffaa80);
+  --⏎字体色: #111;
+
+/*候选栏*/
+  --候背景色: #ddd;
+  --候字体颜色: #222;
+  --候高亮首选色: #c50;
+  --候底线颜色: transparent;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);
+
+	--选重: #f00;
+	--空格x: #f00;
+	--底部显示: none;
+	--下标: transparent;
+	--uifj键色: var(--字体色1);
+
+  --键高度: 3.3rem !important;
+  --行间距: 0.41rem !important;
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+x.keyboard-key.special-key[data-keycode="-1"] > .visual-wrapper {
+  background: linear-gradient(rgba(255,255,255,.3),#0ee);  /* shift */
+}
+x.keyboard-key.special-key[data-keycode="-2"] > .visual-wrapper {
+  background: linear-gradient(#fff,#0ee);  /* 中英切换键 */
+}
+x.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper {
+  background: linear-gradient(#ffb3b3,#b30000);  /* 退格键 */
+}
+x.keyboard-key.special-key[data-keycode="13"] .alt-note,
+.keyboard-key.special-key[data-keycode="8"] .visual-wrapper span{
+  color: var(--透明,#f00);
+}
+x.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper span{
+	color: #111;
+}
+x.keyboard-key.special-key[data-keycode="-10"] > .visual-wrapper,
+x.keyboard-key.special-key[data-keycode="-12"] > .visual-wrapper {
+  background: linear-gradient(#fff,#0ee);  /* 数字&符号 */
+}
+x.keyboard-key.special-key[data-keycode="-11"] > .visual-wrapper,
+.keyboard-key.special-key[data-keycode="-110"] > .visual-wrapper {
+  background: #9aff9a;  /* 返回 */
+}
+x.keyboard-key:not(.special-key)[data-keycode="32"] > .visual-wrapper span{
+  text-decoration: underline;
+  text-decoration-color: #ffccb3;
+}

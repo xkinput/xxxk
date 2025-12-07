@@ -1,0 +1,156 @@
+:root{
+  --键盘背景色: #181E2A;
+  --⇧键单击: #f90;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: rgba(0,0,0,.5);
+  --键边框大小: 0.01rem;
+  --键圆角: 1rem;
+  --键间距: .13rem;		/* 键(||)*/
+  --键阴影: 
+	inset 0 -.1rem .3rem rgba(50,50,50,.1);
+
+/*字母键*/
+  --背景色1: linear-gradient(to bottom,rgba(255,255,250,.1),rgba(0, 9, 26, .1));
+  --字体色1: #eee;
+  --字大小1: 1.35rem;
+  --上标字符色1: #ccc;
+  --字阴影1: none;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: linear-gradient(rgba(179, 255, 255, .15),rgba(0,0,0,.1));
+  --字体色2: #eee;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: #eee;
+
+/*候选栏*/
+  --候背景色: #181E2A;
+  --候字体颜色: #ddd;
+  --候高亮首选色: #ff0;
+  --候底线颜色: #000;
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);
+	--uifj键色: var(--字体色1);
+	--底部显示: none;
+	--选重: #ff0;
+
+  --下标: transparent;
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+x.keyboard-key:is(.special-key, .special-key[data-keycode], .special-keya) .visual-wrapper {
+  box-shadow:
+	.1rem .2rem .2rem rgba(0,0,0,.4),
+	inset 0 .05rem .1rem rgba(255,255,255,.3),
+	inset 0 -.1rem .3rem rgba(255,255,255,.1);
+}
+
+.keyboard-key.special-key[data-keycode="13"] .alt-note {
+  color: var(--透明, var(--⏎字体色)) !important;
+}
+
+body:not(.landscape) .keyboard:not(.popup) .keyboard-candidate-panel span[data-page="true"] {
+  position: absolute;
+  top: 1%;
+  right: 0%;
+}
+/*
+.keyboard-key:active,
+.keyboard-key:not(.special-key)[data-keycode="32"]:active,
+.keyboard-key.special-key:active{
+  transform: scale(.9) !important;
+}
+*/
+.keyboard-candidate-panel .tool[data-tool] {
+  background-size: 65% !important;
+}
+
+/* 工具栏图标 */
+.keyboard-candidate-panel .tool[data-tool="0"] {
+  color: transparent;
+  background: url(images/00.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="1"] {
+  color: transparent;
+  background: url(images/01.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="2"] {
+  color: transparent;
+  background: url(images/02.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="3"] {
+  color: transparent;
+  background: url(images/03.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="4"] {
+  color: transparent;
+  background: url(images/04.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="10"] {
+  color: transparent;
+  background: url(images/10.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="12"] {
+  color: transparent;
+  background: url(images/12.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="13"] {
+  color: transparent;
+  background: url(images/13.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="7"] {
+  color: transparent;
+  background: url(images/07.svg) no-repeat center !important;
+}
+
+.keyboard{
+  z-index: 17;
+}
+.keyboard::after{
+  content: ""; position: absolute;
+  top: 30%; bottom: 25%; right: 20%; left: 25%;
+  z-index: -1;
+	pointer-events:none;
+  background: radial-gradient(
+    circle closest-side at 10% 20%,
+    #4d88ff 8%,
+    rgba(55,155,250,.7) 15%,
+    transparent
+  );
+  border-radius: 50%;
+  box-shadow: 
+    1px -2px rgba(77, 136, 255, .3);
+}
+.keyboard::before{
+  content: ""; position: absolute;
+  top: 50%; bottom: 25%; right: 20%; left: 56%;
+  z-index: -3;
+	pointer-events:none;
+/*  background: radial-gradient(
+    circle closest-side at 15% 30%,
+    #4d88ff 8%,
+    rgba(55,155,250,.7) 15%,
+    transparent
+  );*/
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(255,0,0,.5) 1%, rgba(55,155,250,.3) 20%, transparent 80%) 15px 27px / 50px 50px no-repeat;
+  border-radius: 50%;
+  box-shadow: 
+    45px -1px 0 0 rgba(255,255,255,.3);
+}

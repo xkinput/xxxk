@@ -1,0 +1,112 @@
+:root{
+  --键盘背景色: #444;
+  --⇧键单击: #f90000;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #333;
+  --键边框大小: 0.1rem;
+  --键圆角: .8rem;
+  --键间距: .1rem;		/* 键(||)*/
+  --键阴影:
+		0 0 0 #000 inset,
+		0 .1rem .1rem rgba(255,255,255,.1) inset,
+		0 .05rem .5rem rgba(255,255,255,.15) inset;
+
+/*字母键*/
+  --背景色1: rgba(99, 99, 99, .5);
+  --字体色1: #ddd;
+  --字大小1: 1.3rem;
+  --上标字符色1: #ccc;
+  --字阴影1: 0 .1rem .3rem rgba(0,0,0,.3), 0 0 0 #000;
+  --键阴影1: none;
+ 	--字上下1: 7%;
+
+/*功能键*/
+  --背景色2: #444;
+  --字体色2: #eee;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: linear-gradient(pink,#ffcc90);
+  --⏎字体色: #111;
+
+/*候选栏*/
+  --候背景色: #444;
+  --候字体颜色: #eee;
+  --候高亮首选色: #ff0;
+  --候底线颜色: transparent;
+  --候字阴影: none;
+  --候阴影: inset 0 .15rem .3rem rgba(0,0,0,.1);
+  --V背景色: var(--候背景色);
+
+ 	--选重: #ff0;
+ 	--底部显示: none;
+ 	--下标: transparent;
+ 	--uifj键色: var(--字体色1);
+  --候顶部线色: #fff !important;
+  --候顶部线色2: #999 !important;
+  --键高度x: 3.3rem !important;
+  --行间距x: 0.41rem !important;
+	--动画框色: transparent;
+	--动画字色: #fff;
+	--动画背景: rgba(255, 204, 144, .5);
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key.special-key[data-keycode="8"] .visual-wrapper span{
+  color: var(--透明,#f60);
+}
+/* 工具栏图标 */
+.keyboard-candidate-panel .tool[data-tool="0"] {
+  color: transparent;
+  background: url(images/00.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="1"] {
+  color: transparent;
+  background: url(images/01.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="2"] {
+  color: transparent;
+  background: url(images/02.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="3"] {
+  color: transparent;
+  background: url(images/03.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="4"] {
+  color: transparent;
+  background: url(images/04.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="10"] {
+  color: transparent;
+  background: url(images/10.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="12"] {
+  color: transparent;
+  background: url(images/12.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="13"] {
+  color: transparent;
+  background: url(images/13.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="7"] {
+  color: transparent;
+  background: url(images/07.svg) no-repeat center !important;
+}
+
+/* 键按下时缩小 */
+x.keyboard-key:active,
+x.keyboard-key.special-key:active{
+  background: linear-gradient(pink,#ffcc90) !important;
+}

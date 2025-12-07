@@ -1,0 +1,63 @@
+:root{
+  --键盘背景色: #ddd;
+  --⇧键单击: #fF0000;		/*shift键_单按_高亮_文字色*/
+  --⇧键锁定: #acacac;		/*shift键_二按_锁定_背景色*/
+  --键边框颜色: #666;
+  --键边框大小: 0;
+  --键圆角: .4rem;
+  --键间距: .15rem;		/* 键(||)*/
+  --键阴影:		/* 键 底部阴影 */
+			#889 0 -.01rem 0 inset;
+
+/*字母键*/
+  --背景色1: #fff;
+  --字体色1: #111;
+  --字大小1: 1.6rem;
+  --上标字符色1: #999;
+  --字阴影1: 0 0 0 #fff;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #C1C8D6;
+  --字体色2: #111;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: royalblue;
+  --⏎字体色: #FFF;
+
+/*候选栏*/
+  --候背景色: var(--键盘背景色);
+  --候字体颜色: #111;
+  --候高亮首选色: royalblue;
+  --候底线颜色: transparent;		/*候选栏底线(分割键盘区域线)_颜色*/
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--键盘背景色);
+  --uifj键色: var(--字体色1);
+	--下标: transparent;
+
+	--底部显示: none;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .7rem Sans-serif;
+}
+.keyboard-key.special-key[data-keycode="13"] .alt-note{
+  color: var(--透明,#fff);
+}
+
+x.keyboard-key:not(.special-key, [data-keycode="32"]) > span span{
+  font-family: sans-serif !important;
+  font-weight: 500 !important;
+}

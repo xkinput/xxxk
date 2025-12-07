@@ -1,0 +1,134 @@
+:root{
+  --键盘背景色: #444;
+  --⇧键单击: #f00;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: 0.05rem;
+  --键圆角: .4rem;
+  --键间距: .14rem;		/* 键(||)*/
+  --键阴影: none, 0 .05rem .1rem rgba(255,255,255,.2) inset;
+
+/*字母键*/
+  --背景色1: #353535;
+  --字体色1: #eee;
+  --字大小1: 1.25rem;
+  --上标字符色1: #aaa;
+  --字阴影1: none;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #292C35;
+  --字体色2: #eee;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: #003cb3;
+  --⏎字体色: #eee;
+
+/*候选栏*/
+  --候背景色: #505561;
+  --候字体颜色: #eee;
+  --候高亮首选色: #ff0;
+  --候底线颜色: #111;
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: #505561;
+	--uifj键色: var(--字体色1);
+	--底部显示: none;
+	--选重: #ff0;
+
+  --下标: transparent;
+  --空格: orange;
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key > .visual-wrapper:before ,
+.keyboard-key.special-key> .visual-wrapper:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 1%);
+  border-radius: .3rem;
+  width: 100%;
+  height: 91%;
+  background: linear-gradient(0deg, #535965 0%, rgba(0,0,0,.1) 100%) !important;
+}
+
+.keyboard-key.special-key[data-keycode="13"] .alt-note {
+  color: var(--透明, var(--⏎字体色)) !important;
+}
+x.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper{
+	background: #a54044 !important;
+}
+x.keyboard-key.special-key[data-keycode="8"] > .visual-wrapper:before {
+  background: linear-gradient(rgba(220,220,220,.1),#cd7e82) !important;
+}
+.keyboard-key.special-key[data-keycode="13"] > .visual-wrapper:before {
+  background: linear-gradient(rgba(220,220,220,.1),#4d88ff) !important;
+}
+
+body:not(.landscape) .keyboard:not(.popup) .keyboard-candidate-panel span[data-page="true"] {
+  position: absolute;
+  top: 1%;
+  right: 0%;
+}
+
+.keyboard-key:not(.special-key)[data-keycode="32"]:active,
+.keyboard-key.special-key:active{
+  transform: scale(.8) !important;
+}
+
+.keyboard-candidate-panel .tool[data-tool] {
+  background-size: 65% !important;
+}
+
+/* 工具栏图标 */
+.keyboard-candidate-panel .tool[data-tool="0"] {
+  color: transparent;
+  background: url(images/00.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="1"] {
+  color: transparent;
+  background: url(images/01.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="2"] {
+  color: transparent;
+  background: url(images/02.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="3"] {
+  color: transparent;
+  background: url(images/03.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="4"] {
+  color: transparent;
+  background: url(images/04.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="10"] {
+  color: transparent;
+  background: url(images/10.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="12"] {
+  color: transparent;
+  background: url(images/12.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="13"] {
+  color: transparent;
+  background: url(images/13.svg) no-repeat center !important;
+}
+.keyboard-candidate-panel .tool[data-tool="7"] {
+  color: transparent;
+  background: url(images/07.svg) no-repeat center !important;
+}

@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>设置</title>
+<style>
+body{
+	margin:0;
+	padding:0
+}
+
+tab-view>div{
+	padding:10px;
+}
+
+table{
+	width:100%;
+}
+
+table tr{
+	line-height: 30px;
+}
+
+table tr td:first-child{
+	min-width: 100px;
+}
+
+.im_title{
+	margin:5px 0px;
+}
+.im_title>select{
+	margin-left:5px;
+}
+
+</style>
+<script>
+
+customElements.define(
+	'tab-view',
+	class extends HTMLElement {
+		constructor() {
+			super();
+			this.attachShadow({mode: 'open'});
+			const css=document.createElement('style');
+			css.innerHTML=`
+				:host>div{
+					padding: 10px 10px;
+					border-bottom: 1px solid #ccc;
+					background-color: #fafafa;
+					position:relative;
+					box-sizing:border-box;
+				}
+				.tab_item{
+					display:inline;
+					text-align:center;
+					user-select:none;
+					margin-right:11px;
+					cursor:pointer;
+				}
+				.tab_item.selected{
+					color:#2d8cf0;
+				}
+				.tab_ink{
+					position:absolute;
+					height:2px;
+					box-sizing:border-box;
+					background-color:#2d8cf0;
+					left:0;
+					bottom:-1px;
+					z-index:1;
+					transform-origin:0 0;
+				}
+			`;
+			this.shadowRoot.innerHTML=`
+				<div></div>
+				<slot name="content"></slot>
+			`;
+			var label=this.getAttribute("label");
+			this.shadowRoot.appendChild(css);
+			var nav=this.shadowRoot.querySelector('div');
+			nav.onclick=(e)=>{
+				var el=e.target;
+				if(el.classList.contains('tab_item'))
+					this.select(el.textContent);
+			};	
+		}
+		connectedCallback(){
+			if(document.readyState === "loading")
+				document.addEventListener('DOMContentLoaded',this.update.bind(this));
+			else
+				setTimeout(this.update().bind(this),0);
+		}
+		static get observedAttributes() {
+			return ['label'];
+		}		
+		attributeChangedCallback(name, oldValue, newValue){
+			var label=newValue.split(',');
+			var nav=this.shadowRoot.querySelector('div');
+			nav.innerHTML='';
+			var el=document.createElement('div');
+			el.className='tab_ink';
+			nav.appendChild(el);
+			this.tabs=[];
+			for(var i=0;i<label.length;i++){
+				el=document.createElement('div');
+				el.className=i==0?'tab_item selected':'tab_item';
+				el.innerHTML=label[i];
+				nav.appendChild(el);
+				this.tabs.push({nav:el,label:label[i],content:null});
+			}
+		}
+		update(){
+			var slot=this.shadowRoot.querySelector('slot');
+			var arr=Array.from(slot.assignedElements()[0].children);
+			var el;
+			for(var i=0;i<arr.length;i++){
+				if(this.selected===undefined && arr[i].style.display!='none')
+					this.selected=i;
+				if(this.tabs[i])
+					this.tabs[i].content=arr[i];
+			}
+			this.select(this.selected);
+		}
+		select(n){
+			if(typeof(n)=='string')
+				n=this.tabs.findIndex(e=>e.label==n);
+			if(n>=0 && n<this.tabs.length){
+				for(var i=0;i<this.tabs.length;i++){
+					this.tabs[i].nav.classList.remove('selected');
+					this.tabs[i].content.style.display='none';
+				}
+				var tab=this.tabs[n];
+				tab.nav.classList.add('selected');
+				tab.content.style.display='block';
+				var r=tab.nav.getBoundingClientRect();
+				var rp=tab.nav.parentElement.getBoundingClientRect();
+				var ink=this.shadowRoot.querySelector('.tab_ink');
+				ink.style.transform=`translate(${r.x-rp.x-4}px)`;
+				ink.style.width=`${r.width+8}px`;
+				this.selected=n;
+			}
+		}
+	}
+);
+
+if(window.fs && !fs.writeFile){
+	fs.readdir=function(path){
+		if(!path)
+			path='/';
+		var text=fs._readdir(path);
+		if(!text)
+			return text;
+		return JSON.parse(text);
+	};
+	fs.writeFile=function(path,data){
+		var arr=(data instanceof Uint8Array)?data:new Uint8Array(data);
+		var text='';
+		for(var i=0;i<arr.length;i++)
+			text+=String.fromCharCode(arr[i]);
+		text=btoa(text);
+		return fs._writeFile(path,text);
+	};
+	fs.readFile=function(path){
+		var text=fs._readFile(path);
+		if(!text)
+			return text;
+		var raw=atob(text);
+		var r=new Uint8Array(raw.length);
+		for(var i=0;i<raw.length;i++){
+			r[i]=raw.charCodeAt(i);
+		}
+		return r;
+	};
+}
+
+customElements.define(
+	'update-view',
+	class extends HTMLElement{
+		constructor() {
+			super();
+			var shadow=this.attachShadow({mode: 'open'});
+			var css=document.createElement('style');
+			css.innerHTML=`
+				dialog{
+					padding:0;
+					border:1px solid #ccc;
+					width:80vw;
+					user-select:none;
+				}
+				button{
+					margin:5px 10px;
+					font-size:16px;
+				}
+				button.close{
+					margin:5px 5px;
+					float:right;
+					outline:none;
+					border:0;
+					background-color:transparent;
+				}
+				p{
+					margin:5px 10px;
+					font-size:16px;
+					min-height:20px;
+				}
+			`;
+			this.$root=document.createElement('dialog');
+			this.$root.innerHTML=`
+			<div>
+				<button>立刻更新</button>
+				<button class="close">
+					<svg style="width:1em;height:1em;vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1"><path d="M512 466.346667l244.010667-244.053334a31.957333 31.957333 0 1 1 45.312 45.312l-244.053334 244.010667 244.010667 244.010667a32 32 0 1 1-45.269333 45.312L512 556.928l-244.010667 244.010667A32 32 0 0 1 222.72 755.626667l244.010667-244.010667-244.053334-244.010667A32.085333 32.085333 0 0 1 267.989333 222.293333z" p-id="564"></path></svg>
+				</button>
+			</div>
+			<div>
+				<p></p>
+			</div>
+			`;
+			shadow.appendChild(this.$root);
+			shadow.appendChild(css);
+			this.$root.oncancel=(e)=>{
+				if(this.disableLeave())
+					e.preventDefault();
+			};
+			this.$root.onclick=(e)=>{
+				var r=this.$root.getBoundingClientRect();
+				var x=e.pageX,y=e.pageY;
+				if(x<r.left || y<r.top || x>r.right || y>r.bottom){
+					if(!this.disableLeave())
+						this.$root.close();
+					return;
+				}
+			};
+			var el=this.$root.querySelector('button:nth-child(1)');
+			el.onclick=this.update.bind(this);
+			el=this.$root.querySelector('button:nth-child(2)');
+			el.onclick=()=>{
+				this.$root.close();
+			};
+			this.setStatus();
+		}
+		async getRemoteFiles(importUser){
+			try{
+				var url='/sync/yong-win.xml';
+				if(importUser)
+					url+='?import='+encodeURIComponent(importUser);
+				var text=await (await fetch(url)).text();
+			}catch(e){
+				this.setStatus('加载远程文件列表失败');
+				return;
+			}
+			try{
+				var doc=(new DOMParser(text)).parseFromString(text,'application/xml');
+				if(doc.children.length!=1 || doc.children[0].tagName!='list'){
+					this.setStatus('分析远程文件列表失败');
+				}
+				var root=doc.children[0];
+				var res=[];
+				for(var i=0;i<root.children.length;i++){
+					var n=root.children[i];
+					let mtime=n.getAttribute('mtime');
+					res.push({
+						name:n.getAttribute('name'),
+						size:n.getAttribute('size'),
+						md5:n.getAttribute('md5'),
+						mtime:mtime?parseInt(mtime):0
+					});
+				}
+				return res;
+			}catch(e){
+				this.setStatus('分析远程文件列表失败');
+				return;
+			}
+		}
+		setStatus(s){
+			if(!s)
+				s='　';
+			var el=this.$root.querySelector('p');
+			el.textContent=s;
+		}
+		show(){
+			this.setStatus();
+			this.$root.showModal();
+		}
+		disableLeave(on){
+			var el=this.$root.querySelector('button:nth-child(1)');
+			if(on===undefined)
+				return el.disabled;
+			el.disabled=on;
+			el=this.$root.querySelector('button:nth-child(2)');
+			el.disabled=on;
+		}
+		allowUpdate(file){
+			var allow=false;
+			if(file.endsWith('.exe') || file.endsWith('.so'))
+				return false;
+			if(!file.startsWith('/mb/') || !file.endsWith('.txt'))
+				allow=true;
+			if(!file.endsWith('.txt'))
+				return allow;
+			var data=fs.readFile(file);
+			if(!data)
+				return true;
+			var pattern='\nupdate='.split('').map(e=>e.charCodeAt(0));
+			var u8=data.subarray(0,1024);
+			var i=u8.findIndex((e,i)=>{
+				for(var j=0;j<pattern.length;j++){
+					if(pattern[j]!==u8[i+j])
+						return false;
+				}
+				return true;
+			});
+			if(i>=0){
+				if(u8[i+pattern.length]==0x31)
+					allow=1;
+				else
+					allow=0;
+			}
+			return allow;
+		}
+		async update(){
+			await this.disableLeave(true);
+			var importUser=config.get('sync','import');
+			this.setStatus('下载远程文件列表');
+			var remote=await this.getRemoteFiles();
+			if(!remote){
+				this.disableLeave(false);
+				return;
+			}
+			this.setStatus('加载远程文件列表完成');
+			var count=0;
+			for(var i=0;i<remote.length;i++){
+				var it=remote[i];
+				var size=fs.getSize(it.name);
+				if(size==-1)
+					continue;
+				if(!this.allowUpdate(it.name))
+					continue;
+				if(size==it.size){
+					var md5=fs.getMD5(it.name);
+					if(md5==it.md5)
+						continue;
+				}
+				this.setStatus(`下载文件"${it.name}"`);
+				try{
+					var url='/sync/yong-win'+it.name;
+					if(importUser)
+						url+='?import='+encodeURIComponent(importUser);
+					var data=await (await fetch(url)).arrayBuffer();
+				}catch(e){
+					this.setStatus(`下载文件"${it.name}"失败`);
+					return;
+				}
+				fs.writeFile(it.name,data);
+				if(it.mtime && fs.setMtime)
+					fs.setMtime(it.name,it.mtime);
+				count++;
+			}
+			if(count>0){
+				this.setStatus("更新完成");
+				console.log("yong:config save");
+			}else{
+				this.setStatus("已经是最新的了");
+			}
+			this.disableLeave(false);
+		}
+	}
+);
+
+function unescapeVal(s){
+	if(!s.includes('\\'))
+		return s;
+	var r='';
+	for(var i=0;i<s.length;i++){
+		var c=s[i];
+		if(c=='\\'){
+			c=s[++i];
+			switch(c){
+				case '\\':
+					r+='\\';
+					break;
+				case 's':
+					r+=' ';
+					break;
+				case 'n':
+					r+='\n';
+					break;
+				case 'r':
+					r+='\r';
+					break;
+				case 't':
+					r+='\t';
+					break;
+				case '\'':
+					r+='\'';
+					break;
+				case '"':
+					r+='"';
+					break;
+				default:
+					r+='\\';
+					if(c)
+						r+=c;
+					break;
+			}
+		}else{
+			r+=c;
+		}
+	}
+	return r;
+}
+
+const origin="https://yong.dgod.net/config";
+window.$=document.querySelector.bind(document);
+var config=null;
+async function load(){
+	var text;
+	try{
+		text=await (await fetch(origin+"/yong.ini")).text();
+		if(!text)
+			return null;
+	}catch(e){
+		console.log(e);
+		text='';
+	}
+	var arr=text.split('\n').map(e=>e.trim());
+	var config={};
+	var cur=null;
+	for(var i=0;i<arr.length;i++){
+		var line=arr[i];
+		if(!line || line[0]=='#')
+			continue;
+		if(line[0]=='['){
+			var grp=line.substring(1,line.length-1);
+			if(!config[grp])
+				config[grp]={};
+			cur=config[grp];
+			continue;
+		}
+		if(!cur)
+			continue;
+		var j=line.indexOf('=');
+		if(j<=0)
+			continue;
+		var key=line.substring(0,j).trim();
+		var val=unescapeVal(line.substring(j+1).trim());
+		if(cur[key]===undefined)
+			cur[key]=val;
+	}
+	var o={
+		config,
+		dirty:[],
+		get(group,key,index,def){
+			var g=this.config[group];
+			if(!g)
+				return def;
+			var v=g[key];
+			if(!v)
+				return def;
+			if(index>=0){
+				var arr=v.split(' ');
+				v=arr[index];
+				if(!v)
+					return def;
+			}
+			return v;
+		},
+		getInt(group,key,index,def){
+			var s=this.get(group,key,index,def);
+			if(s===undefined)
+				return def;
+			var i=parseInt(s);
+			if(isNaN(i))
+				return def;
+			return i;
+		},
+		is_equal(a,b){
+			if(a==b)
+				return true;
+			if(typeof(a)=='number' || typeof(b)=='number')
+				return false;
+			if(!a && !b)
+				return true;
+			return false;
+		},
+		set(group,key,index,val){
+			if(typeof(val)=='string')
+				val=val.trim();
+			var g=this.config[group];
+			if(!g){
+				g=this.config[group]={};
+			}
+			val=val.toString();
+			var i=this.dirty.findIndex(e=>e.group==group&&e.key==key);
+			if(index>=0){
+				var temp=i>=0?this.dirty[i].val:g[key];
+				var arr=(temp||'').split(' ');
+				arr[index]=val;
+				val=arr.join(' ');
+			}
+			if(this.is_equal(g[key],val)){
+				if(i!=-1)
+					this.dirty.splice(i,1);
+				return;
+			}
+			if(i==-1)
+				this.dirty.push({group,key,val});
+			else
+				this.dirty[i].val=val;
+			console.log(`set ${group} ${key} ${val}`);
+		},
+		save(){
+			if(this.dirty.length==0){
+				alert('无需保存');
+				return;
+			}
+			for(var i=0;i<this.dirty.length;i++){
+				var {group,key,val}=this.dirty[i];
+				this.config[group][key]=val;
+				console.log(`yong:config set ${group} ${key} ${val}`);
+			}
+			console.log("yong:config save");
+			if(this.config.main && this.config.main.tip!=1)
+				alert('完成');
+		},
+	};
+	if(o.get("pinyin","name")){
+		try{
+			o.sp=await (await fetch(origin+"/sp.json")).json();
+		}catch(e){
+			console.log(e);
+			o.sp=[];
+		}
+	}
+	try{
+		o.skin=await (await fetch(origin+"/skin.json")).json();
+	}catch(e){
+		o.skin=[];
+	}
+	return o;
+}
+
+function config_to_ui(){
+	var el;
+	var arr=[];
+	for(var i=0;i<10;i++){
+		let group=config.get("IM",i);
+		if(!group)
+			break;
+		let name=config.get(group,"name");
+		arr.push({group,name});
+	}
+	el=document.querySelector('[data-config="IM default"]');
+	if(el){
+		el.innerHTML='';
+		for(let i=0;i<arr.length;i++){
+			let option=new Option(arr[i].name,i);
+			el.appendChild(option);
+		}
+	}
+	el=document.querySelector('.im_title select');
+	if(el){
+		el.innerHTML='';
+		let cont=document.querySelector('#config_which');
+		cont.innerHTML='';
+		let def=config.getInt('IM','default');
+		for(var i=0;i<10;i++){
+			let group=config.get('IM',i);
+			if(!group)
+				break;
+			let tmpl=document.querySelector('#tmpl-config-'+group);
+			if(!tmpl){
+				let engine=config.get(group,'engine');
+				if(engine!='libmb.so')
+					continue;
+				tmpl=document.querySelector('#tmpl-config-mb');
+			}
+			let name=config.get(group,'name');
+			let option=new Option(name,group);
+			el.appendChild(option);
+			let clone=document.importNode(tmpl.content,true);
+			let root=clone.children[0];
+			if(i!=def){
+				root.style.display="none";
+			}
+			root.classList.add('config_which');
+			root.dataset.which=group;
+			let iter=document.createNodeIterator(root,NodeFilter.SHOW_ELEMENT);
+			let node;
+			while(node = iter.nextNode()){
+				if(node.dataset.config){
+					let arr=node.dataset.config.split(' ');
+					if(arr[0]=='xxxx'){
+						arr[0]=group;
+						node.dataset.config=arr.join(' ');
+					}
+				}
+			}
+			cont.appendChild(clone);
+		}
+	}
+	for(let i=0;i<2;i++){
+		let key=['android_skin','android_skin_dark'][i];
+		el=document.querySelector(`[data-config="android ${key}"]`);
+		if(el){
+			el.innerHTML='';
+			if(key=='android_skin_dark'){
+				let value='';
+				let text='无';
+				let option=new Option(text,value);
+				el.appendChild(option);
+			}
+			let arr=config.skin;
+			if(arr && arr.length>0){
+				for(let i=0;i<arr.length;i++){
+					let value=arr[i];
+					let text=value.includes('.zip')?value.substring(0,value.length-4):value;
+					let option=new Option(text,value);
+					el.appendChild(option);
+				}
+			}
+		}
+	}
+	if(config.sp){
+		let arr=config.sp;
+		el=$('[data-config="pinyin sp"]');
+		if(el){
+			while(el.children.length>2)
+				el.children[2].remove();
+			for(let i=0;i<arr.length;i++){
+				let option=new Option(arr[i][1],arr[i][0]);
+				el.appendChild(option);
+			}
+		}
+		el=$('[data-config="cloud sp"]');
+		if(el){
+			while(el.children.length>2)
+				el.children[2].remove();
+			for(let i=0;i<arr.length;i++){
+				let option=new Option(arr[i][1],arr[i][0]);
+				el.appendChild(option);
+			}
+		}
+	}
+	
+	el=document.querySelectorAll('.config_item');
+	for(let i=0;i<el.length;i++){
+		var [group,key,index]=el[i].dataset.config.split(' ');
+		var def=el[i].dataset['default'];
+		var val=config.get(group,key,index,def);
+		if(group=="input" && key=="popup" && val==0)
+			val="";
+		if(val===undefined || val===null)
+			continue;
+		if(el[i].tagName=='INPUT' && el[i].type=="checkbox"){
+			el[i].checked=val=='1';
+		}else{
+			el[i].value=val;
+		}
+	}
+}
+
+function ui_to_config(){
+	var el=document.querySelectorAll('.config_item');
+	for(var i=0;i<el.length;i++){
+		let val;
+		if(el[i].tagName=='INPUT' && el[i].type=="checkbox"){
+			val=el[i].checked?'1':'0';
+		}else{
+			val=el[i].value;
+		}
+		var [group,key,index]=el[i].dataset.config.split(' ');
+		config.set(group,key,index,val);
+	}
+}
+
+async function init(){
+	config=await load();
+	config_to_ui();
+}
+
+function LaunchSync(){
+	console.log("yong:config sync");
+}
+
+function LaunchUpdate(){
+	console.log("yong:config update");
+}
+
+function LaunchUpdateData(){
+	var el=document.querySelector('update-view');
+	if(!el){
+		el=document.createElement('update-view');
+		document.body.appendChild(el);
+	}
+	el.show();
+}
+
+async function ReloadConfig(){
+	config=await load();
+	config_to_ui();
+}
+
+function SaveConfig(){
+	ui_to_config();
+	config.save();
+}
+
+function LaunchSwitchIM(){
+	console.log("yong:config enable");
+}
+
+function openSite(){
+	console.log("yong:commit $GO(http://yong.dgod.net)");
+}
+
+function ChangePYConfig(){
+	var sp=this.value;
+	var config=this.dataset.config.split(' ');
+	var which=config[0];
+	var el=$(`.config_which[data-which='${which}'] [data-config="${which} overlay"]`);
+	if(el)
+		el.value=sp?"mb/sp.ini":"mb/pinyin.ini";
+}
+
+function ChangeIMConfig(){
+	var group=this.value;
+	var arr=document.querySelectorAll('.config_which');
+	for(var i=0;i<arr.length;i++){
+		arr[i].style.display='none';
+	}
+	for(var i=0;i<arr.length;i++){
+		if(arr[i].dataset.which==group){
+			arr[i].style.display='';
+			break;
+		}
+	}
+}
+
+</script>
+</head>
+<body onload="init()">
+<template id="tmpl-config-pinyin">
+	<div style="border-left: 1px solid #ccc">
+		<table>
+			<tr>
+				<td>分词库</td>
+				<td>
+					<input type="text" class="config_item" data-config="xxxx dicts">
+				</td>
+			</tr>
+			<tr>
+				<td>双拼</td>
+				<td>
+					<select class="config_item" data-config="xxxx sp" onchange="ChangePYConfig.call(this)">
+						<option value="">无</option>
+						<option value="zrm">自然码</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>配置文件</td>
+				<td>
+					<input type="text" class="config_item" data-config="xxxx overlay">
+				</td>
+			</tr>
+		</table>
+	</div>
+</template>
+<template id="tmpl-config-mb">
+	<div style="border-left: 1px solid #ccc">
+		<table>
+			<tr>
+				<td>分词库</td>
+				<td>
+					<input type="text" class="config_item" data-config="xxxx dicts">
+				</td>
+			</tr>
+			<tr>
+				<td>配置文件</td>
+				<td>
+					<input type="text" class="config_item" data-config="xxxx overlay">
+				</td>
+			</tr>
+		</table>
+	</div>
+</template>
+<template id="tmpl-config-cloud">
+	<div style="border-left: 1px solid #ccc">
+		<table>
+			<tr>
+				<td>双拼</td>
+				<td>
+					<select class="config_item" data-config="xxxx sp" onchange="ChangePYConfig.call(this)">
+						<option value="">无</option>
+						<option value="zrm">自然码</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+</template>
+<tab-view label="输入法,界面,按键,服务,安卓,关于">
+<div slot="content">
+	<div style="display:">
+		<table>
+			<tr>
+				<td>汉字过滤</td>
+				<td>
+					<select class="config_item" data-config="IM filter 0">
+						<option value="0">不过滤</option>
+						<option value="1">过滤</option>
+						<option value="1,1">严格过滤</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>回车键行为</td>
+				<td>
+					<select class="config_item" data-config="IM enter" data-default="default">
+						<option value="default">上屏编码</option>
+						<option value="clear">清空编码</option>
+						<option value="commit">上屏首选</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>默认输入法</td>
+				<td>
+					<select class="config_item" data-config="IM default">
+					</select>
+				</td>
+			<tr>
+		</table>
+		<p class="im_title">设置<select onchange="ChangeIMConfig.call(this)"></select></p>
+		<div id="config_which"></div>
+	</div>
+	<div style="display:none">
+		<table>
+			<tr>
+				<td>候选项个数</td>
+				<td>
+					<select class="config_item" data-config="IM cand">
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>候选项字数</td>
+				<td>
+					<input type="text" class="config_item" data-config="input strip">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" class="config_item" data-config="input hint">
+						编码提示
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" class="config_item" data-config="main tip">
+						操作提示
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>悬浮显示</td>
+				<td>
+					<select class="config_item" data-config="input popup">
+						<option value="" selected>无</option>
+						<option value="1">自动</option>
+						<option value="2">调试</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="display:none">
+		<table>
+			<tr>
+				<td>翻页</td>
+				<td>
+					<input type="text" class="config_item" data-config="key page">
+				</td>
+			</tr>
+			<tr>
+				<td>临时英文</td>
+				<td>
+					<input type="text" class="config_item" data-config="key tEN">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="display:none">
+		<table>
+			<tr>
+				<td colspan="2">
+					<button onclick="LaunchSync()">同步</button>　
+					<button onclick="LaunchUpdate()">更新</button>　
+					<button onclick="LaunchUpdateData()">更新数据</button>
+				</td>
+			</tr>
+			<tr>
+				<td>用户</td>
+				<td>
+					<input type="text" class="config_item" data-config="sync user">
+				</td>
+			</tr>
+			<tr>
+				<td>密钥</td>
+				<td>
+					<input type="text" class="config_item" data-config="sync sid">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="display:none">
+		<table>
+			<tr>
+				<td colspan="2">
+					<button onclick="LaunchSwitchIM()">设置系统输入法</button>
+					<!--<button onclick="console.log('yong:action switchInputMethod')">test</button>-->
+				</td>
+			</tr>
+
+			<tr>
+				<td style="width:50%">
+					<label>
+						<input type="checkbox" class="config_item" data-config="android android_contacts">
+						加载联系人
+					</label>
+				</td>
+				<td style="width:50%">
+					<label>
+						<input type="checkbox" class="config_item" data-config="android android_hide_keyboard">
+						自动隐藏软键盘
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" class="config_item" data-config="android android_vibration">
+						按键振动
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" class="config_item" data-config="android android_click_sound">
+						按键音效
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" class="config_item" data-config="android android_code_tip">
+						编码提示
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" class="config_item" data-config="android android_clipboard">
+						监视剪贴板
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<label>
+						<input type="checkbox" class="config_item" data-config="android android_sms_code">
+						快速输入验证码
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<label>
+						<input type="checkbox" class="config_item" data-config="android android_code_in_keyboard">
+						在软键盘中显示编码
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<label>
+						<input type="checkbox" class="config_item" data-config="android android_work_with_uri">
+						在输入网址时使用输入法
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<label>
+						皮肤　
+						<select class="config_item" data-config="android android_skin">
+						</select>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<label>
+						深色皮肤　
+						<select class="config_item" data-config="android android_skin_dark">
+						</select>
+					</label>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="display:none">
+		<div style="margin:20px">
+			<p>作者：dgod</p>
+			<p>论坛：<a href="javascript:;" onclick="openSite()">yong.dgod.net</a></p>
+			<!--<p style="color:#444">备案编号：</p>-->
+		</div>
+	</div>
+</div>
+</tab-view>
+</body>
+</html>
+

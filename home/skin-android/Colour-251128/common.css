@@ -1,0 +1,1097 @@
+/* 字母键 字体 */
+@font-face { font-family: "英文字体"; font-weight: 600; src: url('fonts/000.ttf');unicode-range: U+0030-0039, U+0041-005A, U+0061-007A;}
+/* 候选栏/剪贴板/候选展开/ 字体 */
+@font-face { font-family: "汉字字体"; font-weight: 600; src: url('fonts/001.ttf');}
+/*单个大字集字体TH-Feon.ttf*/
+@font-face { font-family: '大字集'; font-weight: 600; src: url('fonts/TH-Feon.ttf');}
+@font-face { font-family: '默认'; font-weight: 600; src: url('fonts/Keyboard-Symbols.ttf');}
+
+@font-face { font-family: "字集一"; font-weight: 600; src: url('fonts/p1.ttf');}
+@font-face { font-family: "字集二"; font-weight: 600; src: url('fonts/p2.ttf');}
+@font-face { font-family: "字集三"; font-weight: 600; src: url('fonts/p3.ttf');}
+
+:root {
+  --键高度: 3.5rem;
+	--数字行高度: 2.7rem; /*数字行[sa:true]*/
+  --行间距: 0.25rem;		/*行(=)*/
+  --底部增高: 0.1rem;
+	--栏键间距: .2rem;
+
+/* 候选栏 */
+  --候高度: 3.8rem;
+  --候字体大小: 1.8rem;
+  --候字体间距: 0.43rem;
+  --候编码字大小: 0.8rem;
+  --候编码位置: -0.3rem; /*上下,正数下移 负数上移*/
+  --候字体位置: 2.6;
+
+	--候工具字大小: 1.9rem;
+  --候工具间距: 0.42rem; /*候选工具栏*/
+	--候工具位置: 2.4; /*字上下*/
+  --候顶部线色: transparent;
+  --候顶部线色2: rgba(0,0,0,.4);
+	
+	--上下标大小: 0.6rem;
+
+  --候选栏字体: 汉字字体,sans-serif;
+  --字母键字体: 英文字体,默认,汉字字体,sans-serif;
+	--功能键字体: 默认,英文字体,汉字字体,sans-serif;
+
+/* 会被皮肤 大字集开关 调用 */
+	--大字集字体:  汉字字体,system,大字集,sans-serif;
+/* --大字集字体:  汉字字体,sans-serif,字集一,字集二,字集三;  */
+
+/* 剪贴板/短语板/候选下拉展开 界面字体 */
+	--界面字体大小: 1.5rem;
+	--界面字体: 默认,sans-serif;
+	--展开字体: var(--候选栏字体);
+	--⏍时间: blue;
+
+	--展开编码颜色: #517A95;
+	--展开编码阴影: 0 -.01rem 0rem #000;
+	--展开键字色: #444;
+	--展开键字阴影: none,
+		0 .1rem .2rem rgba(0,0,0,.3),
+		0 -.01rem 0 #000,
+		0 .01rem 0 #fff;
+	--展开键背景: rgba(235, 230, 217, .5);
+	--展开键阴影: none;
+	--展开键圆角: .4rem;
+	--展开键边框: .06rem solid #888;
+	--展开界面背景: #F3EFE8;
+	
+/* u, i ,f, j键字体色,
+取消下面行的注释,会变为默认字体色:*/
+/*	--uifj键色: var(--字体色1); */
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;  
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-focus-ring-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
+html {
+	touch-action: none;
+	pointer-events: none;
+}
+
+body {
+  overflow: hidden;
+	background: var(--背景色0, none);
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+.keyboard-key:focus {
+	outline: none;
+}
+
+/* Keyboard */
+.keyboard:not(.popup) {
+	box-sizing: border-box;	
+	position: absolute;
+	z-index: 15;
+	border-top: solid max(0.05rem, 1px) var(--候顶部线色2);
+	pointer-events: auto;
+	width: var(--缩小, 100%);
+	background: var(--键盘背景色);
+  /* 固定背景避免重复渲染 */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* 按键区域 */
+.keyboard-key-panel {
+	width: 100%;
+	box-sizing: border-box;
+	padding-top: var(--栏键间距);
+}
+
+/* 按键 每一行 */
+.keyboard-row {
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  transform:scale(var(--左右间距, 0.995));
+  margin-bottom: var(--行间距);
+}
+
+.keyboard-key[data-row="0"] {
+  display: var(--数字栏, none);
+}
+
+/* Buttons: logic keys */
+.keyboard-key {
+  box-sizing: border-box;
+  background: none;
+  display: inline-block;
+  border: none;
+  padding: 0 var(--键间距, 0);
+}
+
+/* Visible keys */
+.keyboard-key > .visual-wrapper {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  height: var(--键高度);
+  background: var(--背景色1, transparent);
+  border-radius: var(--键圆角, none);
+  border: var(--键边框大小, 0) solid var(--键边框颜色, transparent);
+  box-shadow: var(--键阴影, none);
+}
+
+/* Standard key styles. */
+.keyboard-key > .visual-wrapper > span {
+	top: var(--字上下1,5%);
+  left: var(--字左右1,0);
+	right: var(--预设,0);
+	bottom: var(--预设,0);
+  position: absolute;
+  text-align: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.2rem;
+  font-size: var(--字大小1);
+  font-family: var(--字母键字体);
+  text-shadow: var(--字阴影1, none);
+  text-transform: var(--case);  /*删除此行字母键变小写*/
+  color: var(--字体色1);
+  border-radius: var(--键圆角, none);
+  box-shadow: var(--键阴影1, none);
+  line-height: calc(var(--键高度)/1.1);
+  z-index: 0;
+	pointer-events:none;
+}
+
+
+.keyboard-key[data-keycode='32'] > .visual-wrapper > span,
+.keyboard-key.special-key > .visual-wrapper > span,
+.keyboard-key.special-keya > .visual-wrapper > span {
+	top: var(--字上下2,0);
+  left: var(--字左右2,0);
+	bottom:0; right:0;
+}
+
+/* 功能键 */
+.keyboard-key.special-key > .visual-wrapper,
+.keyboard-key.special-keya > .visual-wrapper {
+  background: var(--背景色2);
+}
+.keyboard-key.special-key > .visual-wrapper > span,
+.keyboard-key.special-keya > .visual-wrapper > span {
+  color: var(--字体色2);
+  font-size: var(--字大小2, var(--字大小1));
+  font-family: var(--功能键字体);
+  text-shadow: var(--字阴影2, none);
+  box-shadow: var(--键阴影2, none);
+}
+.keyboard-key.special-key > .visual-wrapper > span {
+  line-height: calc(var(--键高度)/1.1);
+}
+.keyboard-key.special-keya > .visual-wrapper {
+  height: var(--数字行高度);
+}
+.keyboard-key.special-keya > .visual-wrapper > span {
+  line-height: 1.5; /*数字行字体位置*/
+}
+
+.keyboard-key[data-keycode="13"] > .visual-wrapper {
+  background: var(--⏎背景色, var(--背景色2));
+  border-radius: var(--键圆角);
+	box-shadow: var(--⏎阴影, var(--键阴影));
+}
+.keyboard-key[data-keycode="13"] > .visual-wrapper span{
+  color: var(--⏎字体色);
+  transform: rotateY(180deg); /* 反转回车键字符 */
+}
+.keyboard-key[data-keycode="32"] > .visual-wrapper span{
+  font-size: 1.3rem;
+	font-family: 汉字字体,默认,sans-serif;
+  text-transform: uppercase; /* 空格键大写 */
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.keyboard-key[data-keycode="32"] > .visual-wrapper span a{
+  color: green;
+}
+.keyboard-key:not(.special-key)[data-keycode="32"] > .visual-wrapper span::first-letter{
+  color: var(--空格); /* 空格键第一个字颜色 */
+}
+.keyboard-key[data-keycode="102"] > .visual-wrapper span {
+  color: var(--uifj键色, #f56);
+}
+.keyboard-key[data-keycode="105"] > .visual-wrapper span {
+  color: var(--uifj键色, #FF9000);
+}
+.keyboard-key[data-keycode="106"] > .visual-wrapper span {
+  color: var(--uifj键色, green);
+}
+.keyboard-key[data-keycode="117"] > .visual-wrapper span {
+  color: var(--uifj键色, #56c);
+}
+.keyboard-key.special-key[data-keycode="-101"] > .visual-wrapper span,
+.keyboard-key.special-key[data-keycode="-102"] > .visual-wrapper span,
+.keyboard-key.special-key[data-keycode="-103"] > .visual-wrapper span,
+.keyboard-key.special-key[data-keycode="-104"] > .visual-wrapper span,
+.keyboard-key.special-key[data-keycode="-115"] > .visual-wrapper span,
+.keyboard-key.special-key[data-keycode="27"] > .visual-wrapper span {
+	text-shadow:none;
+	color: var(--选重, var(--候高亮首选色));
+}
+
+/* 按键时动画 */
+.keyboard-key.highlighted2 {
+  padding: 0 0;
+	position:relative;
+	z-index: 100;
+}
+.keyboard-key:not(.special-key).highlighted2 >.visual-wrapper {
+	background: var(--动画背景, var(--背景色1));
+  box-shadow: var(--动画阴影, none);
+  outline: .1rem solid var(--动画框色, red);
+  outline-offset: var(--动画框大小, -.1rem);
+}
+.keyboard-key:not(.special-key):not([data-keycode="32"]).highlighted2 >.visual-wrapper span{
+	box-shadow:none;
+	text-shadow:none;
+  color: var(--动画字色, red);
+  pointer-events:none;
+}
+.keyboard-key.special-key.highlighted2 >.visual-wrapper{
+	transform:scale(.9);
+}
+.keyboard-key.alt-show >.visual-wrapper{
+	background: #E35900;
+}
+.keyboard-key.highlighted2 .alt-note {
+	border: none;
+  visibility: hidden;
+}
+.keyboard-key:not(.special-key).highlighted2> .visual-wrapper{
+  transition: var(--动画, none);
+}
+
+/* Key states */
+/* Active */
+.keyboard-key.kbr-key-active > .visual-wrapper > span {
+  color: var(--⇧键单击, red);
+}
+/* Hold */
+.keyboard-key.kbr-key-hold> .visual-wrapper {
+  box-shadow: none;
+}
+.keyboard-key.kbr-key-hold> .visual-wrapper::after {
+  content: "▪"; position: absolute;
+  left: 25%; top: 20%; bottom: 0; right: 0;
+  color: var(--⇧方块, var(--⇧键单击));
+  font-size: 1.1rem;
+  z-index: 17;
+}
+.keyboard-key.kbr-key-hold> .visual-wrapper > span {
+  color: var(--⇧键单击);
+}
+
+/* 候选栏 */
+.keyboard-candidate-panel {
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
+	display: block;
+	width: 100%;
+	height: var(--候高度);
+	color: var(--候字体颜色);
+	background: var(--候背景色);  /*候选栏背景色*/
+	border-bottom: .1rem solid var(--候底线颜色);
+	border-top: .05rem solid var(--候顶部线色);
+	box-shadow: var(--候阴影, none);
+	vertical-align: middle;
+}
+.keyboard-candidate-panel span {
+  min-width: 2.5rem;
+  display: inline-block;
+  text-align: center;
+  font-size: var(--候字体大小);
+  font-family: var(--候选栏字体);
+  text-shadow: var(--候字阴影, none);
+  line-height: var(--候字体位置);
+  padding: 0rem var(--候字体间距) 0; /*字之间的间距*/
+  position: relative;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first {
+  color: var(--候高亮首选色);
+}
+.keyboard:not(.popup) .keyboard-candidate-panel p.desc{
+  color: var(--候高亮首选色); /* desc字颜色 */
+	font-size:1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-data="0"] label.codetip {
+	color: var(--补码2, var(--候高亮首选色));
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first label.codetip {
+	color: var(--补码1);
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span:not([data-data="0"]) label.codetip {
+  color: var(--候高亮首选色); /*候选栏编码补全字体_色*/
+	position: absolute;
+	top: -.4em; /* 调整上下位置 */
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.keyboard-candidate-panel span label.codetip {
+	font-size: .8rem; /* 候选栏编码补全字体_大小*/
+}
+
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-page="true"] {
+	position:absolute;
+	right:0;
+	width: 2.2rem; /*候选下拉展开键最小宽度*/
+	height: var(--展开键高度,calc( var(--候高度) - 0.4rem )) !important;
+	background: var(--V背景色);
+	color: var(--候高亮首选色);
+  border-radius: var(--翻页圆角, 0);
+	border-left: .05rem solid rgba(100,100,100,.2);
+}
+
+body:not(.landscape) .keyboard:not(.popup) .keyboard-candidate-panel.page span:nth-last-child(2){
+	margin-right: 3.6rem;
+}
+
+.keyboard-candidate-panel span[data-active="1"] {
+	color: var(--候高亮首选色);
+}
+
+/* 候选工具栏 */
+.keyboard-candidate-panel .tool {
+  line-height: var(--候工具位置, 2.2);
+  font-family: 默认,汉字字体,sans-serif;
+	font-size: var(--候工具字大小, 1.9rem);
+  padding: 0rem var(--候工具间距);
+}
+
+.keyboard-candidate-panel .tool:active{
+  color: var(--候高亮首选色);
+}
+
+.keyboard-code-panel{
+	position:absolute;
+	left: 1rem;
+	top: var(--候编码位置);
+	background: transparent;  /*编码_背景色 */
+	white-space:nowrap;
+	width:100%;
+}
+
+.keyboard-code-panel .code-got,
+.keyboard-code-panel .code-text{
+	color: var(--候字体颜色);
+	font-family: var(--候选栏字体);
+	font-size: var(--候编码字大小);
+}
+
+.keyboard-code-panel .code-caret{
+	color: var(--候字体颜色);
+	border: max(0.05rem, 1px) solid var(--候高亮首选色);  /* 编码光标 */
+}
+
+.keyboard-code-panel span.desc{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	color: var(--编码2, var(--候字体颜色));
+}
+
+.keyboard:not(.popup) .keyboard-border-inner {
+	margin:0;
+	padding:0;
+	border-top: 0.01rem solid var(--候顶部线色2);
+}
+
+/* 上下标 */
+.alt-note, .hii-note {
+  position: absolute;
+  font-family: 汉字字体,默认,Sans-serif;
+  font-size: var(--上下标大小,.6rem);
+  pointer-events: none;
+}
+.alt-note {
+  top: 3%;
+  right: 0.2rem;
+	color: var(--上标, var(--上标字符色1));
+}
+.keyboard-key.special-key .alt-note{
+	color: var(--上标, var(--上标字符色2));
+}
+.hii-note {
+  bottom: 3%;
+  left: 0.2rem;
+	color: var(--下标, var(--上标字符色1));
+}
+.keyboard-key.special-key .hii-note{
+	color: var(--下标, var(--上标字符色2));
+}
+.keyboard-key.special-key[data-keycode="13"] .hii-note,
+.keyboard-key.special-key[data-keycode="13"] .alt-note {
+  color: var(--透明, var(--⏎字体色));
+}
+
+/* 界面 */
+.overlay{
+	box-sizing:border-box;
+	position: absolute;
+	border-top: 0.1rem solid #000;
+	background: #ddd;
+	z-index: 99;
+	overflow-y: auto;
+	overflow-x: hidden;
+	pointer-events: auto;
+}
+
+.overlay button.touch-highlight {
+	background: #6ec5d5;
+	color: #000;
+}
+
+/* 符号界面 */
+.emoji button{
+	background: var(--符号按键背景,#ddd);
+	color: var(--符号字体色,#111);
+  font: 2.2rem/3.4rem Sans-serif;
+  border: 1px solid #000;
+  display: inline-block;
+  border-radius: 0px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 编辑界面 */
+.editor{
+	border-top: 0.1rem solid #000;
+  background: #eee;
+}
+.editor button{
+  -webkit-user-select: none;
+  user-select: none;
+  position: absolute;
+  background: linear-gradient(90deg,#fff 50%, #ddd 100%);
+  width:4.2rem;
+  color: #000;
+  font: 1.1rem Sans-serif;
+  border: .1rem solid #000;
+  display: inline-block;
+  border-radius: .5rem;
+  height: calc(var(--键高度)/1.2);
+  line-height: calc(var(--键高度)/1.2);
+  box-shadow: 
+	inset -.2rem .2rem .1rem rgba(255,255,255,.5),
+	inset .1rem -.1rem .3rem rgba(0,0,0,.3),
+	-.15rem 0 .2rem rgba(0, 0, 0, .3);
+}
+.editor button.selected{
+  background: #B0C0E9;
+  box-shadow: none;
+	color: red;
+}
+.editor button.arrow,
+.editor button.select{
+	width: 4.2rem;
+}
+.editor button .alt {
+  position:absolute;
+  font-size: .8rem;
+  color: #0091E3;
+  top: -30%;right:8%;
+  pointer-events: none;
+}
+/*候选下拉展开界面*/
+.mymy, .cands{
+	border-top: .1rem SOLID #000;
+	background: var(--展开界面背景, #ddd);
+  width: 100%;
+}
+.mymy div, .cands div{
+  display: flex;
+  flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+.mymy div > button, .cands div > button{
+	min-width: calc(100% / 6.35);
+	min-height: 3rem;
+	flex-grow: 1;
+	border-radius: var(--展开键圆角, .4rem);
+	-webkit-user-select: none;
+	user-select: none;
+	margin: .1rem;
+	border: var(--展开键边框, .1rem solid #000);
+	background: var(--展开键背景, #aaa);
+	color: var(--展开键字色, #000);
+	box-shadow: var(--展开键阴影, 0 .1rem .2rem rgba(0,0,0,.3));
+}
+.mymy div > button{
+	font-size: 1.7rem;
+}
+.cands button{
+	color: var(--展开键字色, #000);
+  font-size: var(--界面字体大小);
+	font-family: var(--展开字体);
+	text-shadow: var(--展开键字阴影, 0 .1rem 0 #000);
+	position: relative;
+}
+.cands button > a{
+	color: var(--展开编码颜色, #8080ff);
+	font: .8rem/.5rem Sans-serif;
+	text-shadow: var(--展开编码阴影,none);
+	position: absolute;
+  transform: translate(-50%, -35%);
+	left: 50%;
+	bottom: 0;
+}
+.landscape .cands button {
+	font: 2.2rem/3.0rem Sans-serif;
+	padding:0 0.4rem;
+}
+/*剪贴板界面*/
+.clipboard {
+	border-top: 0.1rem solid #000;
+	background: #E7D4B3;
+}
+.clipboard button{
+	box-sizing:border-box;
+	width: calc(100% - 0.2rem);
+	min-height: 3.4rem;
+	margin: 0.2rem .1rem;
+	background: transparent;
+	color: var(--界面字体色,#000);
+  font-size: var(--界面字体大小);
+	font-family: var(--界面字体);
+	text-shadow: 0 0 0 #000;
+	border-radius: .3rem;
+	border: 0.05rem solid #777;
+	border:none;border-bottom: 0.2rem dashed #444;
+	border-radius: 0rem;
+	display: block;
+	-webkit-user-select: none;
+	user-select: none;
+	padding: 0 0.2rem;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	text-align:left;
+}
+.clipboard button span{
+	position:absolute;
+	right:1%;
+	font-size: .6rem;
+	background: rgba(0,0,0,.1);
+	border-radius: 1rem;
+	color: var(--⏍时间,#A7DDF6);  /*剪贴板_时间字体色*/
+}
+
+.clipboard p{
+	background: #aaa;
+	color: #333;
+	font-size: 2rem;
+}
+
+.setting, .phrase, .theme {
+	padding: 0 0.1rem;
+	border-top: 0.1rem solid #000;
+}
+.msgbox .md, .setting button, .theme button, .jslist button{
+	/*临时⚝/设置/配色 界面字体设置*/
+  font-size: var(--界面字体大小);
+	font-family: sans-serif;
+	text-align: left;
+	border: 0.1rem solid #000;
+	max-height: 2.2rem;
+	display: inline-block;
+	border-radius: .4rem;
+	-webkit-user-select: none;
+	user-select: none;
+	margin: 0.1rem;
+}
+/* 临时信息⚝界面 */
+.msgbox {
+	background: #E7D4B3;
+	border-top: 0.1rem solid #000;
+	padding: .3rem;
+	display: flex;
+	justify-content: center;
+	width:100%;
+}
+.msgbox .md{
+  font-family: 默认,大字集,fantasy; 
+	font-size: 1.1rem;
+	border: none;
+	box-shadow:none;
+	position: absolute;
+	line-height: 1.6;
+	width: 98%;
+	min-height: 100%;
+	white-space: pre-wrap;
+	background: transparent;
+	color: #444;
+	font-weight:900;
+	text-shadow: 0 0 0 #fff;
+	margin: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.msgbox .md details{ /* ++ */
+	scroll-behavior: smooth;
+	background: rgba(200, 156, 81, .2);
+	border-radius: .4rem .4rem 0 0;
+	padding: .2rem;
+	border: .1rem solid #aaa;
+}
+.msgbox .md img{
+	display: block; /* 将图片设为块级元素 */
+	margin: 0 auto;  /* 左右外边距自动，实现水平居中 */
+	max-width: 98%;
+}
+.msgbox .md details .p1{
+	padding: .15rem;
+}
+.msgbox .md summary{
+	border-radius: .4rem .4rem 0 0;
+	padding-top: .6rem;
+	padding-bottom: .3rem;
+	line-height: 1.4;
+	font-size: 1.3rem;
+	text-shadow: 0 0 0 #000;
+	color: #fff;
+	background: royalblue;
+}
+.msgbox .md details summary {
+	list-style: none; /* 隐藏默认三角 */
+}
+.msgbox .md details summary::before {
+	content: " ＋ "; /* 初始状态箭头 */
+	display: inline-block;
+	margin-right: .3rem;
+	color: #ffff00;
+	transition: transform 0.2s;
+}
+.msgbox .md details[open] summary::before {
+	content: " 丨"; /* 展开状态箭头 */
+	margin-right: .6rem;
+	transform: rotate(90deg);
+}
+.msgbox .md .col-2{  /* **abc** */
+	font-size: 1.1rem;
+	background: linear-gradient(180deg,transparent 70%, rgba(0, 172, 230, .2) 30%);
+	color: #333;
+	font-weight: 900;
+	border-radius: 0rem;
+	text-shadow: none;
+	padding: .3rem .2rem 0.1rem .2rem;
+	margin: .1rem 0;
+	border-bottom: .05rem solid #555;
+}
+.msgbox .md .col-3{  /* `abc` */
+	background: none;
+	border-radius: .2rem;
+	color: #0562AC;
+	border-left: .1rem solid transparent;
+	border-right: .1rem solid transparent;
+	text-shadow: 0 0 0 #fff;
+}
+.msgbox .md .col-4{  /* ###abc */
+	font-weight: 900;
+	font-size: 1.4rem;
+	color: #80007f;
+	text-shadow: 0 0 0 #fff;
+	padding: .3rem 0 .6rem 0;
+}
+.msgbox .md .col-5{  /* ~~abc~~ */
+	font-weight: 900;
+	font-size: 1rem;
+	color: #888;
+}
+.msgbox .md pre{  /* ```abc``` */
+	line-height: 1.5;
+	padding: .5rem 0rem .5rem 0.2rem;
+	font-family: fantasy;
+	background-color: #eee;
+	color: #111;
+	white-space: pre-wrap;
+	border-top: .1rem solid #444;
+	border-left: .1rem solid #444;
+	box-shadow: 0 .05rem 0 #fff;
+	font-weight: 600;
+	font-size: 1rem;
+	width:98.5%;
+}
+.msgbox .md pre.col-6{ /* [](url) */
+	border-bottom-color: rgba(255,255,255,.3);
+	text-decoration: underline;
+	text-decoration-color: #555;
+	color: #802498;
+	background: rgba(255,255,255,.3);
+	border-radius: .4rem .4rem 0 0;
+	text-shadow:none;
+	box-shadow:none;
+	white-space: nowrap;
+	overflow-x: auto;
+}
+.msgbox .md pre.col-6::before {
+	content: '🌐 ';
+	position: relative;
+	right: 0;
+}
+
+.msgbox .md details pre{
+	width:98.7%;
+}
+
+.msgbox .md .col-7{  /* //文本 */
+	text-shadow: none;
+	color: #999;
+}
+.msgbox .md .col-8{  /* 数字. - */
+	color:#C00000;
+	font-weight:900;
+}
+.msgbox .md hr{
+  border: .15rem dashed #aaa;
+}
+.msgbox .md table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.msgbox .md th, .msgbox .md td {
+	border: .1rem solid #00394d;
+	padding: .3rem;
+	text-align: center;
+}
+.msgbox .md th {
+	background-color: #DCC780;
+}
+.msgbox .md tbody tr:nth-child(odd) {
+	background-color: rgba(235, 253, 238, .2); /* 奇数行颜色 */
+}
+.msgbox .md tbody tr:nth-child(even) {
+/*	background-color: rgba(234, 249, 255, .2); /* 偶数行颜色 */
+}
+
+/* 设置界面 */
+.setting{
+  background: #bbb;
+}
+.setting button{
+  border: .1rem solid #32393E;
+  border-radius: .4rem;
+  box-shadow: .1rem .2rem .2rem rgba(0,0,0,.3);
+  background: #484A65;
+  color: #ddd;
+  margin-top: .5rem;
+	min-width: calc(98.4% / 2);
+}
+.setting button:nth-last-child(-n+2){
+	background: #484A65;
+	color: #fff900;
+	text-align: center;
+}
+/* 配色界面 */
+.theme, .jslist{
+  background: #bbb;
+}
+.theme button, .jslist button {
+  border: .1rem solid #32393E;
+  border-radius: 1rem;
+  box-shadow: .1rem .2rem .2rem rgba(0, 0, 0, .3);
+  background: #484A65;
+  color: #ddd;
+  margin-top: .5rem;
+  font-size: 1.1rem;
+  text-align: center;
+  white-space: nowrap;
+	line-height: 1;
+}
+/* 短语界面 */
+.phrase{
+	background: #E7D4B3;
+}
+.phrase button{
+  font-size: var(--界面字体大小);
+	font-family: var(--界面字体);
+	padding: .2rem;
+	margin: 0.1rem;
+	min-height: 3.5rem;
+	max-height: 100%;
+	text-align: left;
+	background: #E7D4B3;
+	border:none;
+	border-bottom: 0.2rem dashed #444;
+	border-radius: 0rem;
+	box-shadow:none;
+	text-shadow: 0 0 0 #000;
+}
+
+/* 长按弹出菜单 */
+.action-shadow{
+	position: absolute;
+	z-index:100;
+	display: none;
+	background-color:rgba(200,200,200,0.8);
+	pointer-events: auto;
+	overflow:hidden;
+}
+.action-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height:100%;
+}
+.action-menu{
+	background: #bbb;
+	border-radius: .5rem; /* 外圆角 */
+	border: 0.2rem solid #222;
+	padding: 0.2rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: fit-content;
+	max-width: var(--菜单, 60%);
+}
+.action-menu>.action-item{
+	position:relative;
+	background-color: #414769;
+	min-width: 4.5rem;
+	border: 0.1rem solid #000;
+	color: #ddd;
+	margin: .1rem;
+	box-shadow: .1rem .1rem .2rem rgba(0,0,0,.3);
+	border-radius: .5rem;
+	font-size:1.6rem;
+	line-height:2;
+	text-align: center;
+	flex: 1 1 calc(25% - 5px);
+}
+.action-item.highlighted{
+	background-color: #6ec5d5;
+	color: #000;
+}
+
+/*工具栏*/
+.keyboard.popup .adds, .keyboard.popup .zg{
+  display: none;
+}
+.adds, .zg {
+box-sizing: border-box;
+display: var(--工具栏, none);
+justify-content: center;
+align-items: center;
+}
+.adds button {
+box-sizing: border-box;
+padding: 0 2px;
+width: 13%;
+margin: 0 auto;
+background: var(--背景色2);
+color: var(--字体色2);
+border: var(--键边框大小) solid var(--键边框颜色);
+border-radius: var(--键圆角);
+font-size: 1rem;
+text-shadow: var(--字阴影2);
+box-shadow: var(--键阴影);
+height:2rem;
+white-space: nowrap;
+}
+.adds button[data-active="1"] {
+background: red;
+}
+
+/* 底部显示 */
+body:not(.landscape) .keyboard:not(.popup) .bottom-zg{
+  height: var(--底部增高);
+	box-sizing: border-box;
+	display: var(--底部显示,inline-block);
+}
+.bottom-zg span{
+	box-sizing: border-box;
+  position: absolute;
+	width: 100%;
+  font-family: 汉字字体,sans-serif;
+	font-size: var(--底栏字大小, 1.3rem);
+  color: var(--底栏字色, #000);
+  text-align: center;
+	bottom: var(--底栏字上下位置, 0.5%);
+	line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.landscape .bottom-zg span{
+	display:none;
+}
+/* 信息弹窗 */
+#myAlert {
+  font-size: 1.3rem;
+	min-width: 3.4rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #007bff;
+  color: #fff;
+  border-bottom: 0.01rem solid #000;
+  border-radius: .4rem;
+  padding: .3rem;
+  z-index: 100;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 单手模式,缩放键盘 */
+.keyboard, .action-shadow {
+	width: var(--缩小, 100%);
+}
+.keyboard, .action-shadow, #keyboard-overlay {
+  right: var(--右, initial);
+}
+.editor button, .action-menu{
+  transform: scaleX(var(--缩小, 100%));
+}
+.action-menu>.action-item {
+  margin: var(--间, .4rem);
+}
+
+/* 悬浮候选栏 */
+.popup {
+	--悬浮背景: #535564;
+	--悬浮字色: #fff;
+	--悬浮首选高亮: #ff0;
+	--悬浮光标色: #ff0;
+	--悬浮候选高度: 3.2rem;
+	--悬浮字上下: 2;
+	--悬浮字大小: 1.8rem;
+	width: fit-content;
+	opacity:.9;
+	background: rgba(255,255,255,.5) !important; /*栏背景色*/
+}
+.popup .keyboard-candidate-panel {
+  background: var(--悬浮背景) !important; /*字背景色*/
+	width: fit-content;
+	height: auto;
+	border-radius: var(--悬浮圆角, 0rem) !important;
+  width: 100%; /* 或者其他固定宽度 */
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+.popup .keyboard-candidate-panel span{
+  background: var(--悬浮背景) !important;
+  font-size: var(--悬浮字大小) !important;
+  line-height: var(--悬浮字上下) !important;
+  height: var(--悬浮候选高度) !important;
+	pointer-events:auto;
+}
+.popup .keyboard-candidate-panel span:not(.first){
+	color: var(--悬浮字色) !important;
+}
+.popup .keyboard-candidate-panel span.first {
+  color: var(--悬浮首选高亮) !important;
+}
+.popup .keyboard-candidate-panel span:not([data-data="0"]) label.codetip {
+	position: absolute;
+	top: -.4em; /* 调整上下位置 */
+	left: 50%;
+	transform: translateX(-50%);
+}
+.popup .keyboard-candidate-panel span label.codetip{
+/*	display:none; /* 隐藏补全编码 */
+	font-size: .9rem;
+  color: var(--悬浮首选高亮) !important; /* 补全编码字体色 */
+}
+/* 竖向时 */
+.popup .keyboard-candidate-panel .single-line {
+	display: block;
+	width: fit-content;
+	text-align: left;
+  line-height: 1.2;
+}
+
+/* 悬浮编码栏 */
+.popup .keyboard-code-panel{
+/*	display:none; /* 隐藏编码栏 */
+	position:relative;
+	width: fit-content;
+	left: -.5%;top:0;
+	background: var(--悬浮背景) !important;
+	padding: .2rem .2rem 0 .2rem;
+	margin:0;
+}
+.popup .keyboard-code-panel span{
+  font-family: var(--候选栏字体);
+  font-size: 1.5rem;
+	color: var(--悬浮字色) !important;
+	line-height: 1.3;
+}
+.popup .keyboard-code-panel .code-caret{
+	border-color: var(--悬浮光标色) !important;
+}
+
+.keyboard-candidate-panel span.tool[data-tool] {
+  background-size: 65%;
+	text-shadow:none;
+}
+
+/* 工具栏图标 */
+.keyboard-candidate-panel .tool[data-tool="0"] {
+  color: transparent;
+  background: url(images/000.svg) no-repeat center;
+	top: 1%;
+}
+.keyboard-candidate-panel .tool[data-tool="1"] {
+  color: transparent;
+  background: url(images/001.svg) no-repeat center;
+}
+.keyboard-candidate-panel span.tool[data-tool="2"] {
+  color: transparent;
+  background: url(images/002.svg) no-repeat center;
+  background-size: 65%;
+	top: 1.5%;
+}
+.keyboard-candidate-panel span.tool[data-tool="3"] {
+  color: transparent;
+  background: url(images/003.svg) no-repeat center;
+  background-size: 58%;
+}
+.keyboard-candidate-panel .tool[data-tool="4"] {
+  color: transparent;
+  background: url(images/004.svg) no-repeat center;
+}
+.keyboard-candidate-panel .tool[data-tool="10"] {
+  color: transparent;
+  background: url(images/010.svg) no-repeat center;
+}
+.keyboard-candidate-panel .tool[data-tool="12"] {
+  color: transparent;
+  background: url(images/012.svg) no-repeat center;
+}
+.keyboard-candidate-panel .tool[data-tool="13"] {
+  color: transparent;
+  background: url(images/013.svg) no-repeat center;
+}
+.keyboard-candidate-panel span.tool[data-tool="7"] {
+  color: transparent;
+  background: url(images/007.svg) no-repeat center;
+  background-size: 58%;
+}

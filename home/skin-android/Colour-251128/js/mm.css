@@ -1,0 +1,129 @@
+/* Basic CSS for Layout and Appearance */
+.jsload {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f0f0f0;
+	font-family: sans-serif;
+	user-select: none;
+
+	 border: 1px solid #ccc;
+	 box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+	 background-color: #fff;
+	 padding: 0 5px;
+	 border-radius: 5px;
+}
+
+.jsload .gameStatus {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 1px;
+	background-color: #d3d3d3;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	margin-bottom: 2px;
+	font-size: .8em;
+	position: relative;
+}
+
+.jsload .flagContainer,
+.jsload .timerContainer {
+	display: flex;
+	align-items: center;
+	background-color: #eee;
+	padding: 5px 10px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+}
+.jsload .flagContainer div,
+.jsload .timerContainer div {
+	 margin-left: 5px;
+	 min-width: 25px;
+	 text-align: right;
+}
+
+.jsload #alert {
+	display: none;
+	position: absolute;
+	top: 90%;
+	left: 50%;	
+	transform: translate(-50%,50%);
+	background-color: rgba(0, 0, 0, 0.75);
+	color: white;
+	font-size: 1.5em;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 20px;
+	z-index: 10;
+	border-radius: inherit;
+}
+
+.jsload #alert button.newGame {
+	padding: 10px 20px;
+	font-size: 0.8em;
+	margin-top: 15px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #4CAF50;
+	color: white;
+}
+.jsload #alert button.newGame:hover {
+	 background-color: #45a049;
+}
+
+
+.jsload .gameBoard {
+	display: grid;
+	 grid-template-columns: repeat(16, 1fr);
+	 grid-template-rows: repeat(9, 1fr);
+	gap: 1px;
+	background-color: #ccc; /* Grid line color */
+	border: 1px solid #999;
+	 aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.jsload .cell {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	font-size: 1em;
+	cursor: pointer;
+	user-select: none;
+  position: relative;
+  width: 100%;
+  height: 6vw;
+}
+
+.jsload .cell.light { background-color: #aad751; }
+.jsload .cell.dark { background-color: #a2d149; }
+
+.jsload .cell.lightCleared { background-color: #e5c29f; }
+.jsload .cell.darkCleared { background-color: #d7b899; }
+
+/* Number Colors */
+.jsload .value1 { color: #1976d2; } /* Blue */
+.jsload .value2 { color: #388e3c; } /* Green */
+.jsload .value3 { color: #d32f2f; } /* Red */
+.jsload .value4 { color: #7b1fa2; } /* Purple */
+.jsload .value5 { color: #ff8f00; } /* Orange */
+.jsload .value6 { color: #0097a7; } /* Teal */
+.jsload .value7 { color: #4b4b4b; } /* Dark Grey */
+.jsload .value8 { color: #a1a1a1; } /* Light Grey */
+
+/* Ensure emojis scale reasonably */
+.jsload .cell span {
+	font-size: inherit; /* Or adjust if needed */
+}
+
+.jsload div[data-row="4"] {
+  margin-bottom: 0rem !important;
+}

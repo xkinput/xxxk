@@ -1,0 +1,117 @@
+:root{
+  --蓝色: #4d88ff;
+
+  --键盘背景色: #ddd;
+  --⇧键单击: #9C36E5;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #000;
+  --键边框大小: 0.05rem;
+  --键圆角: .6rem;
+  --键间距: .1rem;		/* 键(||)*/
+  --键阴影: 
+  inset .2rem .1rem .3rem rgba(0,0,0,.1),
+  inset -.1rem -.6rem .2rem rgba(0,0,0,.3);
+
+/*字母键*/
+  --背景色1: #ca2619;
+  --字体色1: #fff;
+  --字大小1: 1.2rem;
+  --上标字符色1: var(--字体色1);
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+  --字上下1: -2%;
+	--字上下2: -5%;
+
+/*功能键*/
+  --背景色2: #5d3322;
+  --字体色2: #eee;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: var(--字体色2);
+
+/*候选栏*/
+  --候背景色: transparent;
+  --候字体颜色: #000;
+  --候高亮首选色: blue;
+  --候底线颜色: transparent;
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: #ddd;
+	--uifj键色: var(--字体色1);
+	--选重: #ff0;
+  --候编码字大小: 0.9rem !important;
+  --候编码位置: -.1rem !important;
+
+  --下标: transparent;
+  --动画字色: #fff;
+	--底部显示: none;
+	--动画框色: transparent;
+	--动画背景: rgba(255,0,0,.5);
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key :is(.alt-note, .hii-note) {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .7rem Sans-serif;
+}
+
+.keyboard-key .hii-note {
+  top: 88%;
+  font-size: .5rem;
+}
+
+.keyboard-key > .visual-wrapper:before ,
+.keyboard-key.special-key> .visual-wrapper:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-radius: .5rem;
+	box-shadow: inset 0 .1rem .15rem rgba(255,255,255,.35);
+  width: 82%;
+  height: 83%;
+  background: linear-gradient(0deg, #E02A1C 0%, rgba(0,0,0,.1) 100%) !important;
+}
+.keyboard-key.special-key> .visual-wrapper:before {
+  background: #74402B !important;
+  width: 86%;
+}
+
+.keyboard-key[data-keycode="32"] > .visual-wrapper span,
+.keyboard-key.special-key> .visual-wrapper span {
+  font-size: 1.2rem !important;
+  text-shadow:none;
+}
+
+.keyboard-key:not(.special-key)[data-keycode="32"] > .visual-wrapper:before{
+  width: 92%;
+}
+
+.keyboard-row {
+	position: relative;
+	background: #000;
+	border-radius: .6rem;
+	box-shadow:inset 0 -.3rem .3rem #ddd;
+}
+.keyboard-row:nth-child(3) {
+	position: relative;
+	width: fit-content !important;
+	left:50%;
+	transform:translate(-50%,0%);
+}
+
+/* 键按下时缩小 */
+.keyboard-key:active,
+.keyboard-key.special-key:active{
+  transform: scale(.8) !important;
+}

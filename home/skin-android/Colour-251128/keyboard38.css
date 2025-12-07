@@ -1,0 +1,140 @@
+:root{
+  --键盘背景色: #AAACAB;
+  --⇧键单击: #25f;		/*shift键_单按_高亮_文字色*/
+  --键边框颜色: #444;
+  --键边框大小: 0.12rem;
+  --键圆角: .4rem;
+  --键间距: .08rem;		/* 键(||)*/
+  --键阴影: 
+	inset -.2rem -.3rem .2rem rgba(0,0,0,.3);
+
+/*字母键*/
+  --背景色1: #f5f5f5;
+  --字体色1: #00191a;
+  --字大小1: 1.35rem;
+  --上标字符色1: #666;
+  --字阴影1: 0 0 0 #000;
+  --键阴影1: none;
+
+/*功能键*/
+  --背景色2: #ddd;
+  --字体色2: #111;
+  --上标字符色2: var(--字体色2);
+  --字阴影2: none;
+  --键阴影2: none;
+
+/*回车键*/
+  --⏎背景色: var(--背景色2);
+  --⏎字体色: transparent;
+
+/*候选栏*/
+  --候背景色: #ccc;
+  --候字体颜色: #111;
+  --候高亮首选色: #25f;
+  --候底线颜色: transparent;
+  --候字阴影: none;
+  --候阴影: none;
+  --V背景色: var(--候背景色);
+	--uifj键色: var(--字体色1);
+	--底部显示: none;
+	--选重: blue;
+
+  --下标: transparent;
+	--动画框色: transparent;
+	--elogo: url(images/cat2.webp);
+}
+
+.keyboard-key .alt-note {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: .6rem Sans-serif;
+}
+
+.keyboard-key[data-row="4"] {
+  margin-bottom: .25rem !important;
+}
+
+.keyboard-key > .visual-wrapper:before ,
+.keyboard-key.special-key> .visual-wrapper:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: .3rem;
+  width: 80%;
+  height: 80%;
+  background: linear-gradient(90deg,#c5c5c5,#edeeef) !important;
+	box-shadow: 
+	0 .2rem .3rem rgba(0,0,0,.2);
+}
+
+.keyboard-key.special-key> .visual-wrapper:before {
+	border-color: transparent;
+  width: 86%;
+  background: linear-gradient(90deg,#aaa,#ddd) !important;
+}
+.keyboard-key.special-key[data-keycode="13"] .alt-note {
+  color: var(--透明, var(--⏎字体色)) !important;
+}
+x.keyboard-key.special-key[data-keycode="13"] > .visual-wrapper:before {
+  background: rgba(255,0,0,.15) !important;
+}
+.keyboard-key:not(.special-key)[data-keycode="32"]> .visual-wrapper:before {
+	width: 94%;
+}
+
+body:not(.landscape) .keyboard:not(.popup) .keyboard-candidate-panel span[data-page="true"] {
+  position: absolute;
+  top: 1%;
+  right: 0%;
+}
+
+.keyboard-key:active,
+.keyboard-key:not(.special-key)[data-keycode="32"]:active,
+.keyboard-key.special-key:active{
+  transform: scale(.9) !important;
+}
+
+.keyboard-candidate-panel .tool[data-tool] {
+  background-size: 65% !important;
+}
+
+/* 首选背景色 */
+.keyboard:not(.popup) .keyboard-candidate-panel span,
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-selection="true"]{
+  position: relative; z-index: 1;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first{
+  color: #fff !important; /* 首选字体色 */
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first:before{
+  height: 2.3rem;
+	border: .01rem solid #999;
+  border-radius: .2rem;
+  line-height:1;
+  background: #4876FF; /* 首选背景色 */
+  box-shadow: none;
+  content: "";
+  position:absolute;
+  bottom:0;
+	top:26%; /* 上下位置调整 */
+	left:.1rem;
+	right:0%;
+  z-index: -1;
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span.first label.codetip{
+	color: #fff !important; /* 首选补全编码色 */
+}
+.keyboard:not(.popup) .keyboard-candidate-panel span[data-data="0"] p.desc{
+  color: #fff !important;
+}
+
+.keyboard-key.special-key[data-keycode='13'] > .visual-wrapper::after{
+  background: var(--elogo) no-repeat center;
+  content: ""; position: absolute;
+  left: 0%; top: 3%; bottom: 0; right: 0;
+  background-size: 55%;
+}

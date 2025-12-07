@@ -1,0 +1,19 @@
+###简单方案教程
+★配置文件 `/yong/.yong/yong.ini`
+```
+[IM]
+default=2  #默认启动方案
+0=yong
+1=wubi
+2=pinyin  #方案索引(数字要连续,0到1到2到...)
+```
+`以拼音为例`
+```
+[pinyin]
+name=拼音  #方案名字
+engine=libmb.so  #码表输入法引擎
+arg=mb/pinyin.txt  #主码表
+quick={ mb/emoji.txt  #辅助码表
+assist=} mb/chaizi.txt #辅助码表2
+#assist=mb/xiaohe.txt 2  #间接辅助码表(第三码)
+```
