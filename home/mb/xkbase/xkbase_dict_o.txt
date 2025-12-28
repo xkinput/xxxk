@@ -287,6 +287,10 @@ olleftrightarrows ⇆
 olrightleftarrows ⇄
 olleftrightharpoons ⇋
 olrightleftharpoons ⇌
+olangle ∠
+oltriangle △
+olparallel ∥
+olvert ⊥
 
 o $[拼音注音p]
 opb ㄅ

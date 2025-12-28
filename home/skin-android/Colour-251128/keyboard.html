@@ -914,7 +914,7 @@ var Render=(function(){
 			my.s2t=!my.s2t;
 			var Num=Tools.findIndex(item=>item.tool==="6");
 			Tools[Num].title=(my.s2t?"繁":"简");
-			App.commit("$IMKEY(CTRL_ALT_F)");
+			App.commit("$IMKEY(CTRL_SHIFT_J)");
 			msgbox(Tools[Num].title);
 			Render.showToolbar();
 		}

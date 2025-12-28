@@ -67,7 +67,7 @@ Function xxxkSubFuncChkSchemasInYongWinIni
         Push "$R2" # [IM]default 对应的方案ID
         ReadINIStr $R1 "$xxxkVarHomeDir\yong.ini" "IM" "default"
         ReadINIStr $R2 "$xxxkVarHomeDir\yong-win.ini" "IM" "$R1"
-        ${IfNotThen} $R2 == "" ${|} WriteINIStr "$xxxkVarHomeDir\yong.ini" "IM" "default" "$R1" ${|}
+        ${IfNotThen} $R2 == "" ${|} WriteINIStr "$xxxkVarHomeDir\yong-win.ini" "IM" "default" "$R1" ${|}
         Pop $R2
         Pop $R1
     ${EndIf}

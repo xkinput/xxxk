@@ -1,6 +1,7 @@
 @echo off
 set dirData=..\..\data\yong-android
 set dirHome=..\..\home
+set outApkName=xxxk
 
 :menu
 cls
@@ -52,15 +53,15 @@ copy %dirHome%\yong-android.ini %dirData%\assets\yong.ini /y
 if %result%==2 (pause && goto menu)
 
 :compose
-call apktool.bat b %dirData% -o xxxk.apk
+call apktool.bat b %dirData% -o %outApkName%.apk
 if %result%==3 (pause && goto menu)
 
 :sign
-cmd /c java -jar uber-apk-signer.jar --apks xxxk.apk
-del /f xxxk-aligned-debugSigned.apk.idsig
-del /f xxxk-signed.apk
-del /f xxxk.apk
-rename xxxk-aligned-debugSigned.apk xxxk-signed.apk
+cmd /c java -jar uber-apk-signer.jar --apks %outApkName%.apk
+del /f %outApkName%-aligned-debugSigned.apk.idsig
+del /f %outApkName%-signed.apk
+del /f %outApkName%.apk
+rename %outApkName%-aligned-debugSigned.apk %outApkName%-signed.apk
 if %result%==4 (pause && goto menu)
 
 if %result%==5 (pause && goto menu)
