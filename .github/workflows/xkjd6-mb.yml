@@ -1,0 +1,143 @@
+name: Update xkjd6 dicts with the latest KeyTao dicts
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: '0 18 * * *' # Runs at Beijing time 02:00 every day
+
+permissions:
+    contents: write
+
+jobs:
+    my-job:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+
+            - id: get-latest-keytao-commit-hash
+              env:
+                    url: https://github.com/xkinput/KeyTao.git
+                    branch: master
+              run: |
+                    result=$(git ls-remote ${{ env.url }} ${{ env.branch }})
+                    echo "result=${result%%$'\t'*}" >> $GITHUB_OUTPUT
+            
+            - id: locate-cached-hash
+              uses: actions/cache@v5
+              with:
+                    key: keytao
+                    path: ~/.keytao
+            
+            - id: needs-update
+              env:
+                    cache-hit: ${{ steps.locate-cached-hash.outputs.cache-hit }}
+                    latest-hash: ${{ steps.get-latest-keytao-commit-hash.outputs.result }}
+              run: |
+                if [[ "${{ env.cache-hit }}" == "true" ]]; then
+                    cached_hash=$(cat ~/.keytao/hash.txt)
+                    if [[ $cached_hash == ${{ env.latest-hash }} ]]; then
+                        echo "Already up to date."
+                        exit 1
+                    fi
+                fi
+            
+            - name: clone-keytao
+              uses: actions/checkout@v6
+              with:
+                    repository: xkinput/KeyTao
+                    path: KeyTao
+
+            - name: clone-xxxk
+              uses: actions/checkout@v6
+              with:
+                    #repository: xkinput/xxxk
+                    path: xxxk
+
+            - name: clone-test
+              uses: actions/checkout@v6
+              with:
+                    repository: tswwe/test
+                    path: test
+
+            - name: check-files-existence
+              #working-directory: ${{ github.workspace }}
+              env:
+                    filepaths: |-
+                        ./KeyTao/rime/keytao.single.dict.yaml
+                        ./KeyTao/rime/keytao.supplement.dict.yaml
+                        ./KeyTao/rime/keytao.css.dict.yaml
+                        ./KeyTao/rime/keytao.phrase.dict.yaml
+                        ./xxxk/home/mb/xkjd6/xkjd6_arg.txt
+                        ./xxxk/home/mb/xkjd6/xkjd6_dict_ci.txt
+                        ./xxxk/home/mb/xkjd6/xkjd6_dict_jm.txt
+              run: |
+                    while IFS= read -r filepath; do
+                    [[ -z "${filepath}" ]] && continue
+                    if [[ ! -f "${filepath}" ]]; then
+                        echo "Missing: ${filepath}"
+                        exit 1
+                    fi
+                    done <<< "${{ env.filepaths }}"
+                    echo "All files exist."
+
+            - name: keytao-dicts-to-xxxk
+              #working-directory: ${{ github.workspace }}
+              run: |
+                keytao_folder="./KeyTao/rime"
+                keytao_filenames="keytao.single.dict
+                keytao.supplement.dict
+                keytao.css.dict
+                keytao.phrase.dict"
+                xxxk_folder="./xxxk/home/mb/xkjd6"
+                xxxk_filenames="xkjd6_arg
+                xkjd6_dict_ci
+                xkjd6_dict_jm"
+                output_folder="./TempDict"
+
+                mkdir -p "${output_folder}"
+
+                for filename in ${keytao_filenames}; do
+
+                    awk -vFS="\t" -vOFS=" " -vORS="\r\n" \
+                        '{ if (NF==2||NF==3) {print $2,$1} }' \
+                        "${keytao_folder}/${filename}.yaml" \
+                    > "${output_folder}/${filename}_utf8.txt"
+
+                    iconv -f UTF-8 -t GB18030 "${output_folder}/${filename}_utf8.txt" > "${output_folder}/${filename}.txt"
+
+                done
+
+                awk -vORS="\r\n" \
+                    '{ if ($0=="[DATA]") {printf "[DATA]\n"; exit} else {print $0} }' \
+                    "${xxxk_folder}/xkjd6_arg.txt" \
+                > "${output_folder}/xkjd6_arg_header.txt"
+
+                cat "${output_folder}/xkjd6_arg_header.txt" "${output_folder}/keytao.single.dict.txt" \
+                > "${output_folder}/xkjd6_arg.txt"
+
+                mv "${output_folder}/keytao.phrase.dict.txt" "${output_folder}/xkjd6_dict_ci.txt"
+
+                cat "${output_folder}/keytao.supplement.dict.txt" "${output_folder}/keytao.css.dict.txt" \
+                > "${output_folder}/xkjd6_dict_jm.txt"
+
+            - name: configure-git
+              run: |
+                git config --global user.name "github-actions[bot]"
+                git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+            - name: commit-and-push
+              working-directory: ${{ github.workspace }}/xxxk
+              run: |
+                git branch xkjd6-mb
+                git switch xkjd6-mb
+                mv "../TempDict/xkjd6_arg.txt" "./home/mb/xkjd6/"
+                mv "../TempDict/xkjd6_dict_ci.txt" "./home/mb/xkjd6/"
+                mv "../TempDict/xkjd6_dict_jm.txt" "./home/mb/xkjd6/"
+                git add -A
+                git commit -m "dict: Update xkjd6 dicts with the latest KeyTao dicts (${{ steps.get-latest-keytao-commit-hash.outputs.result }})."
+                git push origin xkjd6-mb --force
+
+            - name: update-cached-hash
+              run: |
+                mkdir -p ~/.keytao
+                echo "${{ steps.get-latest-keytao-commit-hash.outputs.result }}" > ~/.keytao/hash.txt

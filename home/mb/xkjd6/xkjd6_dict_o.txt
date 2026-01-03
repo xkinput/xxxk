@@ -1,6 +1,5 @@
 oojp $[键盘图]$GO($(_HOME)/mb/xkjd6/xkjd6_keymap.png)
-oomb $[在线码表简洁版]$GO(https://docs.qq.com/form/fill/DRWlwcUplU3dzaEFq#/fill/resubmit)
-oomb $[在线码表完整版]$GO(https://docs.qq.com/sheet/BFdiXU0nyc1W1kwuZl3Gx31r2KLm2k3F8YzI4)
+oomb $[在线码表]$GO(https://keytao.vercel.app)
 
 oyk ①
 oxj ②
