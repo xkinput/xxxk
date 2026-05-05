@@ -78,7 +78,7 @@ hk 很快
 hm 后面
 i 上
 i 打
-i 
+i 龵
 i 人
 i 丨
 i 亅
@@ -200,7 +200,7 @@ vaua 旡
 vavviv 疌
 viaiiv 覀
 vii 艹
-viiv 
+viiv 龷
 viv 扌
 vo 土
 vo 士
@@ -208,7 +208,7 @@ voiavi 畐
 vu 𠂇
 vu 丆
 vui 廾
-vviv 
+vviv 龶
 vvvuo 𡗗
 w 玩
 wc 为此

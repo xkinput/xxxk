@@ -1,5 +1,5 @@
 oojp $[键盘图]$GO($(_HOME)/mb/xkjd6/xkjd6_keymap.png)
-oomb $[在线码表]$GO(https://keytao.vercel.app)
+oofk $[反馈码表修改建议]$GO(https://keytao.vercel.app)
 
 oyk ①
 oxj ②
