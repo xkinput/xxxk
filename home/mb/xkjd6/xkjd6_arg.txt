@@ -2689,6 +2689,8 @@ esio 铩
 esiouo 铩
 esiuia 傻
 eso 痧
+esoa 唦
+esoaiu 唦
 esoivv 啥
 esoo 唼
 esoovo 唼
@@ -3053,7 +3055,6 @@ fjav 弗
 fjavau 弗
 fjavu 艴
 fjavua 艴
-fjbfi 蝜蝂
 fji 付
 fjia 幅
 fjiai 幞
@@ -4489,6 +4490,8 @@ griavv 畊
 gro 庚
 grou 羹
 grouou 羹
+grouv 粳
+grouvi 粳
 grov 哽
 grova 赓
 grovao 赓
@@ -5286,7 +5289,9 @@ hnoa 哏
 hnoaa 𬣳
 hnoaav 𬣳
 hnoavv 哏
+hnoo 噷
 hnooav 恨
+hnoovo 噷
 hnov 痕
 hnovav 痕
 hnu 狠
@@ -7021,6 +7026,8 @@ jroivu 晟
 jroo 宬
 jrooa 憕
 jrooao 憕
+jroou 噌
+jrooui 噌
 jroovu 宬
 jrov 逞
 jrovoa 逞
@@ -9204,6 +9211,8 @@ mdvivv 某
 mdvoui 灭
 me 么
 meo 麽
+meoi 嚜
+meoiao 嚜
 meovua 麽
 meuaoo 么
 mf 满
@@ -9460,6 +9469,8 @@ mlo 魔
 mloa 谟
 mloaii 谟
 mloi 嗼
+mloia 嚜
+mloiao 嚜
 mloiio 嗼
 mloo 寞
 mlooii 寞
@@ -9711,6 +9722,8 @@ mwo 美
 mwoa 袂
 mwoaav 袂
 mwoi 昧
+mwoia 嚜
+mwoiao 嚜
 mwoivv 昧
 mwoo 寐
 mwooai 寐
@@ -12274,6 +12287,7 @@ rpoaov 禳
 rpoovo 嚷
 rpov 瓤
 rpova 勷
+rpovau 勷
 rpovuu 瓤
 rpu 穰
 rpuvov 穰
@@ -12314,6 +12328,7 @@ ryiai 蝾
 ryiaii 嵘
 ryiaii 蝾
 ryiao 峵
+ryiaoo 峵
 ryii 蓉
 ryiioo 蓉
 ryiiv 茸
@@ -14481,6 +14496,8 @@ xboi 昕
 xboiuu 昕
 xboo 忻
 xboouu 忻
+xboov 噷
+xboovo 噷
 xbou 炘
 xbouuu 炘
 xbov 辛
@@ -14537,6 +14554,7 @@ xciuoo 小
 xco 效
 xcoa 啸
 xcoao 詨
+xcoaov 詨
 xcoau 𫍲
 xcoaui 𫍲
 xcoavv 啸
@@ -15498,6 +15516,7 @@ xro 唔
 xroiav 嗯
 xrovia 唔
 xrv 鞥
+xrviiv 鞥
 xs 下
 xsa 阿
 xsaivo 阿
@@ -15760,6 +15779,7 @@ xxouu 鲞
 xxouua 鲞
 xxov 享
 xxova 勷
+xxovau 勷
 xxovo 襄
 xxovoa 享
 xxovoo 襄

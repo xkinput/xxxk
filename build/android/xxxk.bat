@@ -29,10 +29,13 @@ call apktool.bat d yong.apk -f -o %dirData%
 if %result%==1 (pause && goto menu)
 
 :replace
-rem home\skin\xxxktray2.png -> yong-android\res\drawable-*dpi\app_icon.png -> APP ICON
-copy %dirHome%\skin\xxxktray2.png %dirData%\res\drawable-hdpi\app_icon.png /y
-copy %dirHome%\skin\xxxktray2.png %dirData%\res\drawable-mdpi\app_icon.png /y
-copy %dirHome%\skin\xxxktray2.png %dirData%\res\drawable-xhdpi\app_icon.png /y
+rem build\icon\xxxk-crystal-xxx.png -> yong-android\res\drawable-*dpi\app_icon.png -> APP ICON
+copy ..\icon\xxxk-crystal-128.png %dirData%\res\drawable-hdpi\app_icon.png /y
+copy ..\icon\xxxk-crystal-256.png %dirData%\res\drawable-mdpi\app_icon.png /y
+copy ..\icon\xxxk-crystal-512.png %dirData%\res\drawable-xhdpi\app_icon.png /y
+copy ..\icon\xxxk-crystal-128.png %dirData%\build\apk\res\drawable-hdpi\app_icon.png /y
+copy ..\icon\xxxk-crystal-256.png %dirData%\build\apk\res\drawable-mdpi\app_icon.png /y
+copy ..\icon\xxxk-crystal-512.png %dirData%\build\apk\res\drawable-xhdpi\app_icon.png /y
 rem home\skin-android -> yong-android\assets\.yong\android -> APP SKIN
 xcopy %dirHome%\skin-android %dirData%\assets\.yong\android /i /s /e /y
 rem home\mb -> yong-android\assets\.yong\mb -> sdcard\yong\.yong\mb

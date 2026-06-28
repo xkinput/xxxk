@@ -1,7 +1,7 @@
 o $[命令o]
 
-oo $[官网gw]$GO(https://xkinput.github.io/xxxk-help)
-oogw $[小小星空首页]$GO(https://xkinput.github.io/xxxk-help)
+oo $[官网gw]$GO(https://xxxk.input.press)
+oogw $[小小星空首页]$GO(https://xxxk.input.press)
 oogw $[星空输入法首页]$GO(https://xkinput.github.io)
 oogw $[小小星空网盘]$GO(http://xxxk.ysepan.com)
 
@@ -10,8 +10,8 @@ ooml $[程序目录(Win)]$GO($(_DATA))
 ooml $[配置目录(Win)]$GO($(_HOME))
 ooml $[本地码表目录(Win)]$GO($(_HOME)/mb)
 
-oo $[入门rm]$GO(https://xkinput.github.io/xxxk-help)
-oorm $[在线帮助文档]$GO(https://xkinput.github.io/xxxk-help)
+oo $[入门rm]$GO(https://xxxk.input.press)
+oorm $[在线帮助文档]$GO(https://xxxk.input.press)
 oorm $[本地帮助文档(Win)]$GO($(_HOME)/doc)
 
 oo $[小小xx]$GO(yong-config)

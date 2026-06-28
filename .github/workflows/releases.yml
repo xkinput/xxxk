@@ -1,0 +1,33 @@
+name: Fetch Github Releases JSON and Deploy to Cloudflare Pages
+
+on:
+  release:
+    types: [published, edited, deleted]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetch GitHub Releases
+        run: |
+          set -e
+          mkdir -p upload
+
+          curl -s \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/xkinput/xxxk/releases" \
+            > upload/xxxk.json
+
+          curl -s \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/xkinput/windikt/releases" \
+            > upload/windikt.json
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy upload --project-name=github-releases --branch=main

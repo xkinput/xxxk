@@ -7,11 +7,11 @@
 #!define XXXK_VER_DATE "20241212"
 #Var /GLOBAL xxxkVarHomeDir # 变量不会自动提升，因此要放前面
 
-# 把 pinyin 方案添加到目标 yong.ini
-# 调用方法：${xxxkAddPinyinToIni} "目标ini"
+# 把 xkjd6 方案添加到目标 yong.ini 作为 0 号方案和默认方案
+# 调用方法：${xxxkAddDefaultSchemaToIni} "目标ini"
 # 参数均为传值
-!ifmacrondef xxxkMacroAddPinyinToIni
-!macro xxxkMacroAddPinyinToIni arg0
+!ifmacrondef xxxkMacroAddDefaultSchemaToIni
+!macro xxxkMacroAddDefaultSchemaToIni arg0
     # 备份要用到的变量
     Push "$R0" # 目标ini
 
@@ -21,15 +21,15 @@
 
     # 可以随意使用变量了（但不能使用形参）
     WriteINIStr "$R0" "IM" "default" "0"
-    WriteINIStr "$R0" "IM" "0" "pinyin"
-    ${xxxkReplaceIniSection} "$INSTDIR\entry\pinyin.ini" "$R0" "pinyin"
+    WriteINIStr "$R0" "IM" "0" "xkjd6"
+    ${xxxkReplaceIniSection} "$xxxkVarHomeDir\entry\xkjd6_entry.ini" "$R0" "xkjd6"
 
     # 恢复变量的原值，并传回返回值
     Pop $R0
 !macroend
 !endif
-!ifndef xxxkAddPinyinToIni
-!define xxxkAddPinyinToIni "!insertmacro xxxkMacroAddPinyinToIni"
+!ifndef xxxkAddDefaultSchemaToIni
+!define xxxkAddDefaultSchemaToIni "!insertmacro xxxkMacroAddDefaultSchemaToIni"
 !endif
 
 Function xxxkSubFuncAddSchemasToYongWinIni
@@ -61,7 +61,7 @@ Function xxxkSubFuncChkSchemasInYongWinIni
     Push "$R0"
     ReadINIStr $R0 "$xxxkVarHomeDir\yong-win.ini" "IM" "0"
     ${If} $R0 == ""
-        ${xxxkAddPinyinToIni} "$xxxkVarHomeDir\yong-win.ini"
+        ${xxxkAddDefaultSchemaToIni} "$xxxkVarHomeDir\yong-win.ini"
     ${Else}
         Push "$R1" # [IM]default 对应的 n
         Push "$R2" # [IM]default 对应的方案ID
@@ -123,7 +123,7 @@ FunctionEnd
 
 Function xxxkSubFuncFilesInCurrentHome
 
-    # 一、释放 data 里的资源文件：${XXXK_DIR_HOME} → $xxxkVarHomeDir
+    # 一、释放 home 里的资源文件：${XXXK_DIR_HOME} → $xxxkVarHomeDir
 
     SetOutPath "$xxxkVarHomeDir"
     File "${XXXK_DIR_HOME}\bd.txt"
@@ -158,18 +158,16 @@ Function xxxkSubFuncFilesInCurrentHome
 
     SetOutPath "$xxxkVarHomeDir\skin"
     File "${XXXK_DIR_HOME}\skin\DarkYellow.zip"
-    File "${XXXK_DIR_HOME}\skin\favicon.ico"
-    File "${XXXK_DIR_HOME}\skin\xxxktray1.png"
-    File "${XXXK_DIR_HOME}\skin\xxxktray2.png"
 
     SetOutPath "$xxxkVarHomeDir\tools"
     File "${XXXK_DIR_HOME}\tools\yong-config.bat"
     File "${XXXK_DIR_HOME}\tools\quit.bat"
     File "${XXXK_DIR_HOME}\tools\yong.bat"
+    File "${XXXK_DIR_HOME}\tools\windikt.exe"
 
-    # 二、如果 $xxxkVarHomeDir\yong.ini 不存在，直接让 $xxxkVarHomeDir\yong-win.ini 成为它即可（需补上 [IM]0，[IM]default 和 [pinyin] 段）。
+    # 二、如果 $xxxkVarHomeDir\yong.ini 不存在，直接让 $xxxkVarHomeDir\yong-win.ini 成为它即可（需补上 [IM]0，[IM]default 和 [xkjd6] 段）。
     ${IfNot} ${FileExists} "$xxxkVarHomeDir\yong.ini"
-        ${xxxkAddPinyinToIni} "$xxxkVarHomeDir\yong-win.ini"
+        ${xxxkAddDefaultSchemaToIni} "$xxxkVarHomeDir\yong-win.ini"
         Rename "$xxxkVarHomeDir\yong-win.ini" "$xxxkVarHomeDir\yong.ini"
         Return
     ${EndIf}
@@ -183,7 +181,7 @@ Function xxxkSubFuncFilesInCurrentHome
     Call xxxkSubFuncAddSchemasToYongWinIni
 
     # 3-2. 检查 $xxxkVarHomeDir\yong-win.ini 中是否有 [IM]0，
-    # 如果没有：为其补上 [IM]0，[IM]default 和 [pinyin] 段。
+    # 如果没有：为其补上 [IM]0，[IM]default 和 [xkjd6] 段。
     #   如果有：检查 $xxxkVarHomeDir\yong.ini 中 [IM]default 数值是否合理，如果合理，将 [IM]default 恢复到 $xxxkVarHomeDir\yong-win.ini。
     Call xxxkSubFuncChkSchemasInYongWinIni
 

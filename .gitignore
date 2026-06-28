@@ -1,8 +1,6 @@
 /build/android/*
 !/build/android/xxxk.bat
 
-/build/win/test/*
-
 /data/yong-android/*
 /data/yong-win/*
 !/data/yong-win/yong-update.bat
