@@ -78,7 +78,7 @@ hk 很快
 hm 还没
 i 上
 i 打
-i 龵
+i 
 i 人
 i 丨
 i 亅
@@ -108,6 +108,7 @@ jkyu 鸡
 jsno 嫁
 jx 酱
 kc 看错
+kdjh 球蛙微晕蛇扔，团圆臃肿胖，夏娃跌倒翻，怪鹰爱约，猪耳吸吕布，造香港，俏滨追，嫩面缸
 kk 可靠
 km 开门
 l 啦
@@ -204,7 +205,7 @@ vaua 旡
 vavviv 疌
 viaiiv 覀
 vii 艹
-viiv 龷
+viiv 
 viv 扌
 vo 土
 vo 士
@@ -212,7 +213,7 @@ voiavi 畐
 vu 𠂇
 vu 丆
 vui 廾
-vviv 龶
+vviv 
 vvvuo 𡗗
 w 玩
 wc 为此
