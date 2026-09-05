@@ -78,7 +78,7 @@ hk 很快
 hm 还没
 i 上
 i 打
-i 龵
+i 
 i 人
 i 丨
 i 亅
@@ -108,6 +108,7 @@ jkyu 鸡
 jsno 嫁
 jx 酱
 kc 看错
+kdjh 球蛙微晕蛇扔，团圆臃肿胖，夏娃跌倒翻，怪鹰爱约，猪耳吸吕布，造香港，俏滨追，嫩面缸
 kk 可靠
 km 开门
 l 啦
@@ -204,7 +205,7 @@ vaua 旡
 vavviv 疌
 viaiiv 覀
 vii 艹
-viiv 龷
+viiv 
 viv 扌
 vo 土
 vo 士
@@ -212,7 +213,7 @@ voiavi 畐
 vu 𠂇
 vu 丆
 vui 廾
-vviv 龶
+vviv 
 vvvuo 𡗗
 w 玩
 wc 为此
@@ -274,7 +275,7 @@ biu 不少
 biv 不止
 bo 不是
 boa 不让
-boi 便是
+boi 不足
 boo 表情
 bou 不断
 bov 毕竟
@@ -298,7 +299,7 @@ cau 刺激
 cav 脆弱
 ci 操作
 cia 从中
-cii 伺候
+cii 此人
 cio 存储
 ciu 从小
 civ 才会
@@ -321,8 +322,8 @@ cvo 从来
 cvu 才有
 cvv 从未
 da 到了
-daa 电池
-dai 多了
+daa 大约
+dai 对了
 dao 都能
 dau 动力
 dav 登录
@@ -380,10 +381,10 @@ evi 剩下
 evo 上来
 evu 上面
 evv 属于
-fa 发展
+fa 只能
 faa 发给
 fai 房子
-fao 只能
+fao 否则
 fau 这边
 fav 方法
 fi 这个
@@ -445,7 +446,7 @@ haa 后续
 hai 好了
 hao 还能
 hau 还好
-hav 很强
+hav 喝酒
 hi 好像
 hia 后果
 hii 行业
@@ -454,7 +455,7 @@ hiu 很少
 hiv 还会
 ho 还是
 hoa 话说
-hoi 或是
+hoi 会是
 hoo 回家
 hou 好吃
 hov 很高
@@ -621,7 +622,7 @@ nvo 拿来
 nvu 能有
 nvv 那天
 pa 普通
-paa 评测
+paa 婆婆
 pai 牌子
 pao 平台
 pau 旁边
@@ -774,7 +775,7 @@ wa 为了
 waa 网络
 wai 充满
 wao 温柔
-wau 无力
+wau 污染
 wav 无法
 wi 我们
 wia 位置
@@ -793,7 +794,7 @@ wua 吃饭
 wui 冲向
 wuo 充分
 wuu 往往
-wuv 微笑
+wuv 创造
 wv 完成
 wva 无比
 wvi 完整
@@ -881,7 +882,7 @@ zov 最新
 zu 怎么
 zua 作用
 zui 做的
-zuo 最爱
+zuo 作者
 zuu 最后
 zuv 自我
 zv 怎样
